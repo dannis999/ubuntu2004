@@ -1,0 +1,2 @@
+libopenblas0-pthread: shlibs-declares-dependency-on-other-package
+libopenblas0-pthread: package-has-unnecessary-activation-of-ldconfig-trigger
