@@ -1,0 +1,12 @@
+[Unit]
+Description=Unit to stop systemd-bootchart
+After=snapd.seeded.service
+Requisite=snapd.seeded.service
+ConditionKernelCommandLine=snapd_recovery_mode=run
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl stop systemd-bootchart.service
+
+[Install]
+WantedBy=multi-user.target

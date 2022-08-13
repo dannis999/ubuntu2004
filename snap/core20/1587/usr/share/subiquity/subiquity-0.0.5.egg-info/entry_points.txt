@@ -1,0 +1,5 @@
+[console_scripts]
+console-conf-tui = console_conf.cmd.tui:main
+console-conf-write-login-details = console_conf.cmd.write_login_details:main
+subiquity-tui = subiquity.cmd.tui:main
+

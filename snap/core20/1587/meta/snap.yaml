@@ -1,0 +1,11 @@
+name: core20
+version: '20220719'
+summary: Runtime environment based on Ubuntu 20.04
+description: 'The base snap based on the Ubuntu 20.04 release.
+
+  '
+architectures:
+- amd64
+confinement: strict
+grade: stable
+type: base
