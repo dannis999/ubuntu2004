@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -d /usr/local/cuda ]; then
+	rm -rf /usr/local/cuda/
+fi
+
+if [ -d /opt/nvidia ]; then
+	rm -rf /opt/nvidia
+fi

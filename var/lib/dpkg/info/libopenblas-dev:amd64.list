@@ -1,0 +1,14 @@
+/.
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libopenblas-dev
+/usr/share/doc/libopenblas-dev/BACKERS.md
+/usr/share/doc/libopenblas-dev/CONTRIBUTORS.md.gz
+/usr/share/doc/libopenblas-dev/README.md.gz
+/usr/share/doc/libopenblas-dev/USAGE.md.gz
+/usr/share/doc/libopenblas-dev/copyright
+/usr/share/lintian
+/usr/share/lintian/overrides
+/usr/share/lintian/overrides/libopenblas-dev
+/usr/share/doc/libopenblas-dev/changelog.Debian.gz

@@ -1,0 +1,17 @@
+/.
+/lib
+/lib/x86_64-linux-gnu
+/lib/x86_64-linux-gnu/security
+/lib/x86_64-linux-gnu/security/pam_cracklib.so
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libpam-cracklib
+/usr/share/doc/libpam-cracklib/copyright
+/usr/share/man
+/usr/share/man/man8
+/usr/share/man/man8/pam_cracklib.8.gz
+/usr/share/pam-configs
+/usr/share/pam-configs/cracklib
+/usr/share/doc/libpam-cracklib/NEWS.Debian.gz
+/usr/share/doc/libpam-cracklib/changelog.Debian.gz

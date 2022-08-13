@@ -1,0 +1,13 @@
+8a7b5bbcbb29346edb0580d1af5fb709  usr/bin/mlocate
+5d50d6f013f9a6597cd48fcfd705b4c7  usr/bin/updatedb.mlocate
+192d894885d2b4d364d9d44f31356c63  usr/include/mlocate/db.h
+ed520acf8a0da84122bf01c25514eabb  usr/share/doc/mlocate/AUTHORS
+3c8fa015db218213674131d5a304f36a  usr/share/doc/mlocate/NEWS.gz
+7c90c9abf8aca868da64724ef3cd0967  usr/share/doc/mlocate/README
+629bb696d2f99813f54af8c5a8b646e1  usr/share/doc/mlocate/TODO.Debian
+863ca013eb2a1e152eb505ae174bf884  usr/share/doc/mlocate/changelog.Debian.gz
+3d0726a5d067ad668c62c07e4a10a59d  usr/share/doc/mlocate/copyright
+a4a3357bcf32a4d40263362a01e89d02  usr/share/man/man1/mlocate.1.gz
+6aa4f3b12b01b9396677aae82762fd77  usr/share/man/man5/mlocate.db.5.gz
+c7de4b9bd0a15450ca89ec331c903f9f  usr/share/man/man5/updatedb.conf.5.gz
+e351f3ff90d2076fc7878598c896128a  usr/share/man/man8/updatedb.mlocate.8.gz

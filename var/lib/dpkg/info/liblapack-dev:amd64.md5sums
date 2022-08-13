@@ -1,0 +1,4 @@
+ec12ed2573f0960d57bf212756c823e7  usr/lib/x86_64-linux-gnu/lapack/liblapack.a
+1211d4e925be398002118b705a7d6bcf  usr/lib/x86_64-linux-gnu/liblapack_pic.a
+5dd66205915072e979adc4fa3ffc4a81  usr/lib/x86_64-linux-gnu/pkgconfig/lapack-netlib.pc
+d2a6056c947ba3a337ca7463405a9c3d  usr/share/doc/liblapack-dev/copyright

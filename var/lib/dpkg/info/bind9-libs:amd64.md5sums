@@ -1,0 +1,11 @@
+0273920cf8418e01ece9b5b7bddfe6d1  usr/lib/x86_64-linux-gnu/libbind9.so.1600.0.1
+b01807c10b530afcc1704297bc4c5079  usr/lib/x86_64-linux-gnu/libdns.so.1601.0.0
+6cbcd50d53b07f48daf7fb7b169613f7  usr/lib/x86_64-linux-gnu/libirs.so.1600.0.1
+22818961e9fd811522c8868576b9834c  usr/lib/x86_64-linux-gnu/libisc.so.1601.0.0
+28e7506124008d39357110bf6564a354  usr/lib/x86_64-linux-gnu/libisccc.so.1600.0.1
+25c3e427ccf6032104440145371b4046  usr/lib/x86_64-linux-gnu/libisccfg.so.1600.0.1
+7dd754a3efc72150441d72e042b71d71  usr/lib/x86_64-linux-gnu/libns.so.1601.0.0
+5b8a052466120c2b00dbff7e974b5ae2  usr/share/doc/bind9-libs/NEWS.Debian.gz
+dd2e0c63b574547eab8d4596dd398f2f  usr/share/doc/bind9-libs/changelog.Debian.gz
+25a18460eca883cc0e1c1da04fe2be9d  usr/share/doc/bind9-libs/copyright
+5a8db1f2385c80b7537a5614f81d6e26  usr/share/lintian/overrides/bind9-libs

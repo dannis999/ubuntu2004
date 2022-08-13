@@ -1,0 +1,51 @@
+#!/bin/sh
+set -e
+
+update-alternatives --install /usr/lib/x86_64-linux-gnu/libblas.so \
+                    libblas.so-x86_64-linux-gnu \
+                    /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so \
+                    100 \
+                    --slave /usr/lib/x86_64-linux-gnu/libblas.a \
+                    libblas.a-x86_64-linux-gnu \
+                    /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.a \
+                    --slave /usr/include/x86_64-linux-gnu/cblas.h \
+                    cblas.h-x86_64-linux-gnu \
+                    /usr/include/x86_64-linux-gnu/openblas-pthread/cblas.h \
+                    --slave /usr/lib/x86_64-linux-gnu/pkgconfig/blas.pc \
+                    blas.pc-x86_64-linux-gnu \
+                    /usr/lib/x86_64-linux-gnu/openblas-pthread/pkgconfig/blas-openblas.pc
+
+update-alternatives --install /usr/lib/x86_64-linux-gnu/liblapack.so \
+                    liblapack.so-x86_64-linux-gnu \
+                    /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so \
+                    100 \
+                    --slave /usr/lib/x86_64-linux-gnu/liblapack.a \
+                    liblapack.a-x86_64-linux-gnu \
+                    /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.a \
+                    --slave /usr/lib/x86_64-linux-gnu/pkgconfig/lapack.pc \
+                    lapack.pc-x86_64-linux-gnu \
+                    /usr/lib/x86_64-linux-gnu/openblas-pthread/pkgconfig/lapack-openblas.pc
+
+update-alternatives --install /usr/lib/x86_64-linux-gnu/libopenblas.so \
+                    libopenblas.so-x86_64-linux-gnu \
+                    /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblas.so \
+                    100 \
+                    --slave /usr/lib/x86_64-linux-gnu/libopenblas.a \
+                    libopenblas.a-x86_64-linux-gnu \
+                    /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblas.a \
+                    --slave /usr/include/x86_64-linux-gnu/cblas-openblas.h \
+                    cblas-openblas.h-x86_64-linux-gnu \
+                    /usr/include/x86_64-linux-gnu/openblas-pthread/cblas.h \
+                    --slave /usr/include/x86_64-linux-gnu/f77blas.h \
+                    f77blas.h-x86_64-linux-gnu \
+                    /usr/include/x86_64-linux-gnu/openblas-pthread/f77blas.h \
+                    --slave /usr/include/x86_64-linux-gnu/openblas_config.h \
+                    openblas_config.h-x86_64-linux-gnu \
+                    /usr/include/x86_64-linux-gnu/openblas-pthread/openblas_config.h \
+                    --slave /usr/lib/x86_64-linux-gnu/pkgconfig/openblas.pc \
+                    openblas.pc-x86_64-linux-gnu \
+                    /usr/lib/x86_64-linux-gnu/openblas-pthread/pkgconfig/openblas.pc
+
+
+
+exit 0

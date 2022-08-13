@@ -1,0 +1,38 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Origin: vultr_apps
+Label: Vultr Apps
+Codename: universal
+Date: Sat, 06 Aug 2022 02:33:36 UTC
+Architectures: amd64
+Components: main
+MD5Sum:
+ 396e32c39641c866983fc57ec219cb42 682 main/binary-amd64/Packages
+ a9f4afe7ed2487bd385bd9fd31730eb9 447 main/binary-amd64/Packages.gz
+ a19618f4dc3f9d350d1ae483e7c6bbeb 73 main/binary-amd64/Release
+SHA1:
+ c2a8389d0fe10c5194e29f68a5ec5ff1a1c04af2 682 main/binary-amd64/Packages
+ e13c24456a8546c0e855dfa6458b854d620c699d 447 main/binary-amd64/Packages.gz
+ cbf3a30bb276d1efb571fb6cd00e748cc005a1b8 73 main/binary-amd64/Release
+SHA256:
+ 05bafcedc2df2ae1ab240c07a849de3229e73bfeb11f2a5d6f222378d52667da 682 main/binary-amd64/Packages
+ f0ff8170914196ab93d7a09712432fe23e37588ab68791b4a9fa73f3b8902a04 447 main/binary-amd64/Packages.gz
+ 8d808f495322435d0dd91fe8b460aa35f59e7e3999f2601e2c0b41c59714d30d 73 main/binary-amd64/Release
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+iQIcBAEBCAAGBQJi7dTdAAoJENSxfetezbJTzd0P/jmQqE/rr3vDNmCcBoR/p15/
+vnr1FgwH9df+81b0nUchqU/FfeksP2pURKIPwOHh+ndO2fY2Cbv6iVFIUCNrNXCc
+OcxHeZUhTgVhbtMYsg9GgaIfSyYoPNXZyLb/Lah6Ydnl2oidxYNy96Q8aCPZEG/7
+g/V1SID2mOZQSLo1hVjKogYD4sAz+Xzx7OeN9YNFOaGaQyNgo9/tg4LHje6VNflD
+97cUxZTGABYJ0C8i0sN/386oofjPfNc4CVpaI9eZdIJiQOFvZLjTGBaph8glCMKy
+SxQXdawvupN2m8ADk3mzURUcXsE3cEhTydwRzVPFEpnPhndQtl4CdOOspB+TmAKV
+hsz/gfe/R1INFf987XWu1GUdtQvrzANg13v/34TB0n0SpAes4OcjrQOJKodW/2JZ
+i1kKD5Oi/GNIdTzbojHAwTiWu/Vwg/KwCBxUMrH4mzK80wsuW2Z90pXF77Jtz13F
+xbIREMo65rYvOKbGuY7Z2/vtWpOv38OTr7nbVaabbdYHPWiULvmiP51a3B8pqG6s
+2z1GENpBDNutHH9P5iLsMsfuY7J7vdTt1Ip293J305/sSfgCMwSir7ckJWxZomun
+Y6qFsa51cBPbUhbDPpdzN8YlmY9pJREsiECjQ7mMlbq9EcXI8TfKwynsfXov4mij
+unQvSsKEuTb3rBvfvOVZ
+=mAs+
+-----END PGP SIGNATURE-----

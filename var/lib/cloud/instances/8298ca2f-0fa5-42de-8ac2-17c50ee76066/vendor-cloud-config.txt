@@ -1,0 +1,18 @@
+#cloud-config
+
+# from 1 files
+# part-003
+
+---
+chpasswd:
+    expire: false
+    list:
+    - root:$6$4YrA86NTlz0fWcqh$SWIR.on5xnBjqdyI08ncusa02pKsJVPCe3lgILGYc6EUx7j.bsCMkH10Ro.8pG76iNV1FgCPnYfpq0927zKF5.
+disable_root: false
+manage_etc_hosts: true
+package_upgrade: true
+ssh_pwauth: 1
+system_info:
+    default_user:
+        name: root
+...

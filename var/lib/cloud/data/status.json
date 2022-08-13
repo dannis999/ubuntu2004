@@ -1,0 +1,31 @@
+{
+ "v1": {
+  "datasource": "DataSourceVultr",
+  "init": {
+   "errors": [],
+   "finished": 1660374370.4646456,
+   "start": 1660374369.496218
+  },
+  "init-local": {
+   "errors": [],
+   "finished": 1660374364.219156,
+   "start": 1660374362.8688612
+  },
+  "modules-config": {
+   "errors": [],
+   "finished": 1660374376.163187,
+   "start": 1660374374.8308582
+  },
+  "modules-final": {
+   "errors": [],
+   "finished": 1660374468.4969485,
+   "start": 1660374376.951945
+  },
+  "modules-init": {
+   "errors": [],
+   "finished": null,
+   "start": null
+  },
+  "stage": null
+ }
+}

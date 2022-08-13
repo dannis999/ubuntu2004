@@ -1,0 +1,1 @@
+{"sequence":[{"name":"core20","snap-id":"DLqre5XGLbDqg9jPtiAhRRjDuPVa5X1q","revision":"1587","channel":"stable","contact":"https://github.com/snapcore/core20/issues","title":"core20","summary":"Runtime environment based on Ubuntu 20.04","description":"The base snap based on the Ubuntu 20.04 release."}],"current":"1587","migrated-hidden":false,"migrated-exposed-home":false}

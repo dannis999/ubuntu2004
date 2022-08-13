@@ -1,0 +1,18 @@
+Package: vultr-nvidia-client-drivers
+Version: 0:510.73.08-70129
+License: GNU General Public License version 3
+Vendor: Vultr
+Architecture: amd64
+Maintainer: <@runner-z36faq8u-project-573-concurrent-0>
+Installed-Size: 328140
+Replaces: vultr-nvidia-client-drivers
+Homepage: http://example.com/no-uri-given
+Priority: extra
+Section: default
+Filename: pool/main/v/vultr-nvidia-client-drivers/vultr-nvidia-client-drivers_510.73.08-70129_amd64.deb
+Size: 336001070
+SHA256: 006b9f176642aafaf4cfbc5400fb080ea91a73a97da23435e1893f2d3ee5efe8
+SHA1: 1bd462f58ee4cd585d570350e8afdd7cf43fe565
+MD5sum: 4717c5e7eee170c514b0d9a0a41ad734
+Description: NVidia client kernel drivers repackaged for Vultr.
+

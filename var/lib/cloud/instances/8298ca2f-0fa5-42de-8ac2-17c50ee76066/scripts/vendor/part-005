@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sed -i -e 's/^ListenAddress 127.0.0.1//g' /etc/ssh/sshd_config
+if ! [ -f /var/lib/vultr/states/.reboot ]; then
+    systemctl reload sshd
+fi

@@ -1,0 +1,4 @@
+8203c72bf8fb680a7e31e9d89d6b450a  lib/x86_64-linux-gnu/security/pam_cracklib.so
+6c05e902bc75c9e6d2da3ac75da5d47b  usr/share/doc/libpam-cracklib/copyright
+c6619f1b606c78edd5792b300fdde911  usr/share/man/man8/pam_cracklib.8.gz
+6084d7e82ae8d06b96340708b762e392  usr/share/pam-configs/cracklib

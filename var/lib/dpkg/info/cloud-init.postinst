@@ -1,0 +1,22 @@
+#!/bin/bash
+
+cd /usr/src/cloud-init
+
+python3 -m pip install setuptools
+python3 -m pip install -r requirements.txt
+python3 setup.py build
+python3 setup.py install --init-system systemd
+
+ln -s /usr/local/bin/cloud-init /usr/bin/cloud-init
+
+chattr -i /etc/udev/rules.d/70-persistent-net.rules
+
+systemctl unmask cloud-init-local.service
+systemctl unmask cloud-init.service
+systemctl unmask cloud-config.service
+systemctl unmask cloud-final.service
+
+systemctl enable cloud-init-local.service
+systemctl enable cloud-init.service
+systemctl enable cloud-config.service
+systemctl enable cloud-final.service

@@ -1,0 +1,16 @@
+auto
+/usr/lib/x86_64-linux-gnu/liblapack.so
+lapack.pc-x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu/pkgconfig/lapack.pc
+liblapack.a-x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu/liblapack.a
+
+/usr/lib/x86_64-linux-gnu/lapack/liblapack.so
+10
+/usr/lib/x86_64-linux-gnu/pkgconfig/lapack-netlib.pc
+/usr/lib/x86_64-linux-gnu/lapack/liblapack.a
+/usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so
+100
+/usr/lib/x86_64-linux-gnu/openblas-pthread/pkgconfig/lapack-openblas.pc
+/usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.a
+
