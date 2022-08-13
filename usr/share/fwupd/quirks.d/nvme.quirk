@@ -1,0 +1,11 @@
+# match all devices with this udev subsystem
+[NVME]
+Plugin = nvme
+
+# Phison
+[NVME\VEN_1987]
+Flags = force-align,needs-shutdown
+
+# Kingston
+[NVME\VEN_2646]
+Flags = needs-shutdown
