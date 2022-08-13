@@ -1,0 +1,1 @@
+/etc/alternatives/openblas.pc-x86_64-linux-gnu
