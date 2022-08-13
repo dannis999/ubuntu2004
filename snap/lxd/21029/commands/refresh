@@ -1,0 +1,2 @@
+#!/bin/sh
+exec nsenter -t 1 -m snap refresh lxd --no-wait

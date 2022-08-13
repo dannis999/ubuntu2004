@@ -1,0 +1,9 @@
+prefix=/build/lxd/stage/usr/local
+includedir=${prefix}/include
+
+datadir=${prefix}/share
+
+Name: spice-protocol
+Description: SPICE protocol headers
+Version: 0.14.4
+Cflags: -I${includedir}/spice-1

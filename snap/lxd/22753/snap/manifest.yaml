@@ -1,0 +1,4251 @@
+snapcraft-version: 6.0.2
+snapcraft-started-at: '2022-03-24T03:28:27.467428Z'
+snapcraft-os-release-id: ubuntu
+snapcraft-os-release-version-id: '20.04'
+apps:
+  activate:
+    adapter: legacy
+    command: commands/daemon.activate
+    daemon: oneshot
+    plugs:
+    - lxd-support
+    - system-observe
+  benchmark:
+    adapter: legacy
+    command: commands/lxd-benchmark
+    plugs:
+    - lxd-support
+    - system-observe
+  buginfo:
+    adapter: legacy
+    command: commands/buginfo
+    plugs:
+    - lxd-support
+    - system-observe
+  check-kernel:
+    adapter: legacy
+    command: commands/lxd-check-kernel
+    plugs:
+    - lxd-support
+    - system-observe
+  daemon:
+    adapter: legacy
+    command: commands/daemon.start
+    daemon: simple
+    plugs:
+    - lxd-support
+    - network-bind
+    - system-observe
+    reload-command: commands/daemon.reload
+    restart-condition: on-failure
+    slots:
+    - lxd
+    sockets:
+      unix:
+        listen-stream: $SNAP_COMMON/lxd/unix.socket
+        socket-mode: 432
+    stop-command: commands/daemon.stop
+    stop-timeout: 600s
+  lxc:
+    adapter: legacy
+    command: commands/lxc
+    completer: etc/bash_completion.d/snap.lxd.lxc
+    plugs:
+    - lxd-support
+    - system-observe
+  lxc-to-lxd:
+    adapter: legacy
+    command: commands/lxc-to-lxd
+    plugs:
+    - lxd-support
+    - system-observe
+  lxd:
+    adapter: legacy
+    command: commands/lxd
+    plugs:
+    - lxd-support
+    - system-observe
+  migrate:
+    adapter: legacy
+    command: commands/lxd-migrate
+    plugs:
+    - lxd-support
+    - system-observe
+assumes:
+- snapd2.39
+base: core20
+confinement: strict
+contact: lxc-devel@lists.linuxcontainers.org
+description: |-
+  LXD is a system container and virtual machine manager.
+
+  It offers a simple CLI and REST API to manage local or remote instances,
+  uses an image based workflow and support for a variety of advanced features.
+
+  Images are available for all Ubuntu releases and architectures as well
+  as for a wide number of other Linux distributions. Existing
+  integrations with many deployment and operation tools, makes it work
+  just like a public cloud, except everything is under your control.
+
+  LXD containers are lightweight, secure by default and a great
+  alternative to virtual machines when running Linux on Linux.
+
+  LXD virtual machines are modern and secure, using UEFI and secure-boot
+  by default and a great choice when a different kernel or operating
+  system is needed.
+
+  With clustering, up to 50 LXD servers can be easily joined and managed
+  together with the same tools and APIs and without needing any external
+  dependencies.
+
+
+  Supported configuration options for the snap (snap set lxd [<key>=<value>...]):
+
+    - ceph.builtin: Use snap-specific Ceph configuration [default=false]
+    - ceph.external: Use the system's ceph tools (ignores ceph.builtin) [default=false]
+    - criu.enable: Enable experimental live-migration support [default=false]
+    - daemon.debug: Increase logging to debug level [default=false]
+    - daemon.group: Set group of users that have full control over LXD [default=lxd]
+    - daemon.preseed: Pass a YAML configuration to `lxd init` on initial start
+    - daemon.syslog: Send LXD log events to syslog [default=false]
+    - lvm.external: Use the system's LVM tools [default=false]
+    - lxcfs.pidfd: Start per-container process tracking [default=false]
+    - lxcfs.loadavg: Start tracking per-container load average [default=false]
+    - lxcfs.cfs: Consider CPU shares for CPU usage [default=false]
+    - openvswitch.builtin: Run a snap-specific OVS daemon [default=false]
+    - shiftfs.enable: Enable shiftfs support [default=auto]
+grade: stable
+hooks:
+  configure:
+    plugs:
+    - lxd-support
+    - network
+    - system-observe
+  remove:
+    plugs:
+    - lxd-support
+    - system-observe
+issues: https://github.com/lxc/lxd/issues
+name: lxd
+parts:
+  btrfs:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      sbin/: bin/
+    plugin: nil
+    prime:
+    - bin/btrfs
+    - bin/btrfstune
+    - bin/mkfs.btrfs
+    source: snapcraft/empty
+    stage: []
+    stage-packages:
+    - btrfs-progs=5.4.1-2
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  ceph:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/bin/: bin/
+      usr/lib/: lib/
+    plugin: nil
+    prime:
+    - bin/ceph
+    - bin/rbd
+    - lib/*/ceph
+    - lib/*/libatomic.so*
+    - lib/*/libboost_iostreams.so*
+    - lib/*/libboost_program_options.so*
+    - lib/*/libboost_thread.so*
+    - lib/*/libcephfs*
+    - lib/*/libibverbs.so*
+    - lib/*/librados.so*
+    - lib/*/librbd.so*
+    - lib/*/librdmacm.so*
+    - lib/*/libsnappy.so*
+    - lib/python3
+    source: snapcraft/empty
+    stage: []
+    stage-packages:
+    - ceph-common=15.2.14-0ubuntu0.20.04.2
+    - libaio1=0.3.112-5
+    - libasn1-8-heimdal=7.7.0+dfsg-1ubuntu1
+    - libbabeltrace1=1.5.8-1build1
+    - libboost-context1.71.0=1.71.0-6ubuntu6
+    - libboost-iostreams1.71.0=1.71.0-6ubuntu6
+    - libboost-program-options1.71.0=1.71.0-6ubuntu6
+    - libboost-thread1.71.0=1.71.0-6ubuntu6
+    - libbrotli1=1.0.7-6ubuntu0.1
+    - libcephfs2=15.2.14-0ubuntu0.20.04.2
+    - libcurl3-gnutls=7.68.0-1ubuntu2.7
+    - libdw1=0.176-1.1build1
+    - libgoogle-perftools4=2.7-1ubuntu2
+    - libgssapi3-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhcrypto4-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimbase1-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimntlm0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhx509-5-heimdal=7.7.0+dfsg-1ubuntu1
+    - libibverbs1=28.0-1ubuntu1
+    - libkrb5-26-heimdal=7.7.0+dfsg-1ubuntu1
+    - libldap-2.4-2=2.4.49+dfsg-2ubuntu1.8
+    - libldap-common=2.4.49+dfsg-2ubuntu1.8
+    - libleveldb1d=1.22-3ubuntu2
+    - libnghttp2-14=1.40.0-1build1
+    - liboath0=2.6.1-1.3
+    - libpsl5=0.21.0-1ubuntu1
+    - librabbitmq4=0.10.0-1
+    - librados2=15.2.14-0ubuntu0.20.04.2
+    - libradosstriper1=15.2.14-0ubuntu0.20.04.2
+    - librbd1=15.2.14-0ubuntu0.20.04.2
+    - librdmacm1=28.0-1ubuntu1
+    - libroken18-heimdal=7.7.0+dfsg-1ubuntu1
+    - librtmp1=2.4+20151223.gitfa8646d.1-2build1
+    - libsasl2-2=2.1.27+dfsg-2ubuntu0.1
+    - libsasl2-modules-db=2.1.27+dfsg-2ubuntu0.1
+    - libsnappy1v5=1.1.8-1build1
+    - libssh-4=0.9.3-2ubuntu2.2
+    - libtcmalloc-minimal4=2.7-1ubuntu2
+    - libunwind8=1.2.1-9build1
+    - libwind0-heimdal=7.7.0+dfsg-1ubuntu1
+    - python3-ceph-argparse=15.2.14-0ubuntu0.20.04.2
+    - python3-ceph-common=15.2.14-0ubuntu0.20.04.2
+    - python3-cephfs=15.2.14-0ubuntu0.20.04.2
+    - python3-certifi=2019.11.28-1
+    - python3-chardet=3.0.4-4build1
+    - python3-idna=2.8-1
+    - python3-prettytable=0.7.2-5
+    - python3-rados=15.2.14-0ubuntu0.20.04.2
+    - python3-rbd=15.2.14-0ubuntu0.20.04.2
+    - python3-requests=2.22.0-2ubuntu1
+    - python3-six=1.14.0-2
+    - python3-urllib3=1.25.8-2ubuntu0.1
+    - python3-yaml=5.3.1-1ubuntu0.1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  criu:
+    build-packages:
+    - asciidoc
+    - libcap-dev
+    - libnet1-dev
+    - libnl-3-dev
+    - libprotobuf-c-dev
+    - libprotobuf-dev
+    - protobuf-c-compiler
+    - protobuf-compiler
+    - xmlto
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/lib/: lib/
+    override-build: |
+      set -ex
+
+      [ "$(uname -m)" != "x86_64" ] && \
+        [ "$(uname -m)" != "armv7l" ] && \
+        [ "$(uname -m)" != "aarch64" ] && \
+        [ "$(uname -m)" != "s390x" ] && \
+        [ "$(uname -m)" != "ppc64le" ] && exit 0
+
+      make
+      mkdir -p "${SNAPCRAFT_PART_INSTALL}/criu/"
+      cp criu/criu "${SNAPCRAFT_PART_INSTALL}/criu/"
+    plugin: nil
+    prime:
+    - criu/*
+    - lib/*/libnet*
+    - lib/*/libproto*
+    source: https://github.com/checkpoint-restore/criu
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: v3.16.1
+    source-type: git
+    stage: []
+    stage-packages:
+    - libnet1=1.1.6+dfsg-3.1build1
+    - libprotobuf-c1=1.3.3-1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  dqlite:
+    autotools-configure-parameters:
+    - --prefix=
+    build-packages:
+    - libuv1-dev
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/lib/: lib/
+    plugin: autotools
+    prime:
+    - lib/libdqlite*so*
+    - lib/*/libuv*
+    source: https://github.com/canonical/dqlite
+    source-branch: ''
+    source-checksum: ''
+    source-commit: f20941be3b2a86f83ebaec1aa7dabfc4e60ac170
+    source-depth: 1
+    source-tag: ''
+    source-type: git
+    stage: []
+    stage-packages:
+    - libuv1=1.34.2-1ubuntu1.3
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  edk2:
+    build-packages:
+    - acpica-tools
+    - nasm
+    - uuid-dev
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-build: |-
+      [ "$(uname -m)" != "x86_64" ] && [ "$(uname -m)" != "aarch64" ] && exit 0
+
+      # Fix submodules
+      sed -i "s#https://git.cryptomilk.org/projects/cmocka#https://gitlab.com/cmocka/cmocka#g" .gitmodules
+      git submodule update --init --recursive
+
+      # Apply patches
+      patch -p1 < "/build/lxd/patches/edk2-0001-force-DUID-LLT.patch"
+      cp "/build/lxd/patches/edk2-0002-logo.bmp" MdeModulePkg/Logo/Logo.bmp
+      patch -p1 < "/build/lxd/patches/edk2-0003-boot-delay.patch"
+      patch -p1 < "/build/lxd/patches/edk2-0004-gcc-errors.patch"
+
+      ARCH="X64"
+      PKG="OvmfPkg/OvmfPkgX64.dsc"
+      FV_CODE="OVMF_CODE"
+      FV_VARS="OVMF_VARS"
+      if [ "$(uname -m)" = "aarch64" ]; then
+          ARCH="AARCH64"
+          PKG="ArmVirtPkg/ArmVirtQemu.dsc"
+          FV_CODE="QEMU_EFI"
+          FV_VARS="QEMU_VARS"
+      fi
+
+      # Run in a bash sub-shell as edksetup.sh requires it
+      set -ex
+      (
+      cat << EOF
+          . ./edksetup.sh
+          make -C BaseTools ARCH=${ARCH}
+          build -a ${ARCH} -t GCC49 -b RELEASE -p ${PKG} \
+            -DSECURE_BOOT_ENABLE=TRUE \
+            -DNETWORK_IP4_ENABLE=TRUE \
+            -DNETWORK_IP6_ENABLE=TRUE \
+            -DNETWORK_TLS_ENABLE=TRUE \
+            -DNETWORK_HTTP_BOOT_ENABLE=TRUE \
+            -DFD_SIZE_2MB \
+            -DTPM_ENABLE=TRUE \
+            -DTPM_CONFIG_ENABLE=TRUE \
+            -DTPM2_ENABLE=TRUE \
+            -DTPM2_CONFIG_ENABLE=TRUE
+      EOF
+      ) | bash -e
+
+      mkdir -p "${SNAPCRAFT_PART_INSTALL}/share/qemu/"
+      cp Build/*/*/FV/${FV_CODE}.fd "${SNAPCRAFT_PART_INSTALL}/share/qemu/OVMF_CODE.fd"
+      cp Build/*/*/FV/${FV_VARS}.fd "${SNAPCRAFT_PART_INSTALL}/share/qemu/OVMF_VARS.fd"
+
+      if [ "$(uname -m)" = "aarch64" ]; then
+          truncate -s 64m "${SNAPCRAFT_PART_INSTALL}/share/qemu/OVMF_CODE.fd"
+          truncate -s 64m "${SNAPCRAFT_PART_INSTALL}/share/qemu/OVMF_VARS.fd"
+      fi
+    override-pull: |-
+      [ "$(uname -m)" != "x86_64" ] && [ "$(uname -m)" != "aarch64" ] && exit 0
+      set -ex
+      git clone https://github.com/tianocore/edk2 . -b edk2-stable202202
+
+      git config user.email "noreply@linuxcontainers.org"
+      git config user.name "LXD snap builder"
+    plugin: nil
+    prime:
+    - share/qemu/*
+    source: https://github.com/tianocore/edk2
+    source-depth: 1
+    source-tag: IRRELEVANT
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  libmnl:
+    autotools-configure-parameters:
+    - --prefix=
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/lib/: lib/
+    plugin: autotools
+    prime:
+    - lib/libmnl*so*
+    source: https://git.netfilter.org/libmnl
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-tag: libmnl-1.0.4
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  libnftnl:
+    autotools-configure-parameters:
+    - --prefix=
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/lib/: lib/
+    override-build: |
+      snapcraftctl build
+
+      sed -i "s# /lib/libmnl.la# /build/lxd/stage/lib/libmnl.la#g" "${SNAPCRAFT_PART_INSTALL}/lib/libnftnl.la"
+    plugin: autotools
+    prime:
+    - lib/libnftnl*so*
+    source: https://git.netfilter.org/libnftnl
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-tag: libnftnl-1.2.1
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  libseccomp:
+    autotools-configure-parameters:
+    - --prefix=
+    build-packages:
+    - gperf
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/lib/: lib/
+    plugin: autotools
+    prime:
+    - lib/libseccomp*so*
+    source: https://github.com/seccomp/libseccomp
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: v2.5.3
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  liburing:
+    autotools-configure-parameters:
+    - --prefix=
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/lib/: lib/
+    override-build: |-
+      [ "$(uname -m)" != "x86_64" ] && [ "$(uname -m)" != "aarch64" ] && [ "$(uname -m)" != "ppc64le" ] && [ "$(uname -m)" != "s390x" ] && exit 0
+      snapcraftctl build
+    plugin: autotools
+    prime:
+    - lib/liburing*so*
+    source: https://github.com/axboe/liburing
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: liburing-2.1
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  libusb:
+    autotools-configure-parameters:
+    - --prefix=
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/lib/: lib/
+    plugin: autotools
+    prime:
+    - lib/libusb*so*
+    source: https://github.com/libusb/libusb
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: v1.0.25
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  logrotate:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/bin/: bin/
+      usr/lib/: lib/
+      usr/sbin/: bin/
+    plugin: nil
+    prime:
+    - bin/logrotate
+    source: snapcraft/empty
+    stage:
+    - bin/logrotate
+    stage-packages:
+    - cron=3.0pl1-136ubuntu1
+    - logrotate=3.14.0-4ubuntu3
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  lvm:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      sbin/: bin/
+      usr/lib/: lib/
+      usr/sbin/: bin/
+    plugin: nil
+    prime:
+    - bin/cache_*
+    - bin/dmeventd
+    - bin/era_*
+    - bin/lv*
+    - bin/pdata_tools
+    - bin/pv*
+    - bin/thin_*
+    - bin/vg*
+    - -bin/vgimportclone
+    - -bin/lvmconf
+    - -bin/lvmdump
+    - -bin/lvmetad
+    - -bin/lvmpolld
+    - etc/lvm/lvm.conf
+    - lib/*/device-mapper/*
+    - lib/*/libaio.so*
+    - lib/*/libdevmapper*
+    - lib/*/liblvm*
+    - lib/*/libreadline.so*
+    source: snapcraft/empty
+    stage: []
+    stage-packages:
+    - dmeventd=2:1.02.167-1ubuntu1
+    - libaio1=0.3.112-5
+    - libdevmapper-event1.02.1=2:1.02.167-1ubuntu1
+    - liblvm2cmd2.03=2.03.07-1ubuntu1
+    - libreadline5=5.2+dfsg-3build3
+    - lvm2=2.03.07-1ubuntu1
+    - thin-provisioning-tools=0.8.5-4build1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  lxc:
+    autotools-configure-parameters:
+    - --prefix=
+    - --disable-api-docs
+    - --disable-bash
+    - --disable-doc
+    - --disable-examples
+    - --disable-memfd-rexec
+    - --disable-tests
+    - --disable-tools
+    - --enable-apparmor
+    - --enable-seccomp
+    - --enable-selinux
+    - --enable-capabilities
+    - --with-rootfs-path=/var/snap/lxd/common/lxc/
+    - --libexecdir=/snap/lxd/current/libexec/
+    build-packages:
+    - libapparmor-dev
+    - libcap-dev
+    - libgnutls28-dev
+    - libselinux1-dev
+    - pkg-config
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      share/lxc/hooks: lxc/hooks
+      snap/lxd/current/libexec: libexec
+      snap/lxd/current/lxc: lxc
+    override-build: |
+      set -ex
+
+      git config user.email "noreply@linuxcontainers.org"
+      git config user.name "LXD snap builder"
+
+      git cherry-pick ca4c25c6e9ebb92f9e241ef9a231d4a715cb812d  # lxc-net: don't start by default inside lxc
+      git cherry-pick f314419d1e054f7833b6976ec5ed32373aace622  # lxc-checkconfig: Fix bashism
+      git cherry-pick 71ba7f65616e72a313e2a41615e449178da9daf2  # doc: Fix reverse allowlist/denylist
+      git cherry-pick f7446b4e10d71f79f9f3952255608268842ee1f3  # cgroups: check that opened file descriptor is a cgroup filesystem
+      git cherry-pick f1c4a17e7df5d819b1b170917865e2e458c8e5db  # cgroups: log fd of newly created cgroup
+      git cherry-pick 8ef019a6ce2555f7b438b3841ab5216e5d6973ba  # doc: Fix reverse allowlist/denylist in Japanese man page
+      git cherry-pick 3b9f84fd2397d06782bbf67dc8421463c43ab139  # ttys: ensure container_ttys= env variable is set correctly
+      git cherry-pick 5ba5725cb4a210c25707beeca64fde5f561d1c71  # cgroups: modify cgroup2 attach logic
+
+      set +ex
+      snapcraftctl build
+      set -ex
+
+      mkdir -p $SNAPCRAFT_PART_INSTALL/lxc/config/common.conf.d/
+      ln -s /var/snap/lxd/common/lxc/local.conf $SNAPCRAFT_PART_INSTALL/lxc/config/common.conf.d/01-local.conf
+      sed -i "s#includedir=.*#includedir=$SNAPCRAFT_PART_INSTALL/include#g" $SNAPCRAFT_PART_INSTALL/lib/pkgconfig/lxc.pc
+      sed -i "s#libdir=.*#libdir=$SNAPCRAFT_PART_INSTALL/lib#g" $SNAPCRAFT_PART_INSTALL/lib/pkgconfig/lxc.pc
+    plugin: autotools
+    prime:
+    - bin/lxc-checkconfig
+    - lib/liblxc.so.1
+    - lib/liblxc.so.1.*
+    - lxc/config/common.conf.d
+    - lxc/hooks/nvidia
+    source: https://github.com/lxc/lxc
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-tag: lxc-4.0.12
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  lxcfs:
+    autotools-configure-parameters:
+    - --prefix=
+    - --datarootdir=/snap/lxd/current/
+    - --localstatedir=/var/snap/lxd/common/var/
+    build-packages:
+    - libfuse-dev
+    - libpam0g-dev
+    - pkg-config
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      lib/lxcfs: lib
+      snap/lxd/current/lxc: lxc
+      snap/lxd/current/lxcfs: lxcfs
+    override-build: |
+      set -ex
+
+      git config user.email "noreply@linuxcontainers.org"
+      git config user.name "LXD snap builder"
+
+      set +ex
+      snapcraftctl build
+      set -ex
+
+      sed -i "s#\${LXC_ROOTFS_MOUNT}/var/snap/lxd/common/var/lib/lxcfs/#\${LXC_ROOTFS_MOUNT}/var/lib/lxcfs/#g" $SNAPCRAFT_PART_INSTALL/snap/lxd/current/lxcfs/lxc.mount.hook
+      patch -p1 $SNAPCRAFT_PART_INSTALL/snap/lxd/current/lxcfs/lxc.mount.hook < "/build/lxd/patches/lxcfs-0001-hook.patch"
+    plugin: autotools
+    prime:
+    - bin/fusermount
+    - lib/*/libfuse.so.*
+    - bin/lxcfs
+    - lib/liblxcfs.so
+    - lxc
+    - lxcfs
+    source: https://github.com/lxc/lxcfs
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-tag: lxcfs-4.0.12
+    source-type: git
+    stage: []
+    stage-packages:
+    - fuse=2.9.9-3
+    - libfuse2=2.9.9-3
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  lxd:
+    build-packages:
+    - libacl1-dev
+    - libudev-dev
+    - pkg-config
+    build-snaps:
+    - go
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      sbin/: bin/
+      usr/bin/: bin/
+      usr/lib/: lib/
+      usr/sbin/: bin/
+      usr/share/misc/: share/misc/
+      var/lib/usbutils/usb.ids: share/misc/
+    override-build: |
+      set -ex
+
+      # Git cherry-picks
+      cd ../src
+      git config user.email "noreply@linuxcontainers.org"
+      git config user.name "LXD snap builder"
+
+      # Setup build environment
+      export GOPATH=$(realpath ./.go)
+      export CGO_CFLAGS="-I/build/lxd/stage/include/ -I/build/lxd/stage/usr/local/include/"
+      export CGO_LDFLAGS="-L/build/lxd/stage/lib/ -L/build/lxd/stage/usr/local/lib/"
+      export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
+
+      # Build the binaries
+      go build -o "${SNAPCRAFT_PART_INSTALL}/bin/lxc" github.com/lxc/lxd/lxc
+      go build -o "${SNAPCRAFT_PART_INSTALL}/bin/lxc-to-lxd" github.com/lxc/lxd/lxc-to-lxd
+      go build -o "${SNAPCRAFT_PART_INSTALL}/bin/lxd" -tags=libsqlite3 github.com/lxc/lxd/lxd
+      CGO_ENABLED=0 go build -o "${SNAPCRAFT_PART_INSTALL}/bin/lxd-agent" -tags=agent,netgo github.com/lxc/lxd/lxd-agent
+      go build -o "${SNAPCRAFT_PART_INSTALL}/bin/lxd-benchmark" github.com/lxc/lxd/lxd-benchmark
+
+      # Setup bash completion
+      mkdir -p ${SNAPCRAFT_PART_INSTALL}/etc/bash_completion.d/
+      cp scripts/bash/lxd-client ${SNAPCRAFT_PART_INSTALL}/etc/bash_completion.d/snap.lxd.lxc
+    override-pull: |
+      snapcraftctl pull
+      set -ex
+
+      # Setup build environment
+      export GOPATH=$(realpath ./.go)
+
+      # Setup the GOPATH
+      rm -Rf "${GOPATH}"
+      mkdir -p "${GOPATH}/src/github.com/lxc"
+      ln -s "$(pwd)" "${GOPATH}/src/github.com/lxc/lxd"
+
+      # Download the dependencies
+      go get -d -v ./...
+    plugin: nil
+    prime:
+    - bin/dnsmasq
+    - bin/getfattr
+    - bin/setfattr
+    - bin/iw
+    - bin/pigz
+    - bin/rsync
+    - bin/setfacl
+    - bin/sgdisk
+    - bin/unsquashfs
+    - bin/xdelta3
+    - lib/*/libidn.so.*
+    - etc/bash_completion.d/snap.lxd.lxc
+    - share/misc
+    - bin/lxc
+    - bin/lxc-to-lxd
+    - bin/lxd
+    - bin/lxd-agent
+    - bin/lxd-benchmark
+    source: https://github.com/lxc/lxd
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-tag: lxd-4.0.9
+    source-type: git
+    stage: []
+    stage-packages:
+    - acl=2.2.53-6
+    - attr=1:2.4.48-5
+    - dnsmasq-base=2.80-1.1ubuntu1.4
+    - gdisk=1.0.5-1
+    - iw=5.4-1
+    - libidn11=1.33-2.2ubuntu2
+    - libpci3=1:3.6.4-1ubuntu0.20.04.1
+    - libusb-1.0-0=2:1.0.23-2build1
+    - netbase=6.1
+    - pci.ids=0.0~2020.03.20-1
+    - pciutils=1:3.6.4-1ubuntu0.20.04.1
+    - pigz=2.4-1
+    - rsync=3.1.3-8ubuntu0.2
+    - squashfs-tools=1:4.4-1ubuntu0.3
+    - usb.ids=2020.03.19-1
+    - usbutils=1:012-2
+    - xdelta3=3.0.11-dfsg-1ubuntu1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  lxd-migrate:
+    build-packages: []
+    build-snaps:
+    - go
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-build: |
+      set -ex
+
+      # Setup build environment
+      export GOPATH=$(realpath ./.go)
+      export CGO_CFLAGS="-I/build/lxd/stage/include/ -I/build/lxd/stage/usr/local/include/"
+      export CGO_LDFLAGS="-L/build/lxd/stage/lib/ -L/build/lxd/stage/usr/local/lib/"
+
+      # Build the binaries
+      go build -o "${SNAPCRAFT_PART_INSTALL}/bin/lxd-migrate" -tags=libsqlite3 ./
+
+      # Install bridge script
+      mkdir -p ${SNAPCRAFT_PART_INSTALL}/bin/
+      cp scripts/upgrade-bridge ${SNAPCRAFT_PART_INSTALL}/bin/upgrade-bridge
+    override-pull: |
+      snapcraftctl pull
+      set -ex
+
+      # Setup build environment
+      export GOPATH=$(realpath ./.go)
+
+      # Download the dependencies
+      go get -d -v ./...
+    plugin: nil
+    prime:
+    - bin/lxd-migrate
+    - bin/upgrade-bridge
+    source: lxd-migrate/
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  nano:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/bin/: bin/
+    plugin: nil
+    prime:
+    - bin/nano
+    - etc/nanorc
+    source: snapcraft/empty
+    stage: []
+    stage-packages:
+    - nano=4.8-1ubuntu1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  nftables:
+    autotools-configure-parameters:
+    - --prefix=
+    - --with-json
+    build-packages:
+    - libedit-dev
+    - libjansson-dev
+    - libreadline-dev
+    installed-packages:
+    - acpica-tools=20190509-1
+    - adduser=3.118ubuntu2
+    - advancecomp=2.1-2.1build1
+    - apparmor=2.13.3-7ubuntu5.1
+    - apt=2.0.6
+    - asciidoc-base=9.0.0~rc1-1
+    - asciidoc-common=9.0.0~rc1-1
+    - asciidoc=9.0.0~rc1-1
+    - autoconf=2.69-11.1
+    - automake=1:1.16.1-4ubuntu6
+    - autopoint=0.19.8.1-10build1
+    - autotools-dev=20180224.1
+    - base-files=11ubuntu5.5
+    - base-passwd=3.5.47
+    - bash=5.0-6ubuntu1.1
+    - binutils-common=2.34-6ubuntu1.3
+    - binutils-x86-64-linux-gnu=2.34-6ubuntu1.3
+    - binutils=2.34-6ubuntu1.3
+    - bison=2:3.5.1+dfsg-1
+    - bmake=20181221-2
+    - bsdutils=1:2.34-0.1ubuntu9.3
+    - build-essential=12.8ubuntu1.1
+    - bzip2=1.0.8-2
+    - ca-certificates=20210119~20.04.2
+    - coreutils=8.30-3ubuntu2
+    - cpp-9=9.4.0-1ubuntu1~20.04.1
+    - cpp=4:9.3.0-1ubuntu2
+    - curl=7.68.0-1ubuntu2.7
+    - dash=0.5.10.2-6
+    - dbus-user-session=1.12.16-2ubuntu2.1
+    - dbus=1.12.16-2ubuntu2.1
+    - debconf=1.5.73
+    - debianutils=4.9.1
+    - diffutils=1:3.7-3
+    - distro-info-data=0.43ubuntu1.9
+    - docbook-xml=4.5-9
+    - docbook-xsl=1.79.1+dfsg-2
+    - dpkg-dev=1.19.7ubuntu3
+    - dpkg=1.19.7ubuntu3
+    - e2fsprogs=1.45.5-2ubuntu1
+    - fakeroot=1.24-1
+    - fdisk=2.34-0.1ubuntu9.3
+    - file=1:5.38-4
+    - findutils=4.7.0-1ubuntu1
+    - flex=2.6.4-6.2
+    - fuse=2.9.9-3
+    - g++-9=9.4.0-1ubuntu1~20.04.1
+    - g++=4:9.3.0-1ubuntu2
+    - gcc-10-base=10.3.0-1ubuntu1~20.04
+    - gcc-9-base=9.4.0-1ubuntu1~20.04.1
+    - gcc-9=9.4.0-1ubuntu1~20.04.1
+    - gcc=4:9.3.0-1ubuntu2
+    - git-man=1:2.25.1-1ubuntu3.2
+    - git=1:2.25.1-1ubuntu3.2
+    - gperf=3.1-1build1
+    - gpg-agent=2.2.19-3ubuntu2.1
+    - gpg=2.2.19-3ubuntu2.1
+    - gpgconf=2.2.19-3ubuntu2.1
+    - gpgv=2.2.19-3ubuntu2.1
+    - grep=3.4-1
+    - gzip=1.10-0ubuntu4
+    - hostname=3.23
+    - init-system-helpers=1.57
+    - init=1.57
+    - libacl1-dev=2.2.53-6
+    - libacl1=2.2.53-6
+    - libaio-dev=0.3.112-5
+    - libaio1=0.3.112-5
+    - libapparmor-dev=2.13.3-7ubuntu5.1
+    - libapparmor1=2.13.3-7ubuntu5.1
+    - libapt-pkg6.0=2.0.6
+    - libargon2-1=0~20171227-0.2
+    - libasan5=9.4.0-1ubuntu1~20.04.1
+    - libasn1-8-heimdal=7.7.0+dfsg-1ubuntu1
+    - libassuan0=2.5.3-7ubuntu2
+    - libatomic1=10.3.0-1ubuntu1~20.04
+    - libattr1-dev=1:2.4.48-5
+    - libattr1=1:2.4.48-5
+    - libaudit-common=1:2.8.5-2ubuntu6
+    - libaudit1=1:2.8.5-2ubuntu6
+    - libbinutils=2.34-6ubuntu1.3
+    - libblkid-dev=2.34-0.1ubuntu9.3
+    - libblkid1=2.34-0.1ubuntu9.3
+    - libboost-iostreams1.71.0=1.71.0-6ubuntu6
+    - libboost-program-options1.71.0=1.71.0-6ubuntu6
+    - libboost-thread1.71.0=1.71.0-6ubuntu6
+    - libbrotli1=1.0.7-6ubuntu0.1
+    - libbsd-dev=0.10.0-1
+    - libbsd0=0.10.0-1
+    - libburn4=1.5.2-1
+    - libbz2-1.0=1.0.8-2
+    - libc-bin=2.31-0ubuntu9.7
+    - libc-dev-bin=2.31-0ubuntu9.7
+    - libc6-dev=2.31-0ubuntu9.7
+    - libc6=2.31-0ubuntu9.7
+    - libcap-dev=1:2.32-1
+    - libcap-ng-dev=0.7.9-2.1build1
+    - libcap-ng0=0.7.9-2.1build1
+    - libcap2=1:2.32-1
+    - libcbor0.6=0.6.0-0ubuntu1
+    - libcc1-0=10.3.0-1ubuntu1~20.04
+    - libcom-err2=1.45.5-2ubuntu1
+    - libcrypt-dev=1:4.4.10-10ubuntu4
+    - libcrypt1=1:4.4.10-10ubuntu4
+    - libcryptsetup12=2:2.2.2-3ubuntu2.4
+    - libctf-nobfd0=2.34-6ubuntu1.3
+    - libctf0=2.34-6ubuntu1.3
+    - libcurl3-gnutls=7.68.0-1ubuntu2.7
+    - libcurl4=7.68.0-1ubuntu2.7
+    - libdb5.3=5.3.28+dfsg1-0.6ubuntu2
+    - libdbus-1-3=1.12.16-2ubuntu2.1
+    - libdebconfclient0=0.251ubuntu1
+    - libdevmapper1.02.1=2:1.02.167-1ubuntu1
+    - libdpkg-perl=1.19.7ubuntu3
+    - libedit-dev=3.1-20191231-1
+    - libedit2=3.1-20191231-1
+    - libelf1=0.176-1.1build1
+    - liberror-perl=0.17029-1
+    - libevent-2.1-7=2.1.11-stable-1
+    - libexpat1=2.2.9-1ubuntu0.4
+    - libext2fs2=1.45.5-2ubuntu1
+    - libfakeroot=1.24-1
+    - libfdisk1=2.34-0.1ubuntu9.3
+    - libffi-dev=3.3-4
+    - libffi7=3.3-4
+    - libfido2-1=1.3.1-1ubuntu2
+    - libfuse-dev=2.9.9-3
+    - libfuse2=2.9.9-3
+    - libgcc-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libgcc-s1=10.3.0-1ubuntu1~20.04
+    - libgcrypt20=1.8.5-5ubuntu1.1
+    - libgdbm-compat4=1.18.1-5
+    - libgdbm6=1.18.1-5
+    - libglib2.0-0=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-data=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev=2.64.6-1~ubuntu20.04.4
+    - libgmp-dev=2:6.2.0+dfsg-4
+    - libgmp10=2:6.2.0+dfsg-4
+    - libgmpxx4ldbl=2:6.2.0+dfsg-4
+    - libgnutls-dane0=3.6.13-2ubuntu1.6
+    - libgnutls-openssl27=3.6.13-2ubuntu1.6
+    - libgnutls28-dev=3.6.13-2ubuntu1.6
+    - libgnutls30=3.6.13-2ubuntu1.6
+    - libgnutlsxx28=3.6.13-2ubuntu1.6
+    - libgomp1=10.3.0-1ubuntu1~20.04
+    - libgpg-error0=1.37-1
+    - libgssapi-krb5-2=1.17-6ubuntu4.1
+    - libgssapi3-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhcrypto4-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimbase1-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimntlm0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhogweed5=3.5.1+really3.5.1-2ubuntu0.2
+    - libhx509-5-heimdal=7.7.0+dfsg-1ubuntu1
+    - libibverbs1=28.0-1ubuntu1
+    - libicu66=66.1-2ubuntu2.1
+    - libidn2-0=2.2.0-2
+    - libidn2-dev=2.2.0-2
+    - libip4tc2=1.8.4-3ubuntu2
+    - libisl22=0.22.1-1
+    - libisoburn1=1.5.2-1
+    - libisofs6=1.5.2-1
+    - libitm1=10.3.0-1ubuntu1~20.04
+    - libjansson-dev=2.12-1build1
+    - libjansson4=2.12-1build1
+    - libjpeg-turbo8-dev=2.0.3-0ubuntu1.20.04.1
+    - libjpeg-turbo8=2.0.3-0ubuntu1.20.04.1
+    - libjson-c4=0.13.1+dfsg-7ubuntu0.3
+    - libjte2=1.22-3build1
+    - libk5crypto3=1.17-6ubuntu4.1
+    - libkeyutils1=1.6-6ubuntu1
+    - libkmod2=27-1ubuntu2
+    - libkrb5-26-heimdal=7.7.0+dfsg-1ubuntu1
+    - libkrb5-3=1.17-6ubuntu4.1
+    - libkrb5support0=1.17-6ubuntu4.1
+    - libldap-2.4-2=2.4.49+dfsg-2ubuntu1.8
+    - libldap-common=2.4.49+dfsg-2ubuntu1.8
+    - liblockfile-bin=1.16-1.1
+    - liblockfile1=1.16-1.1
+    - liblsan0=10.3.0-1ubuntu1~20.04
+    - liblz4-1=1.9.2-2ubuntu0.20.04.1
+    - liblz4-dev=1.9.2-2ubuntu0.20.04.1
+    - liblzma-dev=5.2.4-1ubuntu1
+    - liblzma5=5.2.4-1ubuntu1
+    - liblzo2-2=2.10-2
+    - libmagic-mgc=1:5.38-4
+    - libmagic1=1:5.38-4
+    - libmount-dev=2.34-0.1ubuntu9.3
+    - libmount1=2.34-0.1ubuntu9.3
+    - libmpc3=1.1.0-1
+    - libmpdec2=2.4.2-3
+    - libmpfr6=4.0.2-1
+    - libncurses-dev=6.2-0ubuntu2
+    - libncurses6=6.2-0ubuntu2
+    - libncursesw6=6.2-0ubuntu2
+    - libnet1-dev=1.1.6+dfsg-3.1build1
+    - libnet1=1.1.6+dfsg-3.1build1
+    - libnettle7=3.5.1+really3.5.1-2ubuntu0.2
+    - libnghttp2-14=1.40.0-1build1
+    - libnl-3-200=3.4.0-1
+    - libnl-3-dev=3.4.0-1
+    - libnl-route-3-200=3.4.0-1
+    - libnpth0=1.6-1
+    - libnuma-dev=2.0.12-1
+    - libnuma1=2.0.12-1
+    - libp11-kit-dev=0.23.20-1ubuntu0.1
+    - libp11-kit0=0.23.20-1ubuntu0.1
+    - libpam-modules-bin=1.3.1-5ubuntu4.3
+    - libpam-modules=1.3.1-5ubuntu4.3
+    - libpam-runtime=1.3.1-5ubuntu4.3
+    - libpam-systemd=245.4-4ubuntu3.15
+    - libpam0g-dev=1.3.1-5ubuntu4.3
+    - libpam0g=1.3.1-5ubuntu4.3
+    - libpcre16-3=2:8.39-12build1
+    - libpcre2-16-0=10.34-7
+    - libpcre2-32-0=10.34-7
+    - libpcre2-8-0=10.34-7
+    - libpcre2-dev=10.34-7
+    - libpcre2-posix2=10.34-7
+    - libpcre3-dev=2:8.39-12build1
+    - libpcre32-3=2:8.39-12build1
+    - libpcre3=2:8.39-12build1
+    - libpcrecpp0v5=2:8.39-12build1
+    - libperl5.30=5.30.0-9ubuntu0.2
+    - libpixman-1-0=0.38.4-0ubuntu1
+    - libpixman-1-dev=0.38.4-0ubuntu1
+    - libpng16-16=1.6.37-2
+    - libprocps8=2:3.3.16-1ubuntu2.3
+    - libprotobuf-c-dev=1.3.3-1
+    - libprotobuf-c1=1.3.3-1
+    - libprotobuf-dev=3.6.1.3-2ubuntu5
+    - libprotobuf-lite17=3.6.1.3-2ubuntu5
+    - libprotobuf17=3.6.1.3-2ubuntu5
+    - libprotoc17=3.6.1.3-2ubuntu5
+    - libpsl5=0.21.0-1ubuntu1
+    - libpython3-stdlib=3.8.2-0ubuntu2
+    - libpython3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - libpython3.8-stdlib=3.8.10-0ubuntu1~20.04.2
+    - libquadmath0=10.3.0-1ubuntu1~20.04
+    - librados-dev=15.2.14-0ubuntu0.20.04.2
+    - librados2=15.2.14-0ubuntu0.20.04.2
+    - librbd-dev=15.2.14-0ubuntu0.20.04.2
+    - librbd1=15.2.14-0ubuntu0.20.04.2
+    - librdmacm1=28.0-1ubuntu1
+    - libreadline-dev=8.0-4
+    - libreadline8=8.0-4
+    - libroken18-heimdal=7.7.0+dfsg-1ubuntu1
+    - librtmp1=2.4+20151223.gitfa8646d.1-2build1
+    - libsasl2-2=2.1.27+dfsg-2ubuntu0.1
+    - libsasl2-modules-db=2.1.27+dfsg-2ubuntu0.1
+    - libseccomp2=2.5.1-1ubuntu1~20.04.2
+    - libselinux1-dev=3.0-1build2
+    - libselinux1=3.0-1build2
+    - libsemanage-common=3.0-1build2
+    - libsemanage1=3.0-1build2
+    - libsepol1-dev=3.0-1
+    - libsepol1=3.0-1
+    - libsigsegv2=2.12-2
+    - libsmartcols1=2.34-0.1ubuntu9.3
+    - libsqlite3-0=3.31.1-4ubuntu0.2
+    - libsquashfuse0=0.1.103-2
+    - libss2=1.45.5-2ubuntu1
+    - libssh-4=0.9.3-2ubuntu2.2
+    - libssl-dev=1.1.1f-1ubuntu2.12
+    - libssl1.1=1.1.1f-1ubuntu2.12
+    - libstdc++-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libstdc++6=10.3.0-1ubuntu1~20.04
+    - libsystemd0=245.4-4ubuntu3.15
+    - libtasn1-6-dev=4.16.0-2
+    - libtasn1-6=4.16.0-2
+    - libtcl8.6=8.6.10+dfsg-1
+    - libtinfo6=6.2-0ubuntu2
+    - libtool=2.4.6-14
+    - libtsan0=10.3.0-1ubuntu1~20.04
+    - libubsan1=10.3.0-1ubuntu1~20.04
+    - libudev-dev=245.4-4ubuntu3.15
+    - libudev1=245.4-4ubuntu3.15
+    - libunbound8=1.9.4-2ubuntu1.2
+    - libunistring2=0.9.10-2
+    - libusb-1.0-0=2:1.0.23-2build1
+    - libusbredirhost-dev=0.8.0-1
+    - libusbredirhost1=0.8.0-1
+    - libusbredirparser-dev=0.8.0-1
+    - libusbredirparser1=0.8.0-1
+    - libuuid1=2.34-0.1ubuntu9.3
+    - libuv1-dev=1.34.2-1ubuntu1.3
+    - libuv1=1.34.2-1ubuntu1.3
+    - libwind0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libwrap0=7.6.q-30
+    - libxml2-utils=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxml2=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxslt1.1=1.1.34-4
+    - libzstd1=1.4.4+dfsg-3ubuntu0.1
+    - linux-libc-dev=5.4.0-105.119
+    - lockfile-progs=0.1.18
+    - login=1:4.8.1-1ubuntu5.20.04.1
+    - logsave=1.45.5-2ubuntu1
+    - lsb-base=11.1.0ubuntu2
+    - lsb-release=11.1.0ubuntu2
+    - m4=1.4.18-4
+    - make=4.2.1-1.2
+    - mawk=1.3.4.20200120-2
+    - mime-support=3.64ubuntu1
+    - mount=2.34-0.1ubuntu9.3
+    - nasm=2.14.02-1
+    - ncurses-base=6.2-0ubuntu2
+    - ncurses-bin=6.2-0ubuntu2
+    - nettle-dev=3.5.1+really3.5.1-2ubuntu0.2
+    - ninja-build=1.10.0-1build1
+    - openssh-client=1:8.2p1-4ubuntu0.4
+    - openssl=1.1.1f-1ubuntu2.12
+    - optipng=0.7.7-1
+    - passwd=1:4.8.1-1ubuntu5.20.04.1
+    - patch=2.7.6-6
+    - perl-base=5.30.0-9ubuntu0.2
+    - perl-modules-5.30=5.30.0-9ubuntu0.2
+    - perl=5.30.0-9ubuntu0.2
+    - pinentry-curses=1.1.0-3build1
+    - pkg-config=0.29.1-0ubuntu4
+    - pkgbinarymangler=144
+    - policyrcd-script-zg2=0.1-3
+    - procps=2:3.3.16-1ubuntu2.3
+    - protobuf-c-compiler=1.3.3-1
+    - protobuf-compiler=3.6.1.3-2ubuntu5
+    - python-pip-whl=20.0.2-5ubuntu1.6
+    - python3-distutils=3.8.10-0ubuntu1~20.04
+    - python3-lib2to3=3.8.10-0ubuntu1~20.04
+    - python3-minimal=3.8.2-0ubuntu2
+    - python3-pip=20.0.2-5ubuntu1.6
+    - python3-pkg-resources=45.2.0-1
+    - python3-pyparsing=2.4.6-1
+    - python3-setuptools=45.2.0-1
+    - python3-six=1.14.0-2
+    - python3-wheel=0.34.2-1
+    - python3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - python3.8=3.8.10-0ubuntu1~20.04.2
+    - python3=3.8.2-0ubuntu2
+    - readline-common=8.0-4
+    - sed=4.7-1
+    - sensible-utils=0.0.12+nmu1
+    - sgml-base=1.29.1
+    - sgml-data=2.0.11
+    - snapd=2.54.3+20.04.1ubuntu0.2
+    - socat=1.7.3.3-2
+    - squashfs-tools=1:4.4-1ubuntu0.3
+    - squashfuse=0.1.103-2
+    - sudo=1.8.31-1ubuntu1.2
+    - systemd-sysv=245.4-4ubuntu3.15
+    - systemd-timesyncd=245.4-4ubuntu3.15
+    - systemd=245.4-4ubuntu3.15
+    - sysvinit-utils=2.96-2.1ubuntu1
+    - tar=1.30+dfsg-7ubuntu0.20.04.2
+    - tcl8.6=8.6.10+dfsg-1
+    - tcl=8.6.9+1
+    - tzdata=2022a-0ubuntu0.20.04
+    - ubuntu-keyring=2020.02.11.4
+    - udev=245.4-4ubuntu3.15
+    - util-linux=2.34-0.1ubuntu9.3
+    - uuid-dev=2.34-0.1ubuntu9.3
+    - xml-core=0.18+nmu1
+    - xmlto=0.0.28-2.1
+    - xorriso=1.5.2-1
+    - xsltproc=1.1.34-4
+    - xz-utils=5.2.4-1ubuntu1
+    - zlib1g-dev=1:1.2.11.dfsg-2ubuntu1.2
+    - zlib1g=1:1.2.11.dfsg-2ubuntu1.2
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      sbin/: bin/
+      usr/lib/: lib/
+    override-build: |
+      set -ex
+
+      git config user.email "noreply@linuxcontainers.org"
+      git config user.name "LXD snap builder"
+
+      git cherry-pick 18a08fb7f0443f8bde83393bd6f69e23a04246b3  # examples: compile with `make check' and add AM_CPPFLAGS
+
+      set +ex
+      snapcraftctl build
+      set -ex
+    plugin: autotools
+    prime:
+    - bin/nft
+    - lib/*/libjansson*so*
+    - lib/libnftables*so*
+    source: https://git.netfilter.org/nftables
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-tag: v1.0.2
+    source-type: git
+    stage: []
+    stage-packages:
+    - libjansson4=2.12-1build1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  nvidia-container:
+    build-packages:
+    - bmake
+    - curl
+    - lsb-release
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/local/bin/nvidia-container-cli: bin/nvidia-container-cli.real
+      usr/local/lib: lib/
+    override-build: |-
+      set -ex
+
+      [ "$(uname -m)" != "x86_64" ] && [ "$(uname -m)" != "aarch64" ] && exit 0
+
+      git config user.email "noreply@linuxcontainers.org"
+      git config user.name "LXD snap builder"
+
+      mkdir -p "${SNAPCRAFT_PART_INSTALL}/bin/"
+      cp /build/lxd/snapcraft/wrappers/nvidia-container-cli "${SNAPCRAFT_PART_INSTALL}/bin/"
+
+      set +ex
+      snapcraftctl build
+    plugin: make
+    prime:
+    - bin/nvidia-container-cli*
+    - lib/libnvidia-container*.so*
+    source: https://github.com/NVIDIA/libnvidia-container
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: v1.8.1
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  openvswitch:
+    autotools-configure-parameters:
+    - --enable-ssl
+    - --prefix=
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      sbin/: bin/
+      usr/bin/: bin/
+    override-build: |
+      set -ex
+
+      git config user.email "noreply@linuxcontainers.org"
+      git config user.name "LXD snap builder"
+
+      set +ex
+      snapcraftctl build
+      set -ex
+    plugin: autotools
+    prime:
+    - bin/ovs-appctl
+    - bin/ovs-vsctl
+    - bin/ovs-vswitchd
+    - bin/ovsdb-*
+    - bin/uuidgen
+    - share/openvswitch/
+    source: https://github.com/openvswitch/ovs
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-tag: v2.17.0
+    source-type: git
+    stage: []
+    stage-packages:
+    - uuid-runtime=2.34-0.1ubuntu9.3
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  qemu:
+    autotools-configure-parameters:
+    - --disable-bochs
+    - --disable-cloop
+    - --disable-dmg
+    - --disable-docs
+    - --disable-guest-agent
+    - --disable-parallels
+    - --disable-qed
+    - --disable-slirp
+    - --disable-user
+    - --disable-vdi
+    - --disable-vnc
+    - --disable-xen
+    - --enable-attr
+    - --enable-cap-ng
+    - --enable-kvm
+    - --enable-libusb
+    - --enable-usb-redir
+    - --enable-linux-aio
+    - --enable-linux-io-uring
+    - --enable-numa
+    - --enable-pie
+    - --enable-rbd
+    - --enable-seccomp
+    - --enable-spice
+    - --enable-system
+    - --enable-tcg
+    - --enable-tools
+    - --enable-vhost-crypto
+    - --enable-vhost-kernel
+    - --enable-vhost-net
+    - --enable-vhost-scsi
+    - --enable-vhost-user
+    - --enable-vhost-vsock
+    - --enable-virtfs
+    - --firmwarepath=/snap/lxd/current/share/qemu/
+    - --localstatedir=/var/
+    build-packages:
+    - bison
+    - flex
+    - libaio-dev
+    - libcap-ng-dev
+    - libglib2.0-dev
+    - libnuma-dev
+    - libpixman-1-dev
+    - librbd-dev
+    - libusbredirhost-dev
+    - pkg-config
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/bin/: bin/
+      usr/lib/: lib/
+      usr/local/bin/: bin/
+      usr/local/lib/: lib/
+      usr/local/libexec/: bin/
+      usr/local/share/: share/
+    override-build: |-
+      [ "$(uname -m)" != "x86_64" ] && [ "$(uname -m)" != "aarch64" ] && [ "$(uname -m)" != "ppc64le" ] && [ "$(uname -m)" != "s390x" ] && exit 0
+
+      set -ex
+      # Mangle the configure a bit
+      QEMUARCH="$(uname -m)"
+      [ "${QEMUARCH}" = "ppc64le" ] && QEMUARCH="ppc64"
+      sed -i "s/^unset target_list$/target_list=\"${QEMUARCH}-softmmu\"/" configure
+      sed -i 's#libseccomp_minver=".*#libseccomp_minver="0.0"#g' configure
+
+      set +ex
+      snapcraftctl build
+    override-pull: |-
+      [ "$(uname -m)" != "x86_64" ] && [ "$(uname -m)" != "aarch64" ] && [ "$(uname -m)" != "ppc64le" ] && [ "$(uname -m)" != "s390x" ] && exit 0
+      set -ex
+      git clone https://gitlab.com/qemu/qemu . -b v6.1.1
+    plugin: autotools
+    prime:
+    - bin/genisoimage*
+    - bin/mkisofs*
+    - bin/qemu-system-*
+    - bin/qemu-img*
+    - bin/virtfs-proxy-helper*
+    - bin/virtiofsd*
+    - lib/*/libatomic.so*
+    - lib/*/libmagic*so*
+    - lib/*/libnuma*so*
+    - lib/*/libpixman*so*
+    - lib/*/libusbredir*so*
+    - share/qemu/keymaps*
+    - share/qemu/efi-virtio.rom*
+    - share/qemu/kvmvapic.bin*
+    - share/qemu/s390-*.img*
+    - share/qemu/slof.bin*
+    - share/qemu/vgabios-*.bin*
+    source: IRRELEVANT
+    source-depth: 1
+    source-tag: IRRELEVANT
+    source-type: git
+    stage: []
+    stage-packages:
+    - genisoimage=9:1.1.11-3.1ubuntu1
+    - libmagic-mgc=1:5.38-4
+    - libmagic1=1:5.38-4
+    - libnuma1=2.0.12-1
+    - libpixman-1-0=0.38.4-0ubuntu1
+    - libusb-1.0-0=2:1.0.23-2build1
+    - libusbredirhost1=0.8.0-1
+    - libusbredirparser1=0.8.0-1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  qemu-ovmf-secureboot:
+    build-packages:
+    - xorriso
+    installed-packages:
+    - acpica-tools=20190509-1
+    - adduser=3.118ubuntu2
+    - advancecomp=2.1-2.1build1
+    - apparmor=2.13.3-7ubuntu5.1
+    - apt=2.0.6
+    - asciidoc-base=9.0.0~rc1-1
+    - asciidoc-common=9.0.0~rc1-1
+    - asciidoc=9.0.0~rc1-1
+    - autoconf=2.69-11.1
+    - automake=1:1.16.1-4ubuntu6
+    - autopoint=0.19.8.1-10build1
+    - autotools-dev=20180224.1
+    - base-files=11ubuntu5.5
+    - base-passwd=3.5.47
+    - bash=5.0-6ubuntu1.1
+    - binutils-common=2.34-6ubuntu1.3
+    - binutils-x86-64-linux-gnu=2.34-6ubuntu1.3
+    - binutils=2.34-6ubuntu1.3
+    - bison=2:3.5.1+dfsg-1
+    - bmake=20181221-2
+    - bsdutils=1:2.34-0.1ubuntu9.3
+    - build-essential=12.8ubuntu1.1
+    - bzip2=1.0.8-2
+    - ca-certificates=20210119~20.04.2
+    - coreutils=8.30-3ubuntu2
+    - cpp-9=9.4.0-1ubuntu1~20.04.1
+    - cpp=4:9.3.0-1ubuntu2
+    - curl=7.68.0-1ubuntu2.7
+    - dash=0.5.10.2-6
+    - dbus-user-session=1.12.16-2ubuntu2.1
+    - dbus=1.12.16-2ubuntu2.1
+    - debconf=1.5.73
+    - debianutils=4.9.1
+    - diffutils=1:3.7-3
+    - distro-info-data=0.43ubuntu1.9
+    - docbook-xml=4.5-9
+    - docbook-xsl=1.79.1+dfsg-2
+    - dpkg-dev=1.19.7ubuntu3
+    - dpkg=1.19.7ubuntu3
+    - e2fsprogs=1.45.5-2ubuntu1
+    - fakeroot=1.24-1
+    - fdisk=2.34-0.1ubuntu9.3
+    - file=1:5.38-4
+    - findutils=4.7.0-1ubuntu1
+    - flex=2.6.4-6.2
+    - fuse=2.9.9-3
+    - g++-9=9.4.0-1ubuntu1~20.04.1
+    - g++=4:9.3.0-1ubuntu2
+    - gcc-10-base=10.3.0-1ubuntu1~20.04
+    - gcc-9-base=9.4.0-1ubuntu1~20.04.1
+    - gcc-9=9.4.0-1ubuntu1~20.04.1
+    - gcc=4:9.3.0-1ubuntu2
+    - git-man=1:2.25.1-1ubuntu3.2
+    - git=1:2.25.1-1ubuntu3.2
+    - gperf=3.1-1build1
+    - gpg-agent=2.2.19-3ubuntu2.1
+    - gpg=2.2.19-3ubuntu2.1
+    - gpgconf=2.2.19-3ubuntu2.1
+    - gpgv=2.2.19-3ubuntu2.1
+    - grep=3.4-1
+    - gzip=1.10-0ubuntu4
+    - hostname=3.23
+    - init-system-helpers=1.57
+    - init=1.57
+    - libacl1-dev=2.2.53-6
+    - libacl1=2.2.53-6
+    - libaio-dev=0.3.112-5
+    - libaio1=0.3.112-5
+    - libapparmor-dev=2.13.3-7ubuntu5.1
+    - libapparmor1=2.13.3-7ubuntu5.1
+    - libapt-pkg6.0=2.0.6
+    - libargon2-1=0~20171227-0.2
+    - libasan5=9.4.0-1ubuntu1~20.04.1
+    - libasn1-8-heimdal=7.7.0+dfsg-1ubuntu1
+    - libassuan0=2.5.3-7ubuntu2
+    - libatomic1=10.3.0-1ubuntu1~20.04
+    - libattr1-dev=1:2.4.48-5
+    - libattr1=1:2.4.48-5
+    - libaudit-common=1:2.8.5-2ubuntu6
+    - libaudit1=1:2.8.5-2ubuntu6
+    - libbinutils=2.34-6ubuntu1.3
+    - libblkid-dev=2.34-0.1ubuntu9.3
+    - libblkid1=2.34-0.1ubuntu9.3
+    - libboost-iostreams1.71.0=1.71.0-6ubuntu6
+    - libboost-program-options1.71.0=1.71.0-6ubuntu6
+    - libboost-thread1.71.0=1.71.0-6ubuntu6
+    - libbrotli1=1.0.7-6ubuntu0.1
+    - libbsd-dev=0.10.0-1
+    - libbsd0=0.10.0-1
+    - libburn4=1.5.2-1
+    - libbz2-1.0=1.0.8-2
+    - libc-bin=2.31-0ubuntu9.7
+    - libc-dev-bin=2.31-0ubuntu9.7
+    - libc6-dev=2.31-0ubuntu9.7
+    - libc6=2.31-0ubuntu9.7
+    - libcap-dev=1:2.32-1
+    - libcap-ng-dev=0.7.9-2.1build1
+    - libcap-ng0=0.7.9-2.1build1
+    - libcap2=1:2.32-1
+    - libcbor0.6=0.6.0-0ubuntu1
+    - libcc1-0=10.3.0-1ubuntu1~20.04
+    - libcom-err2=1.45.5-2ubuntu1
+    - libcrypt-dev=1:4.4.10-10ubuntu4
+    - libcrypt1=1:4.4.10-10ubuntu4
+    - libcryptsetup12=2:2.2.2-3ubuntu2.4
+    - libctf-nobfd0=2.34-6ubuntu1.3
+    - libctf0=2.34-6ubuntu1.3
+    - libcurl3-gnutls=7.68.0-1ubuntu2.7
+    - libcurl4=7.68.0-1ubuntu2.7
+    - libdb5.3=5.3.28+dfsg1-0.6ubuntu2
+    - libdbus-1-3=1.12.16-2ubuntu2.1
+    - libdebconfclient0=0.251ubuntu1
+    - libdevmapper1.02.1=2:1.02.167-1ubuntu1
+    - libdpkg-perl=1.19.7ubuntu3
+    - libedit-dev=3.1-20191231-1
+    - libedit2=3.1-20191231-1
+    - libelf1=0.176-1.1build1
+    - liberror-perl=0.17029-1
+    - libevent-2.1-7=2.1.11-stable-1
+    - libexpat1=2.2.9-1ubuntu0.4
+    - libext2fs2=1.45.5-2ubuntu1
+    - libfakeroot=1.24-1
+    - libfdisk1=2.34-0.1ubuntu9.3
+    - libffi-dev=3.3-4
+    - libffi7=3.3-4
+    - libfido2-1=1.3.1-1ubuntu2
+    - libfuse-dev=2.9.9-3
+    - libfuse2=2.9.9-3
+    - libgcc-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libgcc-s1=10.3.0-1ubuntu1~20.04
+    - libgcrypt20=1.8.5-5ubuntu1.1
+    - libgdbm-compat4=1.18.1-5
+    - libgdbm6=1.18.1-5
+    - libglib2.0-0=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-data=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev=2.64.6-1~ubuntu20.04.4
+    - libgmp-dev=2:6.2.0+dfsg-4
+    - libgmp10=2:6.2.0+dfsg-4
+    - libgmpxx4ldbl=2:6.2.0+dfsg-4
+    - libgnutls-dane0=3.6.13-2ubuntu1.6
+    - libgnutls-openssl27=3.6.13-2ubuntu1.6
+    - libgnutls28-dev=3.6.13-2ubuntu1.6
+    - libgnutls30=3.6.13-2ubuntu1.6
+    - libgnutlsxx28=3.6.13-2ubuntu1.6
+    - libgomp1=10.3.0-1ubuntu1~20.04
+    - libgpg-error0=1.37-1
+    - libgssapi-krb5-2=1.17-6ubuntu4.1
+    - libgssapi3-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhcrypto4-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimbase1-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimntlm0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhogweed5=3.5.1+really3.5.1-2ubuntu0.2
+    - libhx509-5-heimdal=7.7.0+dfsg-1ubuntu1
+    - libibverbs1=28.0-1ubuntu1
+    - libicu66=66.1-2ubuntu2.1
+    - libidn2-0=2.2.0-2
+    - libidn2-dev=2.2.0-2
+    - libip4tc2=1.8.4-3ubuntu2
+    - libisl22=0.22.1-1
+    - libisoburn1=1.5.2-1
+    - libisofs6=1.5.2-1
+    - libitm1=10.3.0-1ubuntu1~20.04
+    - libjansson-dev=2.12-1build1
+    - libjansson4=2.12-1build1
+    - libjpeg-turbo8-dev=2.0.3-0ubuntu1.20.04.1
+    - libjpeg-turbo8=2.0.3-0ubuntu1.20.04.1
+    - libjson-c4=0.13.1+dfsg-7ubuntu0.3
+    - libjte2=1.22-3build1
+    - libk5crypto3=1.17-6ubuntu4.1
+    - libkeyutils1=1.6-6ubuntu1
+    - libkmod2=27-1ubuntu2
+    - libkrb5-26-heimdal=7.7.0+dfsg-1ubuntu1
+    - libkrb5-3=1.17-6ubuntu4.1
+    - libkrb5support0=1.17-6ubuntu4.1
+    - libldap-2.4-2=2.4.49+dfsg-2ubuntu1.8
+    - libldap-common=2.4.49+dfsg-2ubuntu1.8
+    - liblockfile-bin=1.16-1.1
+    - liblockfile1=1.16-1.1
+    - liblsan0=10.3.0-1ubuntu1~20.04
+    - liblz4-1=1.9.2-2ubuntu0.20.04.1
+    - liblz4-dev=1.9.2-2ubuntu0.20.04.1
+    - liblzma-dev=5.2.4-1ubuntu1
+    - liblzma5=5.2.4-1ubuntu1
+    - liblzo2-2=2.10-2
+    - libmagic-mgc=1:5.38-4
+    - libmagic1=1:5.38-4
+    - libmount-dev=2.34-0.1ubuntu9.3
+    - libmount1=2.34-0.1ubuntu9.3
+    - libmpc3=1.1.0-1
+    - libmpdec2=2.4.2-3
+    - libmpfr6=4.0.2-1
+    - libncurses-dev=6.2-0ubuntu2
+    - libncurses6=6.2-0ubuntu2
+    - libncursesw6=6.2-0ubuntu2
+    - libnet1-dev=1.1.6+dfsg-3.1build1
+    - libnet1=1.1.6+dfsg-3.1build1
+    - libnettle7=3.5.1+really3.5.1-2ubuntu0.2
+    - libnghttp2-14=1.40.0-1build1
+    - libnl-3-200=3.4.0-1
+    - libnl-3-dev=3.4.0-1
+    - libnl-route-3-200=3.4.0-1
+    - libnpth0=1.6-1
+    - libnuma-dev=2.0.12-1
+    - libnuma1=2.0.12-1
+    - libp11-kit-dev=0.23.20-1ubuntu0.1
+    - libp11-kit0=0.23.20-1ubuntu0.1
+    - libpam-modules-bin=1.3.1-5ubuntu4.3
+    - libpam-modules=1.3.1-5ubuntu4.3
+    - libpam-runtime=1.3.1-5ubuntu4.3
+    - libpam-systemd=245.4-4ubuntu3.15
+    - libpam0g-dev=1.3.1-5ubuntu4.3
+    - libpam0g=1.3.1-5ubuntu4.3
+    - libpcre16-3=2:8.39-12build1
+    - libpcre2-16-0=10.34-7
+    - libpcre2-32-0=10.34-7
+    - libpcre2-8-0=10.34-7
+    - libpcre2-dev=10.34-7
+    - libpcre2-posix2=10.34-7
+    - libpcre3-dev=2:8.39-12build1
+    - libpcre32-3=2:8.39-12build1
+    - libpcre3=2:8.39-12build1
+    - libpcrecpp0v5=2:8.39-12build1
+    - libperl5.30=5.30.0-9ubuntu0.2
+    - libpixman-1-0=0.38.4-0ubuntu1
+    - libpixman-1-dev=0.38.4-0ubuntu1
+    - libpng16-16=1.6.37-2
+    - libprocps8=2:3.3.16-1ubuntu2.3
+    - libprotobuf-c-dev=1.3.3-1
+    - libprotobuf-c1=1.3.3-1
+    - libprotobuf-dev=3.6.1.3-2ubuntu5
+    - libprotobuf-lite17=3.6.1.3-2ubuntu5
+    - libprotobuf17=3.6.1.3-2ubuntu5
+    - libprotoc17=3.6.1.3-2ubuntu5
+    - libpsl5=0.21.0-1ubuntu1
+    - libpython3-stdlib=3.8.2-0ubuntu2
+    - libpython3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - libpython3.8-stdlib=3.8.10-0ubuntu1~20.04.2
+    - libquadmath0=10.3.0-1ubuntu1~20.04
+    - librados-dev=15.2.14-0ubuntu0.20.04.2
+    - librados2=15.2.14-0ubuntu0.20.04.2
+    - librbd-dev=15.2.14-0ubuntu0.20.04.2
+    - librbd1=15.2.14-0ubuntu0.20.04.2
+    - librdmacm1=28.0-1ubuntu1
+    - libreadline-dev=8.0-4
+    - libreadline8=8.0-4
+    - libroken18-heimdal=7.7.0+dfsg-1ubuntu1
+    - librtmp1=2.4+20151223.gitfa8646d.1-2build1
+    - libsasl2-2=2.1.27+dfsg-2ubuntu0.1
+    - libsasl2-modules-db=2.1.27+dfsg-2ubuntu0.1
+    - libseccomp2=2.5.1-1ubuntu1~20.04.2
+    - libselinux1-dev=3.0-1build2
+    - libselinux1=3.0-1build2
+    - libsemanage-common=3.0-1build2
+    - libsemanage1=3.0-1build2
+    - libsepol1-dev=3.0-1
+    - libsepol1=3.0-1
+    - libsigsegv2=2.12-2
+    - libsmartcols1=2.34-0.1ubuntu9.3
+    - libsqlite3-0=3.31.1-4ubuntu0.2
+    - libsquashfuse0=0.1.103-2
+    - libss2=1.45.5-2ubuntu1
+    - libssh-4=0.9.3-2ubuntu2.2
+    - libssl-dev=1.1.1f-1ubuntu2.12
+    - libssl1.1=1.1.1f-1ubuntu2.12
+    - libstdc++-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libstdc++6=10.3.0-1ubuntu1~20.04
+    - libsystemd0=245.4-4ubuntu3.15
+    - libtasn1-6-dev=4.16.0-2
+    - libtasn1-6=4.16.0-2
+    - libtcl8.6=8.6.10+dfsg-1
+    - libtinfo6=6.2-0ubuntu2
+    - libtool=2.4.6-14
+    - libtsan0=10.3.0-1ubuntu1~20.04
+    - libubsan1=10.3.0-1ubuntu1~20.04
+    - libudev-dev=245.4-4ubuntu3.15
+    - libudev1=245.4-4ubuntu3.15
+    - libunbound8=1.9.4-2ubuntu1.2
+    - libunistring2=0.9.10-2
+    - libusb-1.0-0=2:1.0.23-2build1
+    - libusbredirhost-dev=0.8.0-1
+    - libusbredirhost1=0.8.0-1
+    - libusbredirparser-dev=0.8.0-1
+    - libusbredirparser1=0.8.0-1
+    - libuuid1=2.34-0.1ubuntu9.3
+    - libuv1-dev=1.34.2-1ubuntu1.3
+    - libuv1=1.34.2-1ubuntu1.3
+    - libwind0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libwrap0=7.6.q-30
+    - libxml2-utils=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxml2=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxslt1.1=1.1.34-4
+    - libzstd1=1.4.4+dfsg-3ubuntu0.1
+    - linux-libc-dev=5.4.0-105.119
+    - lockfile-progs=0.1.18
+    - login=1:4.8.1-1ubuntu5.20.04.1
+    - logsave=1.45.5-2ubuntu1
+    - lsb-base=11.1.0ubuntu2
+    - lsb-release=11.1.0ubuntu2
+    - m4=1.4.18-4
+    - make=4.2.1-1.2
+    - mawk=1.3.4.20200120-2
+    - mime-support=3.64ubuntu1
+    - mount=2.34-0.1ubuntu9.3
+    - nasm=2.14.02-1
+    - ncurses-base=6.2-0ubuntu2
+    - ncurses-bin=6.2-0ubuntu2
+    - nettle-dev=3.5.1+really3.5.1-2ubuntu0.2
+    - ninja-build=1.10.0-1build1
+    - openssh-client=1:8.2p1-4ubuntu0.4
+    - openssl=1.1.1f-1ubuntu2.12
+    - optipng=0.7.7-1
+    - passwd=1:4.8.1-1ubuntu5.20.04.1
+    - patch=2.7.6-6
+    - perl-base=5.30.0-9ubuntu0.2
+    - perl-modules-5.30=5.30.0-9ubuntu0.2
+    - perl=5.30.0-9ubuntu0.2
+    - pinentry-curses=1.1.0-3build1
+    - pkg-config=0.29.1-0ubuntu4
+    - pkgbinarymangler=144
+    - policyrcd-script-zg2=0.1-3
+    - procps=2:3.3.16-1ubuntu2.3
+    - protobuf-c-compiler=1.3.3-1
+    - protobuf-compiler=3.6.1.3-2ubuntu5
+    - python-pip-whl=20.0.2-5ubuntu1.6
+    - python3-distutils=3.8.10-0ubuntu1~20.04
+    - python3-lib2to3=3.8.10-0ubuntu1~20.04
+    - python3-minimal=3.8.2-0ubuntu2
+    - python3-pip=20.0.2-5ubuntu1.6
+    - python3-pkg-resources=45.2.0-1
+    - python3-pyparsing=2.4.6-1
+    - python3-setuptools=45.2.0-1
+    - python3-six=1.14.0-2
+    - python3-wheel=0.34.2-1
+    - python3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - python3.8=3.8.10-0ubuntu1~20.04.2
+    - python3=3.8.2-0ubuntu2
+    - readline-common=8.0-4
+    - sed=4.7-1
+    - sensible-utils=0.0.12+nmu1
+    - sgml-base=1.29.1
+    - sgml-data=2.0.11
+    - snapd=2.54.3+20.04.1ubuntu0.2
+    - socat=1.7.3.3-2
+    - squashfs-tools=1:4.4-1ubuntu0.3
+    - squashfuse=0.1.103-2
+    - sudo=1.8.31-1ubuntu1.2
+    - systemd-sysv=245.4-4ubuntu3.15
+    - systemd-timesyncd=245.4-4ubuntu3.15
+    - systemd=245.4-4ubuntu3.15
+    - sysvinit-utils=2.96-2.1ubuntu1
+    - tar=1.30+dfsg-7ubuntu0.20.04.2
+    - tcl8.6=8.6.10+dfsg-1
+    - tcl=8.6.9+1
+    - tzdata=2022a-0ubuntu0.20.04
+    - ubuntu-keyring=2020.02.11.4
+    - udev=245.4-4ubuntu3.15
+    - util-linux=2.34-0.1ubuntu9.3
+    - uuid-dev=2.34-0.1ubuntu9.3
+    - xml-core=0.18+nmu1
+    - xmlto=0.0.28-2.1
+    - xorriso=1.5.2-1
+    - xsltproc=1.1.34-4
+    - xz-utils=5.2.4-1ubuntu1
+    - zlib1g-dev=1:1.2.11.dfsg-2ubuntu1.2
+    - zlib1g=1:1.2.11.dfsg-2ubuntu1.2
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-build: |-
+      [ "$(uname -m)" != "x86_64" ] && [ "$(uname -m)" != "aarch64" ] && exit 0
+
+      export ARCH="$(basename $(readlink -f /build/lxd/stage/lib/*-linux-gnu*/))"
+      export LD_LIBRARY_PATH="/build/lxd/stage/lib:/build/lxd/stage/lib/${ARCH}"
+
+      set -ex
+      rm -Rf iso-root vfat-root shell.iso
+      mkdir -p iso-root vfat-root/efi/boot
+      cp ../../edk2/build/Build/*/*/*/Shell.efi vfat-root/efi/boot/bootx64.efi
+      cp ../../edk2/build/Build/*/*/*/EnrollDefaultKeys.efi vfat-root/
+      "/build/lxd/stage/bin/qemu-img" convert --image-opts driver=vvfat,floppy=on,fat-type=12,label=UEFI_SHELL,dir=vfat-root iso-root/shell.img
+      xorriso --as mkisofs -input-charset ASCII -J -rational-rock -e shell.img -no-emul-boot -o shell.iso iso-root/
+
+      # Basic aarch64 support
+      if [ "$(uname -m)" = "aarch64" ]; then
+          sed -i ovmf-vars-generator \
+              -e "s/'-machine', machinetype,/'-machine', 'virt', '-cpu', 'cortex-a57',/" \
+              -e "/charserial1/d" \
+              -e "s/ide-cd/scsi-cd/" \
+              -e "s/'-device',$/'-device', 'virtio-scsi-pci,id=scsi', '-device',/"
+      elif [ "$(uname -m)" = "x86_64" ]; then
+          cp -f "/build/lxd/stage/share/qemu/kvmvapic.bin" .
+      fi
+
+      mkdir -p "${SNAPCRAFT_PART_INSTALL}/share/qemu/"
+      python3 ovmf-vars-generator \
+        --qemu-binary "/build/lxd/stage/bin/qemu-system-$(uname -m)" \
+        --print-output --disable-smm --skip-testing \
+        --oem-string "$(cat /build/lxd/snapcraft/etc/ubuntu-sb.crt)" \
+        --ovmf-binary "/build/lxd/stage/share/qemu/OVMF_CODE.fd" \
+        --ovmf-template-vars "/build/lxd/stage/share/qemu/OVMF_VARS.fd" \
+        --uefi-shell-iso shell.iso \
+        "${SNAPCRAFT_PART_INSTALL}/share/qemu/OVMF_VARS.ms.fd"
+    plugin: nil
+    prime:
+    - share/qemu/*
+    source: https://github.com/puiterwijk/qemu-ovmf-secureboot
+    source-branch: ''
+    source-checksum: ''
+    source-commit: 4da81a4cbdd6d96b7a653239865d3b1d92cc6117
+    source-depth: 1
+    source-tag: ''
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  raft:
+    autotools-configure-parameters:
+    - --prefix=
+    build-packages:
+    - liblz4-dev
+    - libuv1-dev
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/lib/: lib/
+    plugin: autotools
+    prime:
+    - lib/libraft*so*
+    - lib/*/libuv.so*
+    source: https://github.com/canonical/raft
+    source-branch: ''
+    source-checksum: ''
+    source-commit: b37dacd87e31ac8865b54b8e24a56d1287ff52c1
+    source-depth: 1
+    source-tag: ''
+    source-type: git
+    stage: []
+    stage-packages:
+    - liblz4-1=1.9.2-2ubuntu0.20.04.1
+    - libuv1=1.34.2-1ubuntu1.3
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  shmounts:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    plugin: make
+    prime:
+    - bin/setup-shmounts
+    source: shmounts/
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  snap-query:
+    build-packages: []
+    build-snaps:
+    - go
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-build: |
+      set -ex
+
+      # Setup build environment
+      export GOPATH=$(realpath ./.go)
+
+      # Build the binaries
+      go build -o "${SNAPCRAFT_PART_INSTALL}/bin/snap-query" snap-query.go
+    plugin: nil
+    prime:
+    - bin/snap-query
+    source: snap-query/
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  spice-protocol:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    plugin: meson
+    prime: []
+    source: https://github.com/freedesktop/spice-protocol
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: v0.14.4
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  spice-server:
+    build-packages:
+    - libjpeg-turbo8-dev
+    - python3-pyparsing
+    - python3-six
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    meson-parameters:
+    - --prefix=/
+    - -Dgstreamer=no
+    - -Dmanual=false
+    - -Dlz4=false
+    - -Dsasl=false
+    - -Dopus=disabled
+    - -Dsmartcard=disabled
+    - -Dtests=false
+    organize:
+      sbin/: bin/
+      usr/lib: lib/
+      usr/local/lib/: lib/
+    plugin: meson
+    prime:
+    - lib/*/libjpeg*so*
+    - lib/*/libspice-server*so*
+    - lib/*/libpixman*so*
+    source: https://github.com/freedesktop/spice
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: v0.15.0
+    source-type: git
+    stage: []
+    stage-packages:
+    - libjpeg-turbo8=2.0.3-0ubuntu1.20.04.1
+    - libpixman-1-0=0.38.4-0ubuntu1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  sqlite:
+    autotools-configure-parameters:
+    - --prefix=
+    build-packages:
+    - tcl
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    plugin: autotools
+    prime:
+    - bin/sqlite3
+    - lib/libsqlite3*so*
+    source: https://github.com/sqlite/sqlite
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: version-3.38.0
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  squashfs-tools-ng:
+    autotools-configure-parameters:
+    - --prefix=
+    build-packages:
+    - liblzma-dev
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    plugin: autotools
+    prime:
+    - bin/sqfs2tar
+    - bin/tar2sqfs
+    - lib/libsquashfs.so*
+    source: https://github.com/AgentD/squashfs-tools-ng
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: v1.1.3
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  strip:
+    build-packages: []
+    installed-packages:
+    - acpica-tools=20190509-1
+    - adduser=3.118ubuntu2
+    - advancecomp=2.1-2.1build1
+    - apparmor=2.13.3-7ubuntu5.1
+    - apt=2.0.6
+    - asciidoc-base=9.0.0~rc1-1
+    - asciidoc-common=9.0.0~rc1-1
+    - asciidoc=9.0.0~rc1-1
+    - autoconf=2.69-11.1
+    - automake=1:1.16.1-4ubuntu6
+    - autopoint=0.19.8.1-10build1
+    - autotools-dev=20180224.1
+    - base-files=11ubuntu5.5
+    - base-passwd=3.5.47
+    - bash=5.0-6ubuntu1.1
+    - binutils-common=2.34-6ubuntu1.3
+    - binutils-x86-64-linux-gnu=2.34-6ubuntu1.3
+    - binutils=2.34-6ubuntu1.3
+    - bison=2:3.5.1+dfsg-1
+    - bmake=20181221-2
+    - bsdutils=1:2.34-0.1ubuntu9.3
+    - build-essential=12.8ubuntu1.1
+    - bzip2=1.0.8-2
+    - ca-certificates=20210119~20.04.2
+    - coreutils=8.30-3ubuntu2
+    - cpp-9=9.4.0-1ubuntu1~20.04.1
+    - cpp=4:9.3.0-1ubuntu2
+    - curl=7.68.0-1ubuntu2.7
+    - dash=0.5.10.2-6
+    - dbus-user-session=1.12.16-2ubuntu2.1
+    - dbus=1.12.16-2ubuntu2.1
+    - debconf=1.5.73
+    - debianutils=4.9.1
+    - diffutils=1:3.7-3
+    - distro-info-data=0.43ubuntu1.9
+    - docbook-xml=4.5-9
+    - docbook-xsl=1.79.1+dfsg-2
+    - dpkg-dev=1.19.7ubuntu3
+    - dpkg=1.19.7ubuntu3
+    - e2fsprogs=1.45.5-2ubuntu1
+    - fakeroot=1.24-1
+    - fdisk=2.34-0.1ubuntu9.3
+    - file=1:5.38-4
+    - findutils=4.7.0-1ubuntu1
+    - flex=2.6.4-6.2
+    - fuse=2.9.9-3
+    - g++-9=9.4.0-1ubuntu1~20.04.1
+    - g++=4:9.3.0-1ubuntu2
+    - gcc-10-base=10.3.0-1ubuntu1~20.04
+    - gcc-9-base=9.4.0-1ubuntu1~20.04.1
+    - gcc-9=9.4.0-1ubuntu1~20.04.1
+    - gcc=4:9.3.0-1ubuntu2
+    - git-man=1:2.25.1-1ubuntu3.2
+    - git=1:2.25.1-1ubuntu3.2
+    - gperf=3.1-1build1
+    - gpg-agent=2.2.19-3ubuntu2.1
+    - gpg=2.2.19-3ubuntu2.1
+    - gpgconf=2.2.19-3ubuntu2.1
+    - gpgv=2.2.19-3ubuntu2.1
+    - grep=3.4-1
+    - gzip=1.10-0ubuntu4
+    - hostname=3.23
+    - init-system-helpers=1.57
+    - init=1.57
+    - libacl1-dev=2.2.53-6
+    - libacl1=2.2.53-6
+    - libaio-dev=0.3.112-5
+    - libaio1=0.3.112-5
+    - libapparmor-dev=2.13.3-7ubuntu5.1
+    - libapparmor1=2.13.3-7ubuntu5.1
+    - libapt-pkg6.0=2.0.6
+    - libargon2-1=0~20171227-0.2
+    - libasan5=9.4.0-1ubuntu1~20.04.1
+    - libasn1-8-heimdal=7.7.0+dfsg-1ubuntu1
+    - libassuan0=2.5.3-7ubuntu2
+    - libatomic1=10.3.0-1ubuntu1~20.04
+    - libattr1-dev=1:2.4.48-5
+    - libattr1=1:2.4.48-5
+    - libaudit-common=1:2.8.5-2ubuntu6
+    - libaudit1=1:2.8.5-2ubuntu6
+    - libbinutils=2.34-6ubuntu1.3
+    - libblkid-dev=2.34-0.1ubuntu9.3
+    - libblkid1=2.34-0.1ubuntu9.3
+    - libboost-iostreams1.71.0=1.71.0-6ubuntu6
+    - libboost-program-options1.71.0=1.71.0-6ubuntu6
+    - libboost-thread1.71.0=1.71.0-6ubuntu6
+    - libbrotli1=1.0.7-6ubuntu0.1
+    - libbsd-dev=0.10.0-1
+    - libbsd0=0.10.0-1
+    - libburn4=1.5.2-1
+    - libbz2-1.0=1.0.8-2
+    - libc-bin=2.31-0ubuntu9.7
+    - libc-dev-bin=2.31-0ubuntu9.7
+    - libc6-dev=2.31-0ubuntu9.7
+    - libc6=2.31-0ubuntu9.7
+    - libcap-dev=1:2.32-1
+    - libcap-ng-dev=0.7.9-2.1build1
+    - libcap-ng0=0.7.9-2.1build1
+    - libcap2=1:2.32-1
+    - libcbor0.6=0.6.0-0ubuntu1
+    - libcc1-0=10.3.0-1ubuntu1~20.04
+    - libcom-err2=1.45.5-2ubuntu1
+    - libcrypt-dev=1:4.4.10-10ubuntu4
+    - libcrypt1=1:4.4.10-10ubuntu4
+    - libcryptsetup12=2:2.2.2-3ubuntu2.4
+    - libctf-nobfd0=2.34-6ubuntu1.3
+    - libctf0=2.34-6ubuntu1.3
+    - libcurl3-gnutls=7.68.0-1ubuntu2.7
+    - libcurl4=7.68.0-1ubuntu2.7
+    - libdb5.3=5.3.28+dfsg1-0.6ubuntu2
+    - libdbus-1-3=1.12.16-2ubuntu2.1
+    - libdebconfclient0=0.251ubuntu1
+    - libdevmapper1.02.1=2:1.02.167-1ubuntu1
+    - libdpkg-perl=1.19.7ubuntu3
+    - libedit-dev=3.1-20191231-1
+    - libedit2=3.1-20191231-1
+    - libelf1=0.176-1.1build1
+    - liberror-perl=0.17029-1
+    - libevent-2.1-7=2.1.11-stable-1
+    - libexpat1=2.2.9-1ubuntu0.4
+    - libext2fs2=1.45.5-2ubuntu1
+    - libfakeroot=1.24-1
+    - libfdisk1=2.34-0.1ubuntu9.3
+    - libffi-dev=3.3-4
+    - libffi7=3.3-4
+    - libfido2-1=1.3.1-1ubuntu2
+    - libfuse-dev=2.9.9-3
+    - libfuse2=2.9.9-3
+    - libgcc-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libgcc-s1=10.3.0-1ubuntu1~20.04
+    - libgcrypt20=1.8.5-5ubuntu1.1
+    - libgdbm-compat4=1.18.1-5
+    - libgdbm6=1.18.1-5
+    - libglib2.0-0=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-data=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev=2.64.6-1~ubuntu20.04.4
+    - libgmp-dev=2:6.2.0+dfsg-4
+    - libgmp10=2:6.2.0+dfsg-4
+    - libgmpxx4ldbl=2:6.2.0+dfsg-4
+    - libgnutls-dane0=3.6.13-2ubuntu1.6
+    - libgnutls-openssl27=3.6.13-2ubuntu1.6
+    - libgnutls28-dev=3.6.13-2ubuntu1.6
+    - libgnutls30=3.6.13-2ubuntu1.6
+    - libgnutlsxx28=3.6.13-2ubuntu1.6
+    - libgomp1=10.3.0-1ubuntu1~20.04
+    - libgpg-error0=1.37-1
+    - libgssapi-krb5-2=1.17-6ubuntu4.1
+    - libgssapi3-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhcrypto4-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimbase1-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimntlm0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhogweed5=3.5.1+really3.5.1-2ubuntu0.2
+    - libhx509-5-heimdal=7.7.0+dfsg-1ubuntu1
+    - libibverbs1=28.0-1ubuntu1
+    - libicu66=66.1-2ubuntu2.1
+    - libidn2-0=2.2.0-2
+    - libidn2-dev=2.2.0-2
+    - libip4tc2=1.8.4-3ubuntu2
+    - libisl22=0.22.1-1
+    - libisoburn1=1.5.2-1
+    - libisofs6=1.5.2-1
+    - libitm1=10.3.0-1ubuntu1~20.04
+    - libjansson-dev=2.12-1build1
+    - libjansson4=2.12-1build1
+    - libjpeg-turbo8-dev=2.0.3-0ubuntu1.20.04.1
+    - libjpeg-turbo8=2.0.3-0ubuntu1.20.04.1
+    - libjson-c4=0.13.1+dfsg-7ubuntu0.3
+    - libjte2=1.22-3build1
+    - libk5crypto3=1.17-6ubuntu4.1
+    - libkeyutils1=1.6-6ubuntu1
+    - libkmod2=27-1ubuntu2
+    - libkrb5-26-heimdal=7.7.0+dfsg-1ubuntu1
+    - libkrb5-3=1.17-6ubuntu4.1
+    - libkrb5support0=1.17-6ubuntu4.1
+    - libldap-2.4-2=2.4.49+dfsg-2ubuntu1.8
+    - libldap-common=2.4.49+dfsg-2ubuntu1.8
+    - liblockfile-bin=1.16-1.1
+    - liblockfile1=1.16-1.1
+    - liblsan0=10.3.0-1ubuntu1~20.04
+    - liblz4-1=1.9.2-2ubuntu0.20.04.1
+    - liblz4-dev=1.9.2-2ubuntu0.20.04.1
+    - liblzma-dev=5.2.4-1ubuntu1
+    - liblzma5=5.2.4-1ubuntu1
+    - liblzo2-2=2.10-2
+    - libmagic-mgc=1:5.38-4
+    - libmagic1=1:5.38-4
+    - libmount-dev=2.34-0.1ubuntu9.3
+    - libmount1=2.34-0.1ubuntu9.3
+    - libmpc3=1.1.0-1
+    - libmpdec2=2.4.2-3
+    - libmpfr6=4.0.2-1
+    - libncurses-dev=6.2-0ubuntu2
+    - libncurses6=6.2-0ubuntu2
+    - libncursesw6=6.2-0ubuntu2
+    - libnet1-dev=1.1.6+dfsg-3.1build1
+    - libnet1=1.1.6+dfsg-3.1build1
+    - libnettle7=3.5.1+really3.5.1-2ubuntu0.2
+    - libnghttp2-14=1.40.0-1build1
+    - libnl-3-200=3.4.0-1
+    - libnl-3-dev=3.4.0-1
+    - libnl-route-3-200=3.4.0-1
+    - libnpth0=1.6-1
+    - libnuma-dev=2.0.12-1
+    - libnuma1=2.0.12-1
+    - libp11-kit-dev=0.23.20-1ubuntu0.1
+    - libp11-kit0=0.23.20-1ubuntu0.1
+    - libpam-modules-bin=1.3.1-5ubuntu4.3
+    - libpam-modules=1.3.1-5ubuntu4.3
+    - libpam-runtime=1.3.1-5ubuntu4.3
+    - libpam-systemd=245.4-4ubuntu3.15
+    - libpam0g-dev=1.3.1-5ubuntu4.3
+    - libpam0g=1.3.1-5ubuntu4.3
+    - libpcre16-3=2:8.39-12build1
+    - libpcre2-16-0=10.34-7
+    - libpcre2-32-0=10.34-7
+    - libpcre2-8-0=10.34-7
+    - libpcre2-dev=10.34-7
+    - libpcre2-posix2=10.34-7
+    - libpcre3-dev=2:8.39-12build1
+    - libpcre32-3=2:8.39-12build1
+    - libpcre3=2:8.39-12build1
+    - libpcrecpp0v5=2:8.39-12build1
+    - libperl5.30=5.30.0-9ubuntu0.2
+    - libpixman-1-0=0.38.4-0ubuntu1
+    - libpixman-1-dev=0.38.4-0ubuntu1
+    - libpng16-16=1.6.37-2
+    - libprocps8=2:3.3.16-1ubuntu2.3
+    - libprotobuf-c-dev=1.3.3-1
+    - libprotobuf-c1=1.3.3-1
+    - libprotobuf-dev=3.6.1.3-2ubuntu5
+    - libprotobuf-lite17=3.6.1.3-2ubuntu5
+    - libprotobuf17=3.6.1.3-2ubuntu5
+    - libprotoc17=3.6.1.3-2ubuntu5
+    - libpsl5=0.21.0-1ubuntu1
+    - libpython3-stdlib=3.8.2-0ubuntu2
+    - libpython3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - libpython3.8-stdlib=3.8.10-0ubuntu1~20.04.2
+    - libquadmath0=10.3.0-1ubuntu1~20.04
+    - librados-dev=15.2.14-0ubuntu0.20.04.2
+    - librados2=15.2.14-0ubuntu0.20.04.2
+    - librbd-dev=15.2.14-0ubuntu0.20.04.2
+    - librbd1=15.2.14-0ubuntu0.20.04.2
+    - librdmacm1=28.0-1ubuntu1
+    - libreadline-dev=8.0-4
+    - libreadline8=8.0-4
+    - libroken18-heimdal=7.7.0+dfsg-1ubuntu1
+    - librtmp1=2.4+20151223.gitfa8646d.1-2build1
+    - libsasl2-2=2.1.27+dfsg-2ubuntu0.1
+    - libsasl2-modules-db=2.1.27+dfsg-2ubuntu0.1
+    - libseccomp2=2.5.1-1ubuntu1~20.04.2
+    - libselinux1-dev=3.0-1build2
+    - libselinux1=3.0-1build2
+    - libsemanage-common=3.0-1build2
+    - libsemanage1=3.0-1build2
+    - libsepol1-dev=3.0-1
+    - libsepol1=3.0-1
+    - libsigsegv2=2.12-2
+    - libsmartcols1=2.34-0.1ubuntu9.3
+    - libsqlite3-0=3.31.1-4ubuntu0.2
+    - libsquashfuse0=0.1.103-2
+    - libss2=1.45.5-2ubuntu1
+    - libssh-4=0.9.3-2ubuntu2.2
+    - libssl-dev=1.1.1f-1ubuntu2.12
+    - libssl1.1=1.1.1f-1ubuntu2.12
+    - libstdc++-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libstdc++6=10.3.0-1ubuntu1~20.04
+    - libsystemd0=245.4-4ubuntu3.15
+    - libtasn1-6-dev=4.16.0-2
+    - libtasn1-6=4.16.0-2
+    - libtcl8.6=8.6.10+dfsg-1
+    - libtinfo6=6.2-0ubuntu2
+    - libtool=2.4.6-14
+    - libtsan0=10.3.0-1ubuntu1~20.04
+    - libubsan1=10.3.0-1ubuntu1~20.04
+    - libudev-dev=245.4-4ubuntu3.15
+    - libudev1=245.4-4ubuntu3.15
+    - libunbound8=1.9.4-2ubuntu1.2
+    - libunistring2=0.9.10-2
+    - libusb-1.0-0=2:1.0.23-2build1
+    - libusbredirhost-dev=0.8.0-1
+    - libusbredirhost1=0.8.0-1
+    - libusbredirparser-dev=0.8.0-1
+    - libusbredirparser1=0.8.0-1
+    - libuuid1=2.34-0.1ubuntu9.3
+    - libuv1-dev=1.34.2-1ubuntu1.3
+    - libuv1=1.34.2-1ubuntu1.3
+    - libwind0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libwrap0=7.6.q-30
+    - libxml2-utils=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxml2=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxslt1.1=1.1.34-4
+    - libzstd1=1.4.4+dfsg-3ubuntu0.1
+    - linux-libc-dev=5.4.0-105.119
+    - lockfile-progs=0.1.18
+    - login=1:4.8.1-1ubuntu5.20.04.1
+    - logsave=1.45.5-2ubuntu1
+    - lsb-base=11.1.0ubuntu2
+    - lsb-release=11.1.0ubuntu2
+    - m4=1.4.18-4
+    - make=4.2.1-1.2
+    - mawk=1.3.4.20200120-2
+    - mime-support=3.64ubuntu1
+    - mount=2.34-0.1ubuntu9.3
+    - nasm=2.14.02-1
+    - ncurses-base=6.2-0ubuntu2
+    - ncurses-bin=6.2-0ubuntu2
+    - nettle-dev=3.5.1+really3.5.1-2ubuntu0.2
+    - ninja-build=1.10.0-1build1
+    - openssh-client=1:8.2p1-4ubuntu0.4
+    - openssl=1.1.1f-1ubuntu2.12
+    - optipng=0.7.7-1
+    - passwd=1:4.8.1-1ubuntu5.20.04.1
+    - patch=2.7.6-6
+    - perl-base=5.30.0-9ubuntu0.2
+    - perl-modules-5.30=5.30.0-9ubuntu0.2
+    - perl=5.30.0-9ubuntu0.2
+    - pinentry-curses=1.1.0-3build1
+    - pkg-config=0.29.1-0ubuntu4
+    - pkgbinarymangler=144
+    - policyrcd-script-zg2=0.1-3
+    - procps=2:3.3.16-1ubuntu2.3
+    - protobuf-c-compiler=1.3.3-1
+    - protobuf-compiler=3.6.1.3-2ubuntu5
+    - python-pip-whl=20.0.2-5ubuntu1.6
+    - python3-distutils=3.8.10-0ubuntu1~20.04
+    - python3-lib2to3=3.8.10-0ubuntu1~20.04
+    - python3-minimal=3.8.2-0ubuntu2
+    - python3-pip=20.0.2-5ubuntu1.6
+    - python3-pkg-resources=45.2.0-1
+    - python3-pyparsing=2.4.6-1
+    - python3-setuptools=45.2.0-1
+    - python3-six=1.14.0-2
+    - python3-wheel=0.34.2-1
+    - python3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - python3.8=3.8.10-0ubuntu1~20.04.2
+    - python3=3.8.2-0ubuntu2
+    - readline-common=8.0-4
+    - sed=4.7-1
+    - sensible-utils=0.0.12+nmu1
+    - sgml-base=1.29.1
+    - sgml-data=2.0.11
+    - snapd=2.54.3+20.04.1ubuntu0.2
+    - socat=1.7.3.3-2
+    - squashfs-tools=1:4.4-1ubuntu0.3
+    - squashfuse=0.1.103-2
+    - sudo=1.8.31-1ubuntu1.2
+    - systemd-sysv=245.4-4ubuntu3.15
+    - systemd-timesyncd=245.4-4ubuntu3.15
+    - systemd=245.4-4ubuntu3.15
+    - sysvinit-utils=2.96-2.1ubuntu1
+    - tar=1.30+dfsg-7ubuntu0.20.04.2
+    - tcl8.6=8.6.10+dfsg-1
+    - tcl=8.6.9+1
+    - tzdata=2022a-0ubuntu0.20.04
+    - ubuntu-keyring=2020.02.11.4
+    - udev=245.4-4ubuntu3.15
+    - util-linux=2.34-0.1ubuntu9.3
+    - uuid-dev=2.34-0.1ubuntu9.3
+    - xml-core=0.18+nmu1
+    - xmlto=0.0.28-2.1
+    - xorriso=1.5.2-1
+    - xsltproc=1.1.34-4
+    - xz-utils=5.2.4-1ubuntu1
+    - zlib1g-dev=1:1.2.11.dfsg-2ubuntu1.2
+    - zlib1g=1:1.2.11.dfsg-2ubuntu1.2
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-prime: |
+      set -x
+
+      # Strip some of the heavy bits
+      strip -s /build/lxd/prime/bin/lxc
+      strip -s /build/lxd/prime/bin/lxd*
+      strip -s /build/lxd/prime/bin/snap*
+      strip -s /build/lxd/prime/lib/liblxc*
+      strip -s /build/lxd/prime/lib/libdqlite*
+      strip -s /build/lxd/prime/lib/libsqlite*
+
+      for zfs in zfs-0.6 zfs-0.7 zfs-0.8 zfs-2.0 zfs-2.1; do
+          [ ! -d "/build/lxd/prime/${zfs}" ] && continue
+          strip -s /build/lxd/prime/${zfs}/bin/* /build/lxd/prime/${zfs}/lib/*
+      done
+
+      [ -e "/build/lxd/prime/criu/criu" ] && strip -s /build/lxd/prime/criu/criu
+
+      exit 0
+    plugin: nil
+    prime: []
+    source: snapcraft/empty
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  vim:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/bin/: bin/
+      usr/share/vim/vim*/debian.vim: etc/vimrc
+    plugin: nil
+    prime:
+    - bin/vim.tiny
+    - etc/vimrc
+    source: snapcraft/empty
+    stage: []
+    stage-packages:
+    - vim-common=2:8.1.2269-1ubuntu5.7
+    - vim-tiny=2:8.1.2269-1ubuntu5.7
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  wrappers:
+    build-packages: []
+    installed-packages:
+    - acpica-tools=20190509-1
+    - adduser=3.118ubuntu2
+    - advancecomp=2.1-2.1build1
+    - apparmor=2.13.3-7ubuntu5.1
+    - apt=2.0.6
+    - asciidoc-base=9.0.0~rc1-1
+    - asciidoc-common=9.0.0~rc1-1
+    - asciidoc=9.0.0~rc1-1
+    - autoconf=2.69-11.1
+    - automake=1:1.16.1-4ubuntu6
+    - autopoint=0.19.8.1-10build1
+    - autotools-dev=20180224.1
+    - base-files=11ubuntu5.5
+    - base-passwd=3.5.47
+    - bash=5.0-6ubuntu1.1
+    - binutils-common=2.34-6ubuntu1.3
+    - binutils-x86-64-linux-gnu=2.34-6ubuntu1.3
+    - binutils=2.34-6ubuntu1.3
+    - bison=2:3.5.1+dfsg-1
+    - bmake=20181221-2
+    - bsdutils=1:2.34-0.1ubuntu9.3
+    - build-essential=12.8ubuntu1.1
+    - bzip2=1.0.8-2
+    - ca-certificates=20210119~20.04.2
+    - coreutils=8.30-3ubuntu2
+    - cpp-9=9.4.0-1ubuntu1~20.04.1
+    - cpp=4:9.3.0-1ubuntu2
+    - curl=7.68.0-1ubuntu2.7
+    - dash=0.5.10.2-6
+    - dbus-user-session=1.12.16-2ubuntu2.1
+    - dbus=1.12.16-2ubuntu2.1
+    - debconf=1.5.73
+    - debianutils=4.9.1
+    - diffutils=1:3.7-3
+    - distro-info-data=0.43ubuntu1.9
+    - docbook-xml=4.5-9
+    - docbook-xsl=1.79.1+dfsg-2
+    - dpkg-dev=1.19.7ubuntu3
+    - dpkg=1.19.7ubuntu3
+    - e2fsprogs=1.45.5-2ubuntu1
+    - fakeroot=1.24-1
+    - fdisk=2.34-0.1ubuntu9.3
+    - file=1:5.38-4
+    - findutils=4.7.0-1ubuntu1
+    - flex=2.6.4-6.2
+    - fuse=2.9.9-3
+    - g++-9=9.4.0-1ubuntu1~20.04.1
+    - g++=4:9.3.0-1ubuntu2
+    - gcc-10-base=10.3.0-1ubuntu1~20.04
+    - gcc-9-base=9.4.0-1ubuntu1~20.04.1
+    - gcc-9=9.4.0-1ubuntu1~20.04.1
+    - gcc=4:9.3.0-1ubuntu2
+    - git-man=1:2.25.1-1ubuntu3.2
+    - git=1:2.25.1-1ubuntu3.2
+    - gperf=3.1-1build1
+    - gpg-agent=2.2.19-3ubuntu2.1
+    - gpg=2.2.19-3ubuntu2.1
+    - gpgconf=2.2.19-3ubuntu2.1
+    - gpgv=2.2.19-3ubuntu2.1
+    - grep=3.4-1
+    - gzip=1.10-0ubuntu4
+    - hostname=3.23
+    - init-system-helpers=1.57
+    - init=1.57
+    - libacl1-dev=2.2.53-6
+    - libacl1=2.2.53-6
+    - libaio-dev=0.3.112-5
+    - libaio1=0.3.112-5
+    - libapparmor-dev=2.13.3-7ubuntu5.1
+    - libapparmor1=2.13.3-7ubuntu5.1
+    - libapt-pkg6.0=2.0.6
+    - libargon2-1=0~20171227-0.2
+    - libasan5=9.4.0-1ubuntu1~20.04.1
+    - libasn1-8-heimdal=7.7.0+dfsg-1ubuntu1
+    - libassuan0=2.5.3-7ubuntu2
+    - libatomic1=10.3.0-1ubuntu1~20.04
+    - libattr1-dev=1:2.4.48-5
+    - libattr1=1:2.4.48-5
+    - libaudit-common=1:2.8.5-2ubuntu6
+    - libaudit1=1:2.8.5-2ubuntu6
+    - libbinutils=2.34-6ubuntu1.3
+    - libblkid-dev=2.34-0.1ubuntu9.3
+    - libblkid1=2.34-0.1ubuntu9.3
+    - libboost-iostreams1.71.0=1.71.0-6ubuntu6
+    - libboost-program-options1.71.0=1.71.0-6ubuntu6
+    - libboost-thread1.71.0=1.71.0-6ubuntu6
+    - libbrotli1=1.0.7-6ubuntu0.1
+    - libbsd-dev=0.10.0-1
+    - libbsd0=0.10.0-1
+    - libburn4=1.5.2-1
+    - libbz2-1.0=1.0.8-2
+    - libc-bin=2.31-0ubuntu9.7
+    - libc-dev-bin=2.31-0ubuntu9.7
+    - libc6-dev=2.31-0ubuntu9.7
+    - libc6=2.31-0ubuntu9.7
+    - libcap-dev=1:2.32-1
+    - libcap-ng-dev=0.7.9-2.1build1
+    - libcap-ng0=0.7.9-2.1build1
+    - libcap2=1:2.32-1
+    - libcbor0.6=0.6.0-0ubuntu1
+    - libcc1-0=10.3.0-1ubuntu1~20.04
+    - libcom-err2=1.45.5-2ubuntu1
+    - libcrypt-dev=1:4.4.10-10ubuntu4
+    - libcrypt1=1:4.4.10-10ubuntu4
+    - libcryptsetup12=2:2.2.2-3ubuntu2.4
+    - libctf-nobfd0=2.34-6ubuntu1.3
+    - libctf0=2.34-6ubuntu1.3
+    - libcurl3-gnutls=7.68.0-1ubuntu2.7
+    - libcurl4=7.68.0-1ubuntu2.7
+    - libdb5.3=5.3.28+dfsg1-0.6ubuntu2
+    - libdbus-1-3=1.12.16-2ubuntu2.1
+    - libdebconfclient0=0.251ubuntu1
+    - libdevmapper1.02.1=2:1.02.167-1ubuntu1
+    - libdpkg-perl=1.19.7ubuntu3
+    - libedit-dev=3.1-20191231-1
+    - libedit2=3.1-20191231-1
+    - libelf1=0.176-1.1build1
+    - liberror-perl=0.17029-1
+    - libevent-2.1-7=2.1.11-stable-1
+    - libexpat1=2.2.9-1ubuntu0.4
+    - libext2fs2=1.45.5-2ubuntu1
+    - libfakeroot=1.24-1
+    - libfdisk1=2.34-0.1ubuntu9.3
+    - libffi-dev=3.3-4
+    - libffi7=3.3-4
+    - libfido2-1=1.3.1-1ubuntu2
+    - libfuse-dev=2.9.9-3
+    - libfuse2=2.9.9-3
+    - libgcc-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libgcc-s1=10.3.0-1ubuntu1~20.04
+    - libgcrypt20=1.8.5-5ubuntu1.1
+    - libgdbm-compat4=1.18.1-5
+    - libgdbm6=1.18.1-5
+    - libglib2.0-0=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-data=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev=2.64.6-1~ubuntu20.04.4
+    - libgmp-dev=2:6.2.0+dfsg-4
+    - libgmp10=2:6.2.0+dfsg-4
+    - libgmpxx4ldbl=2:6.2.0+dfsg-4
+    - libgnutls-dane0=3.6.13-2ubuntu1.6
+    - libgnutls-openssl27=3.6.13-2ubuntu1.6
+    - libgnutls28-dev=3.6.13-2ubuntu1.6
+    - libgnutls30=3.6.13-2ubuntu1.6
+    - libgnutlsxx28=3.6.13-2ubuntu1.6
+    - libgomp1=10.3.0-1ubuntu1~20.04
+    - libgpg-error0=1.37-1
+    - libgssapi-krb5-2=1.17-6ubuntu4.1
+    - libgssapi3-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhcrypto4-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimbase1-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimntlm0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhogweed5=3.5.1+really3.5.1-2ubuntu0.2
+    - libhx509-5-heimdal=7.7.0+dfsg-1ubuntu1
+    - libibverbs1=28.0-1ubuntu1
+    - libicu66=66.1-2ubuntu2.1
+    - libidn2-0=2.2.0-2
+    - libidn2-dev=2.2.0-2
+    - libip4tc2=1.8.4-3ubuntu2
+    - libisl22=0.22.1-1
+    - libisoburn1=1.5.2-1
+    - libisofs6=1.5.2-1
+    - libitm1=10.3.0-1ubuntu1~20.04
+    - libjansson-dev=2.12-1build1
+    - libjansson4=2.12-1build1
+    - libjpeg-turbo8-dev=2.0.3-0ubuntu1.20.04.1
+    - libjpeg-turbo8=2.0.3-0ubuntu1.20.04.1
+    - libjson-c4=0.13.1+dfsg-7ubuntu0.3
+    - libjte2=1.22-3build1
+    - libk5crypto3=1.17-6ubuntu4.1
+    - libkeyutils1=1.6-6ubuntu1
+    - libkmod2=27-1ubuntu2
+    - libkrb5-26-heimdal=7.7.0+dfsg-1ubuntu1
+    - libkrb5-3=1.17-6ubuntu4.1
+    - libkrb5support0=1.17-6ubuntu4.1
+    - libldap-2.4-2=2.4.49+dfsg-2ubuntu1.8
+    - libldap-common=2.4.49+dfsg-2ubuntu1.8
+    - liblockfile-bin=1.16-1.1
+    - liblockfile1=1.16-1.1
+    - liblsan0=10.3.0-1ubuntu1~20.04
+    - liblz4-1=1.9.2-2ubuntu0.20.04.1
+    - liblz4-dev=1.9.2-2ubuntu0.20.04.1
+    - liblzma-dev=5.2.4-1ubuntu1
+    - liblzma5=5.2.4-1ubuntu1
+    - liblzo2-2=2.10-2
+    - libmagic-mgc=1:5.38-4
+    - libmagic1=1:5.38-4
+    - libmount-dev=2.34-0.1ubuntu9.3
+    - libmount1=2.34-0.1ubuntu9.3
+    - libmpc3=1.1.0-1
+    - libmpdec2=2.4.2-3
+    - libmpfr6=4.0.2-1
+    - libncurses-dev=6.2-0ubuntu2
+    - libncurses6=6.2-0ubuntu2
+    - libncursesw6=6.2-0ubuntu2
+    - libnet1-dev=1.1.6+dfsg-3.1build1
+    - libnet1=1.1.6+dfsg-3.1build1
+    - libnettle7=3.5.1+really3.5.1-2ubuntu0.2
+    - libnghttp2-14=1.40.0-1build1
+    - libnl-3-200=3.4.0-1
+    - libnl-3-dev=3.4.0-1
+    - libnl-route-3-200=3.4.0-1
+    - libnpth0=1.6-1
+    - libnuma-dev=2.0.12-1
+    - libnuma1=2.0.12-1
+    - libp11-kit-dev=0.23.20-1ubuntu0.1
+    - libp11-kit0=0.23.20-1ubuntu0.1
+    - libpam-modules-bin=1.3.1-5ubuntu4.3
+    - libpam-modules=1.3.1-5ubuntu4.3
+    - libpam-runtime=1.3.1-5ubuntu4.3
+    - libpam-systemd=245.4-4ubuntu3.15
+    - libpam0g-dev=1.3.1-5ubuntu4.3
+    - libpam0g=1.3.1-5ubuntu4.3
+    - libpcre16-3=2:8.39-12build1
+    - libpcre2-16-0=10.34-7
+    - libpcre2-32-0=10.34-7
+    - libpcre2-8-0=10.34-7
+    - libpcre2-dev=10.34-7
+    - libpcre2-posix2=10.34-7
+    - libpcre3-dev=2:8.39-12build1
+    - libpcre32-3=2:8.39-12build1
+    - libpcre3=2:8.39-12build1
+    - libpcrecpp0v5=2:8.39-12build1
+    - libperl5.30=5.30.0-9ubuntu0.2
+    - libpixman-1-0=0.38.4-0ubuntu1
+    - libpixman-1-dev=0.38.4-0ubuntu1
+    - libpng16-16=1.6.37-2
+    - libprocps8=2:3.3.16-1ubuntu2.3
+    - libprotobuf-c-dev=1.3.3-1
+    - libprotobuf-c1=1.3.3-1
+    - libprotobuf-dev=3.6.1.3-2ubuntu5
+    - libprotobuf-lite17=3.6.1.3-2ubuntu5
+    - libprotobuf17=3.6.1.3-2ubuntu5
+    - libprotoc17=3.6.1.3-2ubuntu5
+    - libpsl5=0.21.0-1ubuntu1
+    - libpython3-stdlib=3.8.2-0ubuntu2
+    - libpython3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - libpython3.8-stdlib=3.8.10-0ubuntu1~20.04.2
+    - libquadmath0=10.3.0-1ubuntu1~20.04
+    - librados-dev=15.2.14-0ubuntu0.20.04.2
+    - librados2=15.2.14-0ubuntu0.20.04.2
+    - librbd-dev=15.2.14-0ubuntu0.20.04.2
+    - librbd1=15.2.14-0ubuntu0.20.04.2
+    - librdmacm1=28.0-1ubuntu1
+    - libreadline-dev=8.0-4
+    - libreadline8=8.0-4
+    - libroken18-heimdal=7.7.0+dfsg-1ubuntu1
+    - librtmp1=2.4+20151223.gitfa8646d.1-2build1
+    - libsasl2-2=2.1.27+dfsg-2ubuntu0.1
+    - libsasl2-modules-db=2.1.27+dfsg-2ubuntu0.1
+    - libseccomp2=2.5.1-1ubuntu1~20.04.2
+    - libselinux1-dev=3.0-1build2
+    - libselinux1=3.0-1build2
+    - libsemanage-common=3.0-1build2
+    - libsemanage1=3.0-1build2
+    - libsepol1-dev=3.0-1
+    - libsepol1=3.0-1
+    - libsigsegv2=2.12-2
+    - libsmartcols1=2.34-0.1ubuntu9.3
+    - libsqlite3-0=3.31.1-4ubuntu0.2
+    - libsquashfuse0=0.1.103-2
+    - libss2=1.45.5-2ubuntu1
+    - libssh-4=0.9.3-2ubuntu2.2
+    - libssl-dev=1.1.1f-1ubuntu2.12
+    - libssl1.1=1.1.1f-1ubuntu2.12
+    - libstdc++-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libstdc++6=10.3.0-1ubuntu1~20.04
+    - libsystemd0=245.4-4ubuntu3.15
+    - libtasn1-6-dev=4.16.0-2
+    - libtasn1-6=4.16.0-2
+    - libtcl8.6=8.6.10+dfsg-1
+    - libtinfo6=6.2-0ubuntu2
+    - libtool=2.4.6-14
+    - libtsan0=10.3.0-1ubuntu1~20.04
+    - libubsan1=10.3.0-1ubuntu1~20.04
+    - libudev-dev=245.4-4ubuntu3.15
+    - libudev1=245.4-4ubuntu3.15
+    - libunbound8=1.9.4-2ubuntu1.2
+    - libunistring2=0.9.10-2
+    - libusb-1.0-0=2:1.0.23-2build1
+    - libusbredirhost-dev=0.8.0-1
+    - libusbredirhost1=0.8.0-1
+    - libusbredirparser-dev=0.8.0-1
+    - libusbredirparser1=0.8.0-1
+    - libuuid1=2.34-0.1ubuntu9.3
+    - libuv1-dev=1.34.2-1ubuntu1.3
+    - libuv1=1.34.2-1ubuntu1.3
+    - libwind0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libwrap0=7.6.q-30
+    - libxml2-utils=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxml2=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxslt1.1=1.1.34-4
+    - libzstd1=1.4.4+dfsg-3ubuntu0.1
+    - linux-libc-dev=5.4.0-105.119
+    - lockfile-progs=0.1.18
+    - login=1:4.8.1-1ubuntu5.20.04.1
+    - logsave=1.45.5-2ubuntu1
+    - lsb-base=11.1.0ubuntu2
+    - lsb-release=11.1.0ubuntu2
+    - m4=1.4.18-4
+    - make=4.2.1-1.2
+    - mawk=1.3.4.20200120-2
+    - mime-support=3.64ubuntu1
+    - mount=2.34-0.1ubuntu9.3
+    - nasm=2.14.02-1
+    - ncurses-base=6.2-0ubuntu2
+    - ncurses-bin=6.2-0ubuntu2
+    - nettle-dev=3.5.1+really3.5.1-2ubuntu0.2
+    - ninja-build=1.10.0-1build1
+    - openssh-client=1:8.2p1-4ubuntu0.4
+    - openssl=1.1.1f-1ubuntu2.12
+    - optipng=0.7.7-1
+    - passwd=1:4.8.1-1ubuntu5.20.04.1
+    - patch=2.7.6-6
+    - perl-base=5.30.0-9ubuntu0.2
+    - perl-modules-5.30=5.30.0-9ubuntu0.2
+    - perl=5.30.0-9ubuntu0.2
+    - pinentry-curses=1.1.0-3build1
+    - pkg-config=0.29.1-0ubuntu4
+    - pkgbinarymangler=144
+    - policyrcd-script-zg2=0.1-3
+    - procps=2:3.3.16-1ubuntu2.3
+    - protobuf-c-compiler=1.3.3-1
+    - protobuf-compiler=3.6.1.3-2ubuntu5
+    - python-pip-whl=20.0.2-5ubuntu1.6
+    - python3-distutils=3.8.10-0ubuntu1~20.04
+    - python3-lib2to3=3.8.10-0ubuntu1~20.04
+    - python3-minimal=3.8.2-0ubuntu2
+    - python3-pip=20.0.2-5ubuntu1.6
+    - python3-pkg-resources=45.2.0-1
+    - python3-pyparsing=2.4.6-1
+    - python3-setuptools=45.2.0-1
+    - python3-six=1.14.0-2
+    - python3-wheel=0.34.2-1
+    - python3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - python3.8=3.8.10-0ubuntu1~20.04.2
+    - python3=3.8.2-0ubuntu2
+    - readline-common=8.0-4
+    - sed=4.7-1
+    - sensible-utils=0.0.12+nmu1
+    - sgml-base=1.29.1
+    - sgml-data=2.0.11
+    - snapd=2.54.3+20.04.1ubuntu0.2
+    - socat=1.7.3.3-2
+    - squashfs-tools=1:4.4-1ubuntu0.3
+    - squashfuse=0.1.103-2
+    - sudo=1.8.31-1ubuntu1.2
+    - systemd-sysv=245.4-4ubuntu3.15
+    - systemd-timesyncd=245.4-4ubuntu3.15
+    - systemd=245.4-4ubuntu3.15
+    - sysvinit-utils=2.96-2.1ubuntu1
+    - tar=1.30+dfsg-7ubuntu0.20.04.2
+    - tcl8.6=8.6.10+dfsg-1
+    - tcl=8.6.9+1
+    - tzdata=2022a-0ubuntu0.20.04
+    - ubuntu-keyring=2020.02.11.4
+    - udev=245.4-4ubuntu3.15
+    - util-linux=2.34-0.1ubuntu9.3
+    - uuid-dev=2.34-0.1ubuntu9.3
+    - xml-core=0.18+nmu1
+    - xmlto=0.0.28-2.1
+    - xorriso=1.5.2-1
+    - xsltproc=1.1.34-4
+    - xz-utils=5.2.4-1ubuntu1
+    - zlib1g-dev=1:1.2.11.dfsg-2ubuntu1.2
+    - zlib1g=1:1.2.11.dfsg-2ubuntu1.2
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      hooks/: snap/hooks/
+      wrappers/editor: bin/
+      wrappers/remote-viewer: bin/
+    plugin: dump
+    prime: []
+    source: snapcraft/
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  xfs:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      sbin/: bin/
+      usr/sbin/: bin/
+    plugin: nil
+    prime:
+    - bin/xfs_admin
+    - bin/xfs_db
+    - bin/xfs_growfs
+    - bin/xfs_repair
+    - bin/mkfs.xfs
+    source: snapcraft/empty
+    stage: []
+    stage-packages:
+    - libicu66=66.1-2ubuntu2.1
+    - libreadline5=5.2+dfsg-3build3
+    - xfsprogs=5.3.0-1ubuntu2
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  xtables:
+    build-packages: []
+    installed-packages:
+    - acpica-tools=20190509-1
+    - adduser=3.118ubuntu2
+    - advancecomp=2.1-2.1build1
+    - apparmor=2.13.3-7ubuntu5.1
+    - apt=2.0.6
+    - asciidoc-base=9.0.0~rc1-1
+    - asciidoc-common=9.0.0~rc1-1
+    - asciidoc=9.0.0~rc1-1
+    - autoconf=2.69-11.1
+    - automake=1:1.16.1-4ubuntu6
+    - autopoint=0.19.8.1-10build1
+    - autotools-dev=20180224.1
+    - base-files=11ubuntu5.5
+    - base-passwd=3.5.47
+    - bash=5.0-6ubuntu1.1
+    - binutils-common=2.34-6ubuntu1.3
+    - binutils-x86-64-linux-gnu=2.34-6ubuntu1.3
+    - binutils=2.34-6ubuntu1.3
+    - bison=2:3.5.1+dfsg-1
+    - bmake=20181221-2
+    - bsdutils=1:2.34-0.1ubuntu9.3
+    - build-essential=12.8ubuntu1.1
+    - bzip2=1.0.8-2
+    - ca-certificates=20210119~20.04.2
+    - coreutils=8.30-3ubuntu2
+    - cpp-9=9.4.0-1ubuntu1~20.04.1
+    - cpp=4:9.3.0-1ubuntu2
+    - curl=7.68.0-1ubuntu2.7
+    - dash=0.5.10.2-6
+    - dbus-user-session=1.12.16-2ubuntu2.1
+    - dbus=1.12.16-2ubuntu2.1
+    - debconf=1.5.73
+    - debianutils=4.9.1
+    - diffutils=1:3.7-3
+    - distro-info-data=0.43ubuntu1.9
+    - docbook-xml=4.5-9
+    - docbook-xsl=1.79.1+dfsg-2
+    - dpkg-dev=1.19.7ubuntu3
+    - dpkg=1.19.7ubuntu3
+    - e2fsprogs=1.45.5-2ubuntu1
+    - fakeroot=1.24-1
+    - fdisk=2.34-0.1ubuntu9.3
+    - file=1:5.38-4
+    - findutils=4.7.0-1ubuntu1
+    - flex=2.6.4-6.2
+    - fuse=2.9.9-3
+    - g++-9=9.4.0-1ubuntu1~20.04.1
+    - g++=4:9.3.0-1ubuntu2
+    - gcc-10-base=10.3.0-1ubuntu1~20.04
+    - gcc-9-base=9.4.0-1ubuntu1~20.04.1
+    - gcc-9=9.4.0-1ubuntu1~20.04.1
+    - gcc=4:9.3.0-1ubuntu2
+    - git-man=1:2.25.1-1ubuntu3.2
+    - git=1:2.25.1-1ubuntu3.2
+    - gperf=3.1-1build1
+    - gpg-agent=2.2.19-3ubuntu2.1
+    - gpg=2.2.19-3ubuntu2.1
+    - gpgconf=2.2.19-3ubuntu2.1
+    - gpgv=2.2.19-3ubuntu2.1
+    - grep=3.4-1
+    - gzip=1.10-0ubuntu4
+    - hostname=3.23
+    - init-system-helpers=1.57
+    - init=1.57
+    - libacl1-dev=2.2.53-6
+    - libacl1=2.2.53-6
+    - libaio-dev=0.3.112-5
+    - libaio1=0.3.112-5
+    - libapparmor-dev=2.13.3-7ubuntu5.1
+    - libapparmor1=2.13.3-7ubuntu5.1
+    - libapt-pkg6.0=2.0.6
+    - libargon2-1=0~20171227-0.2
+    - libasan5=9.4.0-1ubuntu1~20.04.1
+    - libasn1-8-heimdal=7.7.0+dfsg-1ubuntu1
+    - libassuan0=2.5.3-7ubuntu2
+    - libatomic1=10.3.0-1ubuntu1~20.04
+    - libattr1-dev=1:2.4.48-5
+    - libattr1=1:2.4.48-5
+    - libaudit-common=1:2.8.5-2ubuntu6
+    - libaudit1=1:2.8.5-2ubuntu6
+    - libbinutils=2.34-6ubuntu1.3
+    - libblkid-dev=2.34-0.1ubuntu9.3
+    - libblkid1=2.34-0.1ubuntu9.3
+    - libboost-iostreams1.71.0=1.71.0-6ubuntu6
+    - libboost-program-options1.71.0=1.71.0-6ubuntu6
+    - libboost-thread1.71.0=1.71.0-6ubuntu6
+    - libbrotli1=1.0.7-6ubuntu0.1
+    - libbsd-dev=0.10.0-1
+    - libbsd0=0.10.0-1
+    - libburn4=1.5.2-1
+    - libbz2-1.0=1.0.8-2
+    - libc-bin=2.31-0ubuntu9.7
+    - libc-dev-bin=2.31-0ubuntu9.7
+    - libc6-dev=2.31-0ubuntu9.7
+    - libc6=2.31-0ubuntu9.7
+    - libcap-dev=1:2.32-1
+    - libcap-ng-dev=0.7.9-2.1build1
+    - libcap-ng0=0.7.9-2.1build1
+    - libcap2=1:2.32-1
+    - libcbor0.6=0.6.0-0ubuntu1
+    - libcc1-0=10.3.0-1ubuntu1~20.04
+    - libcom-err2=1.45.5-2ubuntu1
+    - libcrypt-dev=1:4.4.10-10ubuntu4
+    - libcrypt1=1:4.4.10-10ubuntu4
+    - libcryptsetup12=2:2.2.2-3ubuntu2.4
+    - libctf-nobfd0=2.34-6ubuntu1.3
+    - libctf0=2.34-6ubuntu1.3
+    - libcurl3-gnutls=7.68.0-1ubuntu2.7
+    - libcurl4=7.68.0-1ubuntu2.7
+    - libdb5.3=5.3.28+dfsg1-0.6ubuntu2
+    - libdbus-1-3=1.12.16-2ubuntu2.1
+    - libdebconfclient0=0.251ubuntu1
+    - libdevmapper1.02.1=2:1.02.167-1ubuntu1
+    - libdpkg-perl=1.19.7ubuntu3
+    - libedit-dev=3.1-20191231-1
+    - libedit2=3.1-20191231-1
+    - libelf1=0.176-1.1build1
+    - liberror-perl=0.17029-1
+    - libevent-2.1-7=2.1.11-stable-1
+    - libexpat1=2.2.9-1ubuntu0.4
+    - libext2fs2=1.45.5-2ubuntu1
+    - libfakeroot=1.24-1
+    - libfdisk1=2.34-0.1ubuntu9.3
+    - libffi-dev=3.3-4
+    - libffi7=3.3-4
+    - libfido2-1=1.3.1-1ubuntu2
+    - libfuse-dev=2.9.9-3
+    - libfuse2=2.9.9-3
+    - libgcc-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libgcc-s1=10.3.0-1ubuntu1~20.04
+    - libgcrypt20=1.8.5-5ubuntu1.1
+    - libgdbm-compat4=1.18.1-5
+    - libgdbm6=1.18.1-5
+    - libglib2.0-0=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-data=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev=2.64.6-1~ubuntu20.04.4
+    - libgmp-dev=2:6.2.0+dfsg-4
+    - libgmp10=2:6.2.0+dfsg-4
+    - libgmpxx4ldbl=2:6.2.0+dfsg-4
+    - libgnutls-dane0=3.6.13-2ubuntu1.6
+    - libgnutls-openssl27=3.6.13-2ubuntu1.6
+    - libgnutls28-dev=3.6.13-2ubuntu1.6
+    - libgnutls30=3.6.13-2ubuntu1.6
+    - libgnutlsxx28=3.6.13-2ubuntu1.6
+    - libgomp1=10.3.0-1ubuntu1~20.04
+    - libgpg-error0=1.37-1
+    - libgssapi-krb5-2=1.17-6ubuntu4.1
+    - libgssapi3-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhcrypto4-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimbase1-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimntlm0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhogweed5=3.5.1+really3.5.1-2ubuntu0.2
+    - libhx509-5-heimdal=7.7.0+dfsg-1ubuntu1
+    - libibverbs1=28.0-1ubuntu1
+    - libicu66=66.1-2ubuntu2.1
+    - libidn2-0=2.2.0-2
+    - libidn2-dev=2.2.0-2
+    - libip4tc2=1.8.4-3ubuntu2
+    - libisl22=0.22.1-1
+    - libisoburn1=1.5.2-1
+    - libisofs6=1.5.2-1
+    - libitm1=10.3.0-1ubuntu1~20.04
+    - libjansson-dev=2.12-1build1
+    - libjansson4=2.12-1build1
+    - libjpeg-turbo8-dev=2.0.3-0ubuntu1.20.04.1
+    - libjpeg-turbo8=2.0.3-0ubuntu1.20.04.1
+    - libjson-c4=0.13.1+dfsg-7ubuntu0.3
+    - libjte2=1.22-3build1
+    - libk5crypto3=1.17-6ubuntu4.1
+    - libkeyutils1=1.6-6ubuntu1
+    - libkmod2=27-1ubuntu2
+    - libkrb5-26-heimdal=7.7.0+dfsg-1ubuntu1
+    - libkrb5-3=1.17-6ubuntu4.1
+    - libkrb5support0=1.17-6ubuntu4.1
+    - libldap-2.4-2=2.4.49+dfsg-2ubuntu1.8
+    - libldap-common=2.4.49+dfsg-2ubuntu1.8
+    - liblockfile-bin=1.16-1.1
+    - liblockfile1=1.16-1.1
+    - liblsan0=10.3.0-1ubuntu1~20.04
+    - liblz4-1=1.9.2-2ubuntu0.20.04.1
+    - liblz4-dev=1.9.2-2ubuntu0.20.04.1
+    - liblzma-dev=5.2.4-1ubuntu1
+    - liblzma5=5.2.4-1ubuntu1
+    - liblzo2-2=2.10-2
+    - libmagic-mgc=1:5.38-4
+    - libmagic1=1:5.38-4
+    - libmount-dev=2.34-0.1ubuntu9.3
+    - libmount1=2.34-0.1ubuntu9.3
+    - libmpc3=1.1.0-1
+    - libmpdec2=2.4.2-3
+    - libmpfr6=4.0.2-1
+    - libncurses-dev=6.2-0ubuntu2
+    - libncurses6=6.2-0ubuntu2
+    - libncursesw6=6.2-0ubuntu2
+    - libnet1-dev=1.1.6+dfsg-3.1build1
+    - libnet1=1.1.6+dfsg-3.1build1
+    - libnettle7=3.5.1+really3.5.1-2ubuntu0.2
+    - libnghttp2-14=1.40.0-1build1
+    - libnl-3-200=3.4.0-1
+    - libnl-3-dev=3.4.0-1
+    - libnl-route-3-200=3.4.0-1
+    - libnpth0=1.6-1
+    - libnuma-dev=2.0.12-1
+    - libnuma1=2.0.12-1
+    - libp11-kit-dev=0.23.20-1ubuntu0.1
+    - libp11-kit0=0.23.20-1ubuntu0.1
+    - libpam-modules-bin=1.3.1-5ubuntu4.3
+    - libpam-modules=1.3.1-5ubuntu4.3
+    - libpam-runtime=1.3.1-5ubuntu4.3
+    - libpam-systemd=245.4-4ubuntu3.15
+    - libpam0g-dev=1.3.1-5ubuntu4.3
+    - libpam0g=1.3.1-5ubuntu4.3
+    - libpcre16-3=2:8.39-12build1
+    - libpcre2-16-0=10.34-7
+    - libpcre2-32-0=10.34-7
+    - libpcre2-8-0=10.34-7
+    - libpcre2-dev=10.34-7
+    - libpcre2-posix2=10.34-7
+    - libpcre3-dev=2:8.39-12build1
+    - libpcre32-3=2:8.39-12build1
+    - libpcre3=2:8.39-12build1
+    - libpcrecpp0v5=2:8.39-12build1
+    - libperl5.30=5.30.0-9ubuntu0.2
+    - libpixman-1-0=0.38.4-0ubuntu1
+    - libpixman-1-dev=0.38.4-0ubuntu1
+    - libpng16-16=1.6.37-2
+    - libprocps8=2:3.3.16-1ubuntu2.3
+    - libprotobuf-c-dev=1.3.3-1
+    - libprotobuf-c1=1.3.3-1
+    - libprotobuf-dev=3.6.1.3-2ubuntu5
+    - libprotobuf-lite17=3.6.1.3-2ubuntu5
+    - libprotobuf17=3.6.1.3-2ubuntu5
+    - libprotoc17=3.6.1.3-2ubuntu5
+    - libpsl5=0.21.0-1ubuntu1
+    - libpython3-stdlib=3.8.2-0ubuntu2
+    - libpython3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - libpython3.8-stdlib=3.8.10-0ubuntu1~20.04.2
+    - libquadmath0=10.3.0-1ubuntu1~20.04
+    - librados-dev=15.2.14-0ubuntu0.20.04.2
+    - librados2=15.2.14-0ubuntu0.20.04.2
+    - librbd-dev=15.2.14-0ubuntu0.20.04.2
+    - librbd1=15.2.14-0ubuntu0.20.04.2
+    - librdmacm1=28.0-1ubuntu1
+    - libreadline-dev=8.0-4
+    - libreadline8=8.0-4
+    - libroken18-heimdal=7.7.0+dfsg-1ubuntu1
+    - librtmp1=2.4+20151223.gitfa8646d.1-2build1
+    - libsasl2-2=2.1.27+dfsg-2ubuntu0.1
+    - libsasl2-modules-db=2.1.27+dfsg-2ubuntu0.1
+    - libseccomp2=2.5.1-1ubuntu1~20.04.2
+    - libselinux1-dev=3.0-1build2
+    - libselinux1=3.0-1build2
+    - libsemanage-common=3.0-1build2
+    - libsemanage1=3.0-1build2
+    - libsepol1-dev=3.0-1
+    - libsepol1=3.0-1
+    - libsigsegv2=2.12-2
+    - libsmartcols1=2.34-0.1ubuntu9.3
+    - libsqlite3-0=3.31.1-4ubuntu0.2
+    - libsquashfuse0=0.1.103-2
+    - libss2=1.45.5-2ubuntu1
+    - libssh-4=0.9.3-2ubuntu2.2
+    - libssl-dev=1.1.1f-1ubuntu2.12
+    - libssl1.1=1.1.1f-1ubuntu2.12
+    - libstdc++-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libstdc++6=10.3.0-1ubuntu1~20.04
+    - libsystemd0=245.4-4ubuntu3.15
+    - libtasn1-6-dev=4.16.0-2
+    - libtasn1-6=4.16.0-2
+    - libtcl8.6=8.6.10+dfsg-1
+    - libtinfo6=6.2-0ubuntu2
+    - libtool=2.4.6-14
+    - libtsan0=10.3.0-1ubuntu1~20.04
+    - libubsan1=10.3.0-1ubuntu1~20.04
+    - libudev-dev=245.4-4ubuntu3.15
+    - libudev1=245.4-4ubuntu3.15
+    - libunbound8=1.9.4-2ubuntu1.2
+    - libunistring2=0.9.10-2
+    - libusb-1.0-0=2:1.0.23-2build1
+    - libusbredirhost-dev=0.8.0-1
+    - libusbredirhost1=0.8.0-1
+    - libusbredirparser-dev=0.8.0-1
+    - libusbredirparser1=0.8.0-1
+    - libuuid1=2.34-0.1ubuntu9.3
+    - libuv1-dev=1.34.2-1ubuntu1.3
+    - libuv1=1.34.2-1ubuntu1.3
+    - libwind0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libwrap0=7.6.q-30
+    - libxml2-utils=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxml2=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxslt1.1=1.1.34-4
+    - libzstd1=1.4.4+dfsg-3ubuntu0.1
+    - linux-libc-dev=5.4.0-105.119
+    - lockfile-progs=0.1.18
+    - login=1:4.8.1-1ubuntu5.20.04.1
+    - logsave=1.45.5-2ubuntu1
+    - lsb-base=11.1.0ubuntu2
+    - lsb-release=11.1.0ubuntu2
+    - m4=1.4.18-4
+    - make=4.2.1-1.2
+    - mawk=1.3.4.20200120-2
+    - mime-support=3.64ubuntu1
+    - mount=2.34-0.1ubuntu9.3
+    - nasm=2.14.02-1
+    - ncurses-base=6.2-0ubuntu2
+    - ncurses-bin=6.2-0ubuntu2
+    - nettle-dev=3.5.1+really3.5.1-2ubuntu0.2
+    - ninja-build=1.10.0-1build1
+    - openssh-client=1:8.2p1-4ubuntu0.4
+    - openssl=1.1.1f-1ubuntu2.12
+    - optipng=0.7.7-1
+    - passwd=1:4.8.1-1ubuntu5.20.04.1
+    - patch=2.7.6-6
+    - perl-base=5.30.0-9ubuntu0.2
+    - perl-modules-5.30=5.30.0-9ubuntu0.2
+    - perl=5.30.0-9ubuntu0.2
+    - pinentry-curses=1.1.0-3build1
+    - pkg-config=0.29.1-0ubuntu4
+    - pkgbinarymangler=144
+    - policyrcd-script-zg2=0.1-3
+    - procps=2:3.3.16-1ubuntu2.3
+    - protobuf-c-compiler=1.3.3-1
+    - protobuf-compiler=3.6.1.3-2ubuntu5
+    - python-pip-whl=20.0.2-5ubuntu1.6
+    - python3-distutils=3.8.10-0ubuntu1~20.04
+    - python3-lib2to3=3.8.10-0ubuntu1~20.04
+    - python3-minimal=3.8.2-0ubuntu2
+    - python3-pip=20.0.2-5ubuntu1.6
+    - python3-pkg-resources=45.2.0-1
+    - python3-pyparsing=2.4.6-1
+    - python3-setuptools=45.2.0-1
+    - python3-six=1.14.0-2
+    - python3-wheel=0.34.2-1
+    - python3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - python3.8=3.8.10-0ubuntu1~20.04.2
+    - python3=3.8.2-0ubuntu2
+    - readline-common=8.0-4
+    - sed=4.7-1
+    - sensible-utils=0.0.12+nmu1
+    - sgml-base=1.29.1
+    - sgml-data=2.0.11
+    - snapd=2.54.3+20.04.1ubuntu0.2
+    - socat=1.7.3.3-2
+    - squashfs-tools=1:4.4-1ubuntu0.3
+    - squashfuse=0.1.103-2
+    - sudo=1.8.31-1ubuntu1.2
+    - systemd-sysv=245.4-4ubuntu3.15
+    - systemd-timesyncd=245.4-4ubuntu3.15
+    - systemd=245.4-4ubuntu3.15
+    - sysvinit-utils=2.96-2.1ubuntu1
+    - tar=1.30+dfsg-7ubuntu0.20.04.2
+    - tcl8.6=8.6.10+dfsg-1
+    - tcl=8.6.9+1
+    - tzdata=2022a-0ubuntu0.20.04
+    - ubuntu-keyring=2020.02.11.4
+    - udev=245.4-4ubuntu3.15
+    - util-linux=2.34-0.1ubuntu9.3
+    - uuid-dev=2.34-0.1ubuntu9.3
+    - xml-core=0.18+nmu1
+    - xmlto=0.0.28-2.1
+    - xorriso=1.5.2-1
+    - xsltproc=1.1.34-4
+    - xz-utils=5.2.4-1ubuntu1
+    - zlib1g-dev=1:1.2.11.dfsg-2ubuntu1.2
+    - zlib1g=1:1.2.11.dfsg-2ubuntu1.2
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/lib/ebtables/: lib/
+      usr/sbin/: bin/
+    plugin: nil
+    prime:
+    - bin/arptables-legacy
+    - bin/ebtables-legacy
+    - etc/ethertypes
+    - etc/protocols
+    - lib/libebtc.so.*
+    source: snapcraft/empty
+    stage: []
+    stage-packages:
+    - arptables=0.0.5-1
+    - ebtables=2.0.11-3build1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  xz:
+    build-packages: []
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/bin/: bin/
+      usr/lib/: lib/
+      usr/sbin/: bin/
+    override-build: |
+      snapcraftctl build
+
+      # Include the lzma symlink
+      ln -s xz "${SNAPCRAFT_PART_INSTALL}/usr/bin/lzma"
+    plugin: nil
+    prime:
+    - bin/lzma
+    - bin/xz
+    - lib/*/liblzma*so*
+    source: snapcraft/empty
+    stage: []
+    stage-packages:
+    - xz-utils=5.2.4-1ubuntu1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  zfs-0-6:
+    autotools-configure-parameters:
+    - --prefix=/
+    - --with-config=user
+    build-packages:
+    - uuid-dev
+    - zlib1g-dev
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-build: |
+      set -ex
+
+      [ "$(uname -m)" != "x86_64" ] && \
+        [ "$(uname -m)" != "aarch64" ] && \
+        [ "$(uname -m)" != "s390x" ] && \
+        [ "$(uname -m)" != "ppc64le" ] && exit 0
+
+      git config user.email "noreply@linuxcontainers.org"
+      git config user.name "LXD snap builder"
+
+      git cherry-pick fb963d33ee0dd350143ba1c9cd35d5f7d86910d2  # Fix endian build problem on ppc64el
+
+      set +ex
+      snapcraftctl build
+      set -ex
+
+      mv "${SNAPCRAFT_PART_INSTALL}" "${SNAPCRAFT_PART_INSTALL}.tmp"
+      mkdir -p "${SNAPCRAFT_PART_INSTALL}/zfs-0.6/bin" "${SNAPCRAFT_PART_INSTALL}/zfs-0.6/lib"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zfs" "${SNAPCRAFT_PART_INSTALL}/zfs-0.6/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zpool" "${SNAPCRAFT_PART_INSTALL}/zfs-0.6/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/udev/zvol_id" "${SNAPCRAFT_PART_INSTALL}/zfs-0.6/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/"*so* "${SNAPCRAFT_PART_INSTALL}/zfs-0.6/lib/"
+      rm -Rf "${SNAPCRAFT_PART_INSTALL}.tmp"
+    plugin: autotools
+    prime: []
+    source: https://github.com/openzfs/zfs
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-tag: zfs-0.6.5.11
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  zfs-0-7:
+    autotools-configure-parameters:
+    - --prefix=/
+    - --with-config=user
+    build-packages:
+    - libblkid-dev
+    - uuid-dev
+    - zlib1g-dev
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-build: |
+      set -ex
+
+      [ "$(uname -m)" != "x86_64" ] && \
+        [ "$(uname -m)" != "aarch64" ] && \
+        [ "$(uname -m)" != "s390x" ] && \
+        [ "$(uname -m)" != "ppc64le" ] && exit 0
+
+      set +ex
+      snapcraftctl build
+      set -ex
+
+      mv "${SNAPCRAFT_PART_INSTALL}" "${SNAPCRAFT_PART_INSTALL}.tmp"
+      mkdir -p "${SNAPCRAFT_PART_INSTALL}/zfs-0.7/bin" "${SNAPCRAFT_PART_INSTALL}/zfs-0.7/lib"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zfs" "${SNAPCRAFT_PART_INSTALL}/zfs-0.7/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zpool" "${SNAPCRAFT_PART_INSTALL}/zfs-0.7/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/udev/zvol_id" "${SNAPCRAFT_PART_INSTALL}/zfs-0.7/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/"*so* "${SNAPCRAFT_PART_INSTALL}/zfs-0.7/lib/"
+      rm -Rf "${SNAPCRAFT_PART_INSTALL}.tmp"
+    plugin: autotools
+    prime: []
+    source: https://github.com/openzfs/zfs
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: zfs-0.7.13
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  zfs-0-8:
+    autotools-configure-parameters:
+    - --prefix=/
+    - --with-config=user
+    build-packages:
+    - libblkid-dev
+    - libssl-dev
+    - uuid-dev
+    - zlib1g-dev
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-build: |
+      set -ex
+
+      [ "$(uname -m)" != "x86_64" ] && \
+        [ "$(uname -m)" != "aarch64" ] && \
+        [ "$(uname -m)" != "s390x" ] && \
+        [ "$(uname -m)" != "ppc64le" ] && exit 0
+
+      set +ex
+      snapcraftctl build
+      set -ex
+
+      mv "${SNAPCRAFT_PART_INSTALL}" "${SNAPCRAFT_PART_INSTALL}.tmp"
+      mkdir -p "${SNAPCRAFT_PART_INSTALL}/zfs-0.8/bin" "${SNAPCRAFT_PART_INSTALL}/zfs-0.8/lib"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zfs" "${SNAPCRAFT_PART_INSTALL}/zfs-0.8/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zpool" "${SNAPCRAFT_PART_INSTALL}/zfs-0.8/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/udev/zvol_id" "${SNAPCRAFT_PART_INSTALL}/zfs-0.8/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/"*so* "${SNAPCRAFT_PART_INSTALL}/zfs-0.8/lib/"
+      rm -Rf "${SNAPCRAFT_PART_INSTALL}.tmp"
+    plugin: autotools
+    prime: []
+    source: https://github.com/openzfs/zfs
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: zfs-0.8.6
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  zfs-2-0:
+    autotools-configure-parameters:
+    - --prefix=/
+    - --with-config=user
+    build-packages:
+    - libblkid-dev
+    - libssl-dev
+    - uuid-dev
+    - zlib1g-dev
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-build: |
+      set -ex
+
+      [ "$(uname -m)" != "x86_64" ] && \
+        [ "$(uname -m)" != "aarch64" ] && \
+        [ "$(uname -m)" != "s390x" ] && \
+        [ "$(uname -m)" != "ppc64le" ] && exit 0
+
+      set +ex
+      snapcraftctl build
+      set -ex
+
+      mv "${SNAPCRAFT_PART_INSTALL}" "${SNAPCRAFT_PART_INSTALL}.tmp"
+      mkdir -p "${SNAPCRAFT_PART_INSTALL}/zfs-2.0/bin" "${SNAPCRAFT_PART_INSTALL}/zfs-2.0/lib"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zfs" "${SNAPCRAFT_PART_INSTALL}/zfs-2.0/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zpool" "${SNAPCRAFT_PART_INSTALL}/zfs-2.0/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/udev/zvol_id" "${SNAPCRAFT_PART_INSTALL}/zfs-2.0/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/"*so* "${SNAPCRAFT_PART_INSTALL}/zfs-2.0/lib/"
+      rm -Rf "${SNAPCRAFT_PART_INSTALL}.tmp"
+    plugin: autotools
+    prime: []
+    source: https://github.com/openzfs/zfs
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: zfs-2.0.7
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  zfs-2-1:
+    autotools-configure-parameters:
+    - --prefix=/
+    - --with-config=user
+    build-packages:
+    - libblkid-dev
+    - libssl-dev
+    - uuid-dev
+    - zlib1g-dev
+    installed-packages: []
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    override-build: |
+      set -ex
+
+      [ "$(uname -m)" != "x86_64" ] && \
+        [ "$(uname -m)" != "aarch64" ] && \
+        [ "$(uname -m)" != "s390x" ] && \
+        [ "$(uname -m)" != "ppc64le" ] && exit 0
+
+      set +ex
+      snapcraftctl build
+      set -ex
+
+      mv "${SNAPCRAFT_PART_INSTALL}" "${SNAPCRAFT_PART_INSTALL}.tmp"
+      mkdir -p "${SNAPCRAFT_PART_INSTALL}/zfs-2.1/bin" "${SNAPCRAFT_PART_INSTALL}/zfs-2.1/lib"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zfs" "${SNAPCRAFT_PART_INSTALL}/zfs-2.1/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/sbin/zpool" "${SNAPCRAFT_PART_INSTALL}/zfs-2.1/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/udev/zvol_id" "${SNAPCRAFT_PART_INSTALL}/zfs-2.1/bin/"
+      mv "${SNAPCRAFT_PART_INSTALL}.tmp/lib/"*so* "${SNAPCRAFT_PART_INSTALL}/zfs-2.1/lib/"
+      rm -Rf "${SNAPCRAFT_PART_INSTALL}.tmp"
+    plugin: autotools
+    prime: []
+    source: https://github.com/openzfs/zfs
+    source-branch: ''
+    source-checksum: ''
+    source-commit: ''
+    source-depth: 1
+    source-tag: zfs-2.1.3
+    source-type: git
+    stage: []
+    stage-packages: []
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+  zstd:
+    build-packages: []
+    installed-packages:
+    - acpica-tools=20190509-1
+    - adduser=3.118ubuntu2
+    - advancecomp=2.1-2.1build1
+    - apparmor=2.13.3-7ubuntu5.1
+    - apt=2.0.6
+    - asciidoc-base=9.0.0~rc1-1
+    - asciidoc-common=9.0.0~rc1-1
+    - asciidoc=9.0.0~rc1-1
+    - autoconf=2.69-11.1
+    - automake=1:1.16.1-4ubuntu6
+    - autopoint=0.19.8.1-10build1
+    - autotools-dev=20180224.1
+    - base-files=11ubuntu5.5
+    - base-passwd=3.5.47
+    - bash=5.0-6ubuntu1.1
+    - binutils-common=2.34-6ubuntu1.3
+    - binutils-x86-64-linux-gnu=2.34-6ubuntu1.3
+    - binutils=2.34-6ubuntu1.3
+    - bison=2:3.5.1+dfsg-1
+    - bmake=20181221-2
+    - bsdutils=1:2.34-0.1ubuntu9.3
+    - build-essential=12.8ubuntu1.1
+    - bzip2=1.0.8-2
+    - ca-certificates=20210119~20.04.2
+    - coreutils=8.30-3ubuntu2
+    - cpp-9=9.4.0-1ubuntu1~20.04.1
+    - cpp=4:9.3.0-1ubuntu2
+    - curl=7.68.0-1ubuntu2.7
+    - dash=0.5.10.2-6
+    - dbus-user-session=1.12.16-2ubuntu2.1
+    - dbus=1.12.16-2ubuntu2.1
+    - debconf=1.5.73
+    - debianutils=4.9.1
+    - diffutils=1:3.7-3
+    - distro-info-data=0.43ubuntu1.9
+    - docbook-xml=4.5-9
+    - docbook-xsl=1.79.1+dfsg-2
+    - dpkg-dev=1.19.7ubuntu3
+    - dpkg=1.19.7ubuntu3
+    - e2fsprogs=1.45.5-2ubuntu1
+    - fakeroot=1.24-1
+    - fdisk=2.34-0.1ubuntu9.3
+    - file=1:5.38-4
+    - findutils=4.7.0-1ubuntu1
+    - flex=2.6.4-6.2
+    - fuse=2.9.9-3
+    - g++-9=9.4.0-1ubuntu1~20.04.1
+    - g++=4:9.3.0-1ubuntu2
+    - gcc-10-base=10.3.0-1ubuntu1~20.04
+    - gcc-9-base=9.4.0-1ubuntu1~20.04.1
+    - gcc-9=9.4.0-1ubuntu1~20.04.1
+    - gcc=4:9.3.0-1ubuntu2
+    - git-man=1:2.25.1-1ubuntu3.2
+    - git=1:2.25.1-1ubuntu3.2
+    - gperf=3.1-1build1
+    - gpg-agent=2.2.19-3ubuntu2.1
+    - gpg=2.2.19-3ubuntu2.1
+    - gpgconf=2.2.19-3ubuntu2.1
+    - gpgv=2.2.19-3ubuntu2.1
+    - grep=3.4-1
+    - gzip=1.10-0ubuntu4
+    - hostname=3.23
+    - init-system-helpers=1.57
+    - init=1.57
+    - libacl1-dev=2.2.53-6
+    - libacl1=2.2.53-6
+    - libaio-dev=0.3.112-5
+    - libaio1=0.3.112-5
+    - libapparmor-dev=2.13.3-7ubuntu5.1
+    - libapparmor1=2.13.3-7ubuntu5.1
+    - libapt-pkg6.0=2.0.6
+    - libargon2-1=0~20171227-0.2
+    - libasan5=9.4.0-1ubuntu1~20.04.1
+    - libasn1-8-heimdal=7.7.0+dfsg-1ubuntu1
+    - libassuan0=2.5.3-7ubuntu2
+    - libatomic1=10.3.0-1ubuntu1~20.04
+    - libattr1-dev=1:2.4.48-5
+    - libattr1=1:2.4.48-5
+    - libaudit-common=1:2.8.5-2ubuntu6
+    - libaudit1=1:2.8.5-2ubuntu6
+    - libbinutils=2.34-6ubuntu1.3
+    - libblkid-dev=2.34-0.1ubuntu9.3
+    - libblkid1=2.34-0.1ubuntu9.3
+    - libboost-iostreams1.71.0=1.71.0-6ubuntu6
+    - libboost-program-options1.71.0=1.71.0-6ubuntu6
+    - libboost-thread1.71.0=1.71.0-6ubuntu6
+    - libbrotli1=1.0.7-6ubuntu0.1
+    - libbsd-dev=0.10.0-1
+    - libbsd0=0.10.0-1
+    - libburn4=1.5.2-1
+    - libbz2-1.0=1.0.8-2
+    - libc-bin=2.31-0ubuntu9.7
+    - libc-dev-bin=2.31-0ubuntu9.7
+    - libc6-dev=2.31-0ubuntu9.7
+    - libc6=2.31-0ubuntu9.7
+    - libcap-dev=1:2.32-1
+    - libcap-ng-dev=0.7.9-2.1build1
+    - libcap-ng0=0.7.9-2.1build1
+    - libcap2=1:2.32-1
+    - libcbor0.6=0.6.0-0ubuntu1
+    - libcc1-0=10.3.0-1ubuntu1~20.04
+    - libcom-err2=1.45.5-2ubuntu1
+    - libcrypt-dev=1:4.4.10-10ubuntu4
+    - libcrypt1=1:4.4.10-10ubuntu4
+    - libcryptsetup12=2:2.2.2-3ubuntu2.4
+    - libctf-nobfd0=2.34-6ubuntu1.3
+    - libctf0=2.34-6ubuntu1.3
+    - libcurl3-gnutls=7.68.0-1ubuntu2.7
+    - libcurl4=7.68.0-1ubuntu2.7
+    - libdb5.3=5.3.28+dfsg1-0.6ubuntu2
+    - libdbus-1-3=1.12.16-2ubuntu2.1
+    - libdebconfclient0=0.251ubuntu1
+    - libdevmapper1.02.1=2:1.02.167-1ubuntu1
+    - libdpkg-perl=1.19.7ubuntu3
+    - libedit-dev=3.1-20191231-1
+    - libedit2=3.1-20191231-1
+    - libelf1=0.176-1.1build1
+    - liberror-perl=0.17029-1
+    - libevent-2.1-7=2.1.11-stable-1
+    - libexpat1=2.2.9-1ubuntu0.4
+    - libext2fs2=1.45.5-2ubuntu1
+    - libfakeroot=1.24-1
+    - libfdisk1=2.34-0.1ubuntu9.3
+    - libffi-dev=3.3-4
+    - libffi7=3.3-4
+    - libfido2-1=1.3.1-1ubuntu2
+    - libfuse-dev=2.9.9-3
+    - libfuse2=2.9.9-3
+    - libgcc-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libgcc-s1=10.3.0-1ubuntu1~20.04
+    - libgcrypt20=1.8.5-5ubuntu1.1
+    - libgdbm-compat4=1.18.1-5
+    - libgdbm6=1.18.1-5
+    - libglib2.0-0=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-data=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev-bin=2.64.6-1~ubuntu20.04.4
+    - libglib2.0-dev=2.64.6-1~ubuntu20.04.4
+    - libgmp-dev=2:6.2.0+dfsg-4
+    - libgmp10=2:6.2.0+dfsg-4
+    - libgmpxx4ldbl=2:6.2.0+dfsg-4
+    - libgnutls-dane0=3.6.13-2ubuntu1.6
+    - libgnutls-openssl27=3.6.13-2ubuntu1.6
+    - libgnutls28-dev=3.6.13-2ubuntu1.6
+    - libgnutls30=3.6.13-2ubuntu1.6
+    - libgnutlsxx28=3.6.13-2ubuntu1.6
+    - libgomp1=10.3.0-1ubuntu1~20.04
+    - libgpg-error0=1.37-1
+    - libgssapi-krb5-2=1.17-6ubuntu4.1
+    - libgssapi3-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhcrypto4-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimbase1-heimdal=7.7.0+dfsg-1ubuntu1
+    - libheimntlm0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libhogweed5=3.5.1+really3.5.1-2ubuntu0.2
+    - libhx509-5-heimdal=7.7.0+dfsg-1ubuntu1
+    - libibverbs1=28.0-1ubuntu1
+    - libicu66=66.1-2ubuntu2.1
+    - libidn2-0=2.2.0-2
+    - libidn2-dev=2.2.0-2
+    - libip4tc2=1.8.4-3ubuntu2
+    - libisl22=0.22.1-1
+    - libisoburn1=1.5.2-1
+    - libisofs6=1.5.2-1
+    - libitm1=10.3.0-1ubuntu1~20.04
+    - libjansson-dev=2.12-1build1
+    - libjansson4=2.12-1build1
+    - libjpeg-turbo8-dev=2.0.3-0ubuntu1.20.04.1
+    - libjpeg-turbo8=2.0.3-0ubuntu1.20.04.1
+    - libjson-c4=0.13.1+dfsg-7ubuntu0.3
+    - libjte2=1.22-3build1
+    - libk5crypto3=1.17-6ubuntu4.1
+    - libkeyutils1=1.6-6ubuntu1
+    - libkmod2=27-1ubuntu2
+    - libkrb5-26-heimdal=7.7.0+dfsg-1ubuntu1
+    - libkrb5-3=1.17-6ubuntu4.1
+    - libkrb5support0=1.17-6ubuntu4.1
+    - libldap-2.4-2=2.4.49+dfsg-2ubuntu1.8
+    - libldap-common=2.4.49+dfsg-2ubuntu1.8
+    - liblockfile-bin=1.16-1.1
+    - liblockfile1=1.16-1.1
+    - liblsan0=10.3.0-1ubuntu1~20.04
+    - liblz4-1=1.9.2-2ubuntu0.20.04.1
+    - liblz4-dev=1.9.2-2ubuntu0.20.04.1
+    - liblzma-dev=5.2.4-1ubuntu1
+    - liblzma5=5.2.4-1ubuntu1
+    - liblzo2-2=2.10-2
+    - libmagic-mgc=1:5.38-4
+    - libmagic1=1:5.38-4
+    - libmount-dev=2.34-0.1ubuntu9.3
+    - libmount1=2.34-0.1ubuntu9.3
+    - libmpc3=1.1.0-1
+    - libmpdec2=2.4.2-3
+    - libmpfr6=4.0.2-1
+    - libncurses-dev=6.2-0ubuntu2
+    - libncurses6=6.2-0ubuntu2
+    - libncursesw6=6.2-0ubuntu2
+    - libnet1-dev=1.1.6+dfsg-3.1build1
+    - libnet1=1.1.6+dfsg-3.1build1
+    - libnettle7=3.5.1+really3.5.1-2ubuntu0.2
+    - libnghttp2-14=1.40.0-1build1
+    - libnl-3-200=3.4.0-1
+    - libnl-3-dev=3.4.0-1
+    - libnl-route-3-200=3.4.0-1
+    - libnpth0=1.6-1
+    - libnuma-dev=2.0.12-1
+    - libnuma1=2.0.12-1
+    - libp11-kit-dev=0.23.20-1ubuntu0.1
+    - libp11-kit0=0.23.20-1ubuntu0.1
+    - libpam-modules-bin=1.3.1-5ubuntu4.3
+    - libpam-modules=1.3.1-5ubuntu4.3
+    - libpam-runtime=1.3.1-5ubuntu4.3
+    - libpam-systemd=245.4-4ubuntu3.15
+    - libpam0g-dev=1.3.1-5ubuntu4.3
+    - libpam0g=1.3.1-5ubuntu4.3
+    - libpcre16-3=2:8.39-12build1
+    - libpcre2-16-0=10.34-7
+    - libpcre2-32-0=10.34-7
+    - libpcre2-8-0=10.34-7
+    - libpcre2-dev=10.34-7
+    - libpcre2-posix2=10.34-7
+    - libpcre3-dev=2:8.39-12build1
+    - libpcre32-3=2:8.39-12build1
+    - libpcre3=2:8.39-12build1
+    - libpcrecpp0v5=2:8.39-12build1
+    - libperl5.30=5.30.0-9ubuntu0.2
+    - libpixman-1-0=0.38.4-0ubuntu1
+    - libpixman-1-dev=0.38.4-0ubuntu1
+    - libpng16-16=1.6.37-2
+    - libprocps8=2:3.3.16-1ubuntu2.3
+    - libprotobuf-c-dev=1.3.3-1
+    - libprotobuf-c1=1.3.3-1
+    - libprotobuf-dev=3.6.1.3-2ubuntu5
+    - libprotobuf-lite17=3.6.1.3-2ubuntu5
+    - libprotobuf17=3.6.1.3-2ubuntu5
+    - libprotoc17=3.6.1.3-2ubuntu5
+    - libpsl5=0.21.0-1ubuntu1
+    - libpython3-stdlib=3.8.2-0ubuntu2
+    - libpython3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - libpython3.8-stdlib=3.8.10-0ubuntu1~20.04.2
+    - libquadmath0=10.3.0-1ubuntu1~20.04
+    - librados-dev=15.2.14-0ubuntu0.20.04.2
+    - librados2=15.2.14-0ubuntu0.20.04.2
+    - librbd-dev=15.2.14-0ubuntu0.20.04.2
+    - librbd1=15.2.14-0ubuntu0.20.04.2
+    - librdmacm1=28.0-1ubuntu1
+    - libreadline-dev=8.0-4
+    - libreadline8=8.0-4
+    - libroken18-heimdal=7.7.0+dfsg-1ubuntu1
+    - librtmp1=2.4+20151223.gitfa8646d.1-2build1
+    - libsasl2-2=2.1.27+dfsg-2ubuntu0.1
+    - libsasl2-modules-db=2.1.27+dfsg-2ubuntu0.1
+    - libseccomp2=2.5.1-1ubuntu1~20.04.2
+    - libselinux1-dev=3.0-1build2
+    - libselinux1=3.0-1build2
+    - libsemanage-common=3.0-1build2
+    - libsemanage1=3.0-1build2
+    - libsepol1-dev=3.0-1
+    - libsepol1=3.0-1
+    - libsigsegv2=2.12-2
+    - libsmartcols1=2.34-0.1ubuntu9.3
+    - libsqlite3-0=3.31.1-4ubuntu0.2
+    - libsquashfuse0=0.1.103-2
+    - libss2=1.45.5-2ubuntu1
+    - libssh-4=0.9.3-2ubuntu2.2
+    - libssl-dev=1.1.1f-1ubuntu2.12
+    - libssl1.1=1.1.1f-1ubuntu2.12
+    - libstdc++-9-dev=9.4.0-1ubuntu1~20.04.1
+    - libstdc++6=10.3.0-1ubuntu1~20.04
+    - libsystemd0=245.4-4ubuntu3.15
+    - libtasn1-6-dev=4.16.0-2
+    - libtasn1-6=4.16.0-2
+    - libtcl8.6=8.6.10+dfsg-1
+    - libtinfo6=6.2-0ubuntu2
+    - libtool=2.4.6-14
+    - libtsan0=10.3.0-1ubuntu1~20.04
+    - libubsan1=10.3.0-1ubuntu1~20.04
+    - libudev-dev=245.4-4ubuntu3.15
+    - libudev1=245.4-4ubuntu3.15
+    - libunbound8=1.9.4-2ubuntu1.2
+    - libunistring2=0.9.10-2
+    - libusb-1.0-0=2:1.0.23-2build1
+    - libusbredirhost-dev=0.8.0-1
+    - libusbredirhost1=0.8.0-1
+    - libusbredirparser-dev=0.8.0-1
+    - libusbredirparser1=0.8.0-1
+    - libuuid1=2.34-0.1ubuntu9.3
+    - libuv1-dev=1.34.2-1ubuntu1.3
+    - libuv1=1.34.2-1ubuntu1.3
+    - libwind0-heimdal=7.7.0+dfsg-1ubuntu1
+    - libwrap0=7.6.q-30
+    - libxml2-utils=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxml2=2.9.10+dfsg-5ubuntu0.20.04.2
+    - libxslt1.1=1.1.34-4
+    - libzstd1=1.4.4+dfsg-3ubuntu0.1
+    - linux-libc-dev=5.4.0-105.119
+    - lockfile-progs=0.1.18
+    - login=1:4.8.1-1ubuntu5.20.04.1
+    - logsave=1.45.5-2ubuntu1
+    - lsb-base=11.1.0ubuntu2
+    - lsb-release=11.1.0ubuntu2
+    - m4=1.4.18-4
+    - make=4.2.1-1.2
+    - mawk=1.3.4.20200120-2
+    - mime-support=3.64ubuntu1
+    - mount=2.34-0.1ubuntu9.3
+    - nasm=2.14.02-1
+    - ncurses-base=6.2-0ubuntu2
+    - ncurses-bin=6.2-0ubuntu2
+    - nettle-dev=3.5.1+really3.5.1-2ubuntu0.2
+    - ninja-build=1.10.0-1build1
+    - openssh-client=1:8.2p1-4ubuntu0.4
+    - openssl=1.1.1f-1ubuntu2.12
+    - optipng=0.7.7-1
+    - passwd=1:4.8.1-1ubuntu5.20.04.1
+    - patch=2.7.6-6
+    - perl-base=5.30.0-9ubuntu0.2
+    - perl-modules-5.30=5.30.0-9ubuntu0.2
+    - perl=5.30.0-9ubuntu0.2
+    - pinentry-curses=1.1.0-3build1
+    - pkg-config=0.29.1-0ubuntu4
+    - pkgbinarymangler=144
+    - policyrcd-script-zg2=0.1-3
+    - procps=2:3.3.16-1ubuntu2.3
+    - protobuf-c-compiler=1.3.3-1
+    - protobuf-compiler=3.6.1.3-2ubuntu5
+    - python-pip-whl=20.0.2-5ubuntu1.6
+    - python3-distutils=3.8.10-0ubuntu1~20.04
+    - python3-lib2to3=3.8.10-0ubuntu1~20.04
+    - python3-minimal=3.8.2-0ubuntu2
+    - python3-pip=20.0.2-5ubuntu1.6
+    - python3-pkg-resources=45.2.0-1
+    - python3-pyparsing=2.4.6-1
+    - python3-setuptools=45.2.0-1
+    - python3-six=1.14.0-2
+    - python3-wheel=0.34.2-1
+    - python3.8-minimal=3.8.10-0ubuntu1~20.04.2
+    - python3.8=3.8.10-0ubuntu1~20.04.2
+    - python3=3.8.2-0ubuntu2
+    - readline-common=8.0-4
+    - sed=4.7-1
+    - sensible-utils=0.0.12+nmu1
+    - sgml-base=1.29.1
+    - sgml-data=2.0.11
+    - snapd=2.54.3+20.04.1ubuntu0.2
+    - socat=1.7.3.3-2
+    - squashfs-tools=1:4.4-1ubuntu0.3
+    - squashfuse=0.1.103-2
+    - sudo=1.8.31-1ubuntu1.2
+    - systemd-sysv=245.4-4ubuntu3.15
+    - systemd-timesyncd=245.4-4ubuntu3.15
+    - systemd=245.4-4ubuntu3.15
+    - sysvinit-utils=2.96-2.1ubuntu1
+    - tar=1.30+dfsg-7ubuntu0.20.04.2
+    - tcl8.6=8.6.10+dfsg-1
+    - tcl=8.6.9+1
+    - tzdata=2022a-0ubuntu0.20.04
+    - ubuntu-keyring=2020.02.11.4
+    - udev=245.4-4ubuntu3.15
+    - util-linux=2.34-0.1ubuntu9.3
+    - uuid-dev=2.34-0.1ubuntu9.3
+    - xml-core=0.18+nmu1
+    - xmlto=0.0.28-2.1
+    - xorriso=1.5.2-1
+    - xsltproc=1.1.34-4
+    - xz-utils=5.2.4-1ubuntu1
+    - zlib1g-dev=1:1.2.11.dfsg-2ubuntu1.2
+    - zlib1g=1:1.2.11.dfsg-2ubuntu1.2
+    installed-snaps:
+    - core18=2344
+    - core20=1376
+    - go=9360
+    - snapcraft=7010
+    - snapd=15177
+    organize:
+      usr/bin/: bin/
+    plugin: nil
+    prime:
+    - bin/pzstd
+    - bin/zstd
+    source: snapcraft/empty
+    stage: []
+    stage-packages:
+    - zstd=1.4.4+dfsg-3ubuntu0.1
+    uname: 'Linux 5.4.0-105-generic #119-Ubuntu SMP Mon Mar 7 18:49:24 UTC 2022 x86_64
+      x86_64 x86_64 GNU/Linux'
+source-code: https://github.com/lxc/lxd
+summary: LXD - container and VM manager
+version: 4.0.9-8e2046b
+website: https://linuxcontainers.org/lxd
+architectures:
+- amd64
+image-info:
+  build-request-id: lp-70144732
+  build-request-timestamp: '2022-03-24T03:00:37Z'
+  build_url: https://launchpad.net/~ubuntu-lxc/+snap/lxd-4.0-candidate/+build/1712346
+build-packages:
+- acpica-tools=20190509-1
+- asciidoc-base=9.0.0~rc1-1
+- asciidoc-common=9.0.0~rc1-1
+- asciidoc=9.0.0~rc1-1
+- autoconf=2.69-11.1
+- automake=1:1.16.1-4ubuntu6
+- autopoint=0.19.8.1-10build1
+- autotools-dev=20180224.1
+- bison=2:3.5.1+dfsg-1
+- bmake=20181221-2
+- curl=7.68.0-1ubuntu2.7
+- distro-info-data=0.43ubuntu1.9
+- docbook-xml=4.5-9
+- docbook-xsl=1.79.1+dfsg-2
+- file=1:5.38-4
+- flex=2.6.4-6.2
+- gperf=3.1-1build1
+- libacl1-dev=2.2.53-6
+- libaio-dev=0.3.112-5
+- libaio1=0.3.112-5
+- libapparmor-dev=2.13.3-7ubuntu5.1
+- libattr1-dev=1:2.4.48-5
+- libblkid-dev=2.34-0.1ubuntu9.3
+- libboost-iostreams1.71.0=1.71.0-6ubuntu6
+- libboost-program-options1.71.0=1.71.0-6ubuntu6
+- libboost-thread1.71.0=1.71.0-6ubuntu6
+- libbsd-dev=0.10.0-1
+- libburn4=1.5.2-1
+- libcap-dev=1:2.32-1
+- libcap-ng-dev=0.7.9-2.1build1
+- libcurl4=7.68.0-1ubuntu2.7
+- libedit-dev=3.1-20191231-1
+- libelf1=0.176-1.1build1
+- libevent-2.1-7=2.1.11-stable-1
+- libffi-dev=3.3-4
+- libfuse-dev=2.9.9-3
+- libglib2.0-0=2.64.6-1~ubuntu20.04.4
+- libglib2.0-bin=2.64.6-1~ubuntu20.04.4
+- libglib2.0-data=2.64.6-1~ubuntu20.04.4
+- libglib2.0-dev-bin=2.64.6-1~ubuntu20.04.4
+- libglib2.0-dev=2.64.6-1~ubuntu20.04.4
+- libgmp-dev=2:6.2.0+dfsg-4
+- libgmpxx4ldbl=2:6.2.0+dfsg-4
+- libgnutls-dane0=3.6.13-2ubuntu1.6
+- libgnutls-openssl27=3.6.13-2ubuntu1.6
+- libgnutls28-dev=3.6.13-2ubuntu1.6
+- libgnutlsxx28=3.6.13-2ubuntu1.6
+- libibverbs1=28.0-1ubuntu1
+- libicu66=66.1-2ubuntu2.1
+- libidn2-dev=2.2.0-2
+- libisoburn1=1.5.2-1
+- libisofs6=1.5.2-1
+- libjansson-dev=2.12-1build1
+- libjansson4=2.12-1build1
+- libjpeg-turbo8-dev=2.0.3-0ubuntu1.20.04.1
+- libjpeg-turbo8=2.0.3-0ubuntu1.20.04.1
+- libjte2=1.22-3build1
+- liblz4-dev=1.9.2-2ubuntu0.20.04.1
+- liblzma-dev=5.2.4-1ubuntu1
+- libmagic-mgc=1:5.38-4
+- libmagic1=1:5.38-4
+- libmount-dev=2.34-0.1ubuntu9.3
+- libncurses-dev=6.2-0ubuntu2
+- libnet1-dev=1.1.6+dfsg-3.1build1
+- libnet1=1.1.6+dfsg-3.1build1
+- libnl-3-200=3.4.0-1
+- libnl-3-dev=3.4.0-1
+- libnl-route-3-200=3.4.0-1
+- libnuma-dev=2.0.12-1
+- libnuma1=2.0.12-1
+- libp11-kit-dev=0.23.20-1ubuntu0.1
+- libpam0g-dev=1.3.1-5ubuntu4.3
+- libpcre16-3=2:8.39-12build1
+- libpcre2-16-0=10.34-7
+- libpcre2-32-0=10.34-7
+- libpcre2-dev=10.34-7
+- libpcre2-posix2=10.34-7
+- libpcre3-dev=2:8.39-12build1
+- libpcre32-3=2:8.39-12build1
+- libpcrecpp0v5=2:8.39-12build1
+- libpixman-1-0=0.38.4-0ubuntu1
+- libpixman-1-dev=0.38.4-0ubuntu1
+- libprotobuf-c-dev=1.3.3-1
+- libprotobuf-c1=1.3.3-1
+- libprotobuf-dev=3.6.1.3-2ubuntu5
+- libprotobuf-lite17=3.6.1.3-2ubuntu5
+- libprotobuf17=3.6.1.3-2ubuntu5
+- libprotoc17=3.6.1.3-2ubuntu5
+- librados-dev=15.2.14-0ubuntu0.20.04.2
+- librados2=15.2.14-0ubuntu0.20.04.2
+- librbd-dev=15.2.14-0ubuntu0.20.04.2
+- librbd1=15.2.14-0ubuntu0.20.04.2
+- librdmacm1=28.0-1ubuntu1
+- libreadline-dev=8.0-4
+- libselinux1-dev=3.0-1build2
+- libsepol1-dev=3.0-1
+- libsigsegv2=2.12-2
+- libssl-dev=1.1.1f-1ubuntu2.12
+- libtasn1-6-dev=4.16.0-2
+- libtcl8.6=8.6.10+dfsg-1
+- libtool=2.4.6-14
+- libudev-dev=245.4-4ubuntu3.15
+- libunbound8=1.9.4-2ubuntu1.2
+- libusb-1.0-0=2:1.0.23-2build1
+- libusbredirhost-dev=0.8.0-1
+- libusbredirhost1=0.8.0-1
+- libusbredirparser-dev=0.8.0-1
+- libusbredirparser1=0.8.0-1
+- libuv1-dev=1.34.2-1ubuntu1.3
+- libuv1=1.34.2-1ubuntu1.3
+- libxml2-utils=2.9.10+dfsg-5ubuntu0.20.04.2
+- libxml2=2.9.10+dfsg-5ubuntu0.20.04.2
+- libxslt1.1=1.1.34-4
+- lsb-release=11.1.0ubuntu2
+- m4=1.4.18-4
+- nasm=2.14.02-1
+- nettle-dev=3.5.1+really3.5.1-2ubuntu0.2
+- ninja-build=1.10.0-1build1
+- pkg-config=0.29.1-0ubuntu4
+- protobuf-c-compiler=1.3.3-1
+- protobuf-compiler=3.6.1.3-2ubuntu5
+- python-pip-whl=20.0.2-5ubuntu1.6
+- python3-distutils=3.8.10-0ubuntu1~20.04
+- python3-lib2to3=3.8.10-0ubuntu1~20.04
+- python3-pip=20.0.2-5ubuntu1.6
+- python3-pkg-resources=45.2.0-1
+- python3-pyparsing=2.4.6-1
+- python3-setuptools=45.2.0-1
+- python3-six=1.14.0-2
+- python3-wheel=0.34.2-1
+- sgml-base=1.29.1
+- sgml-data=2.0.11
+- tcl8.6=8.6.10+dfsg-1
+- tcl=8.6.9+1
+- uuid-dev=2.34-0.1ubuntu9.3
+- xml-core=0.18+nmu1
+- xmlto=0.0.28-2.1
+- xorriso=1.5.2-1
+- xsltproc=1.1.34-4
+- zlib1g-dev=1:1.2.11.dfsg-2ubuntu1.2
+build-snaps:
+- core20=1376
+- go=9360
+primed-stage-packages:
+- acl=2.2.53-6
+- arptables=0.0.5-1
+- attr=1:2.4.48-5
+- btrfs-progs=5.4.1-2
+- ceph-common=15.2.14-0ubuntu0.20.04.2
+- dmeventd=2:1.02.167-1ubuntu1
+- dnsmasq-base=2.80-1.1ubuntu1.4
+- ebtables=2.0.11-3build1
+- fuse=2.9.9-3
+- gdisk=1.0.5-1
+- genisoimage=9:1.1.11-3.1ubuntu1
+- iw=5.4-1
+- libaio1=0.3.112-5
+- libboost-iostreams1.71.0=1.71.0-6ubuntu6
+- libboost-program-options1.71.0=1.71.0-6ubuntu6
+- libboost-thread1.71.0=1.71.0-6ubuntu6
+- libcephfs2=15.2.14-0ubuntu0.20.04.2
+- libdevmapper-event1.02.1=2:1.02.167-1ubuntu1
+- libfuse2=2.9.9-3
+- libibverbs1=28.0-1ubuntu1
+- libidn11=1.33-2.2ubuntu2
+- libjansson4=2.12-1build1
+- libjpeg-turbo8=2.0.3-0ubuntu1.20.04.1
+- liblvm2cmd2.03=2.03.07-1ubuntu1
+- libmagic1=1:5.38-4
+- libnet1=1.1.6+dfsg-3.1build1
+- libnuma1=2.0.12-1
+- libpixman-1-0=0.38.4-0ubuntu1
+- libprotobuf-c1=1.3.3-1
+- librados2=15.2.14-0ubuntu0.20.04.2
+- librbd1=15.2.14-0ubuntu0.20.04.2
+- librdmacm1=28.0-1ubuntu1
+- libreadline5=5.2+dfsg-3build3
+- libsnappy1v5=1.1.8-1build1
+- libusbredirhost1=0.8.0-1
+- libusbredirparser1=0.8.0-1
+- libuv1=1.34.2-1ubuntu1.3
+- logrotate=3.14.0-4ubuntu3
+- lvm2=2.03.07-1ubuntu1
+- nano=4.8-1ubuntu1
+- netbase=6.1
+- pci.ids=0.0~2020.03.20-1
+- pigz=2.4-1
+- python3-ceph-argparse=15.2.14-0ubuntu0.20.04.2
+- python3-ceph-common=15.2.14-0ubuntu0.20.04.2
+- python3-cephfs=15.2.14-0ubuntu0.20.04.2
+- python3-certifi=2019.11.28-1
+- python3-chardet=3.0.4-4build1
+- python3-idna=2.8-1
+- python3-prettytable=0.7.2-5
+- python3-rados=15.2.14-0ubuntu0.20.04.2
+- python3-rbd=15.2.14-0ubuntu0.20.04.2
+- python3-requests=2.22.0-2ubuntu1
+- python3-six=1.14.0-2
+- python3-urllib3=1.25.8-2ubuntu0.1
+- python3-yaml=5.3.1-1ubuntu0.1
+- rsync=3.1.3-8ubuntu0.2
+- squashfs-tools=1:4.4-1ubuntu0.3
+- thin-provisioning-tools=0.8.5-4build1
+- usb.ids=2020.03.19-1
+- uuid-runtime=2.34-0.1ubuntu9.3
+- vim-common=2:8.1.2269-1ubuntu5.7
+- vim-tiny=2:8.1.2269-1ubuntu5.7
+- xdelta3=3.0.11-dfsg-1ubuntu1
+- xfsprogs=5.3.0-1ubuntu2
+- xz-utils=5.2.4-1ubuntu1
+- zstd=1.4.4+dfsg-3ubuntu0.1

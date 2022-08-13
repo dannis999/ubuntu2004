@@ -1,0 +1,146 @@
+name: lxd
+version: 4.0.9-8e2046b
+summary: LXD - container and VM manager
+description: |-
+  LXD is a system container and virtual machine manager.
+
+  It offers a simple CLI and REST API to manage local or remote instances,
+  uses an image based workflow and support for a variety of advanced features.
+
+  Images are available for all Ubuntu releases and architectures as well
+  as for a wide number of other Linux distributions. Existing
+  integrations with many deployment and operation tools, makes it work
+  just like a public cloud, except everything is under your control.
+
+  LXD containers are lightweight, secure by default and a great
+  alternative to virtual machines when running Linux on Linux.
+
+  LXD virtual machines are modern and secure, using UEFI and secure-boot
+  by default and a great choice when a different kernel or operating
+  system is needed.
+
+  With clustering, up to 50 LXD servers can be easily joined and managed
+  together with the same tools and APIs and without needing any external
+  dependencies.
+
+
+  Supported configuration options for the snap (snap set lxd [<key>=<value>...]):
+
+    - ceph.builtin: Use snap-specific Ceph configuration [default=false]
+    - ceph.external: Use the system's ceph tools (ignores ceph.builtin) [default=false]
+    - criu.enable: Enable experimental live-migration support [default=false]
+    - daemon.debug: Increase logging to debug level [default=false]
+    - daemon.group: Set group of users that have full control over LXD [default=lxd]
+    - daemon.preseed: Pass a YAML configuration to `lxd init` on initial start
+    - daemon.syslog: Send LXD log events to syslog [default=false]
+    - lvm.external: Use the system's LVM tools [default=false]
+    - lxcfs.pidfd: Start per-container process tracking [default=false]
+    - lxcfs.loadavg: Start tracking per-container load average [default=false]
+    - lxcfs.cfs: Consider CPU shares for CPU usage [default=false]
+    - openvswitch.builtin: Run a snap-specific OVS daemon [default=false]
+    - shiftfs.enable: Enable shiftfs support [default=auto]
+apps:
+  activate:
+    command: commands/daemon.activate
+    daemon: oneshot
+    plugs:
+    - lxd-support
+    - system-observe
+    command-chain:
+    - snap/command-chain/snapcraft-runner
+  benchmark:
+    command: commands/lxd-benchmark
+    plugs:
+    - lxd-support
+    - system-observe
+    command-chain:
+    - snap/command-chain/snapcraft-runner
+  buginfo:
+    command: commands/buginfo
+    plugs:
+    - lxd-support
+    - system-observe
+    command-chain:
+    - snap/command-chain/snapcraft-runner
+  check-kernel:
+    command: commands/lxd-check-kernel
+    plugs:
+    - lxd-support
+    - system-observe
+    command-chain:
+    - snap/command-chain/snapcraft-runner
+  daemon:
+    command: commands/daemon.start
+    daemon: simple
+    plugs:
+    - lxd-support
+    - network-bind
+    - system-observe
+    reload-command: commands/daemon.reload
+    restart-condition: on-failure
+    slots:
+    - lxd
+    sockets:
+      unix:
+        listen-stream: $SNAP_COMMON/lxd/unix.socket
+        socket-mode: 0660
+    stop-command: commands/daemon.stop
+    stop-timeout: 600s
+    command-chain:
+    - snap/command-chain/snapcraft-runner
+  lxc:
+    command: commands/lxc
+    completer: etc/bash_completion.d/snap.lxd.lxc
+    plugs:
+    - lxd-support
+    - system-observe
+    command-chain:
+    - snap/command-chain/snapcraft-runner
+  lxc-to-lxd:
+    command: commands/lxc-to-lxd
+    plugs:
+    - lxd-support
+    - system-observe
+    command-chain:
+    - snap/command-chain/snapcraft-runner
+  lxd:
+    command: commands/lxd
+    plugs:
+    - lxd-support
+    - system-observe
+    command-chain:
+    - snap/command-chain/snapcraft-runner
+  migrate:
+    command: commands/lxd-migrate
+    plugs:
+    - lxd-support
+    - system-observe
+    command-chain:
+    - snap/command-chain/snapcraft-runner
+architectures:
+- amd64
+assumes:
+- command-chain
+- snapd2.39
+base: core20
+confinement: strict
+grade: stable
+hooks:
+  configure:
+    plugs:
+    - lxd-support
+    - network
+    - system-observe
+  remove:
+    plugs:
+    - lxd-support
+    - system-observe
+links:
+  contact:
+  - lxc-devel@lists.linuxcontainers.org
+  issues:
+  - https://github.com/lxc/lxd/issues
+  source-code:
+  - https://github.com/lxc/lxd
+  website:
+  - https://linuxcontainers.org/lxd
