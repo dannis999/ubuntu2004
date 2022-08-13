@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Stand-alone GNU Info (version 6.7,
+23 September 2019), a program for viewing documents in Info format
+(usually created from Texinfo source files).
+
+Copyright (C) 1992, 1993, 1996, 1997, 1998, 1999, 2001,
+2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
+2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License" in the Texinfo manual.
+
+This document is part of a collection distributed under the GNU Free
+Documentation License.  If you want to distribute this document
+separately from the collection, you can do so by adding a copy of the
+license to the document, as described in section 6 of the license. -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Top (Stand-alone GNU Info 6.7)</title>
+
+<meta name="description" content="Top (Stand-alone GNU Info 6.7)">
+<meta name="keywords" content="Top (Stand-alone GNU Info 6.7)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="#Top" rel="start" title="Top">
+<link href="Index.html" rel="index" title="Index">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Stand_002dalone-Info.html" rel="next" title="Stand-alone Info">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<h1 class="settitle" align="center">Stand-alone GNU Info 6.7</h1>
+
+
+
+
+<span id="SEC_Contents"></span>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Stand_002dalone-Info-1" href="Stand_002dalone-Info.html#Stand_002dalone-Info">1 Stand-alone Info</a></li>
+  <li><a id="toc-Invoking-Info-1" href="Invoking-Info.html#Invoking-Info">2 Invoking Info</a></li>
+  <li><a id="toc-Moving-the-Cursor" href="Cursor-Commands.html#Cursor-Commands">3 Moving the Cursor</a></li>
+  <li><a id="toc-Moving-Text-Within-a-Window" href="Scrolling-Commands.html#Scrolling-Commands">4 Moving Text Within a Window</a></li>
+  <li><a id="toc-Selecting-a-Node" href="Node-Commands.html#Node-Commands">5 Selecting a Node</a></li>
+  <li><a id="toc-Searching-an-Info-File" href="Searching-Commands.html#Searching-Commands">6 Searching an Info File</a></li>
+  <li><a id="toc-Index-Commands-1" href="Index-Commands.html#Index-Commands">7 Index Commands</a></li>
+  <li><a id="toc-Selecting-Cross_002dreferences" href="Xref-Commands.html#Xref-Commands">8 Selecting Cross-references</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Parts-of-an-Xref-1" href="Parts-of-an-Xref.html#Parts-of-an-Xref">8.1 Parts of an Xref</a></li>
+    <li><a id="toc-Selecting-Xrefs-1" href="Selecting-Xrefs.html#Selecting-Xrefs">8.2 Selecting Xrefs</a></li>
+  </ul></li>
+  <li><a id="toc-Manipulating-Multiple-Windows" href="Window-Commands.html#Window-Commands">9 Manipulating Multiple Windows</a>
+  <ul class="no-bullet">
+    <li><a id="toc-The-Mode-Line-1" href="The-Mode-Line.html#The-Mode-Line">9.1 The Mode Line</a></li>
+    <li><a id="toc-Window-Commands-1" href="Basic-Windows.html#Basic-Windows">9.2 Window Commands</a></li>
+    <li><a id="toc-The-Echo-Area-1" href="The-Echo-Area.html#The-Echo-Area">9.3 The Echo Area</a></li>
+  </ul></li>
+  <li><a id="toc-Printing-Nodes-1" href="Printing-Nodes.html#Printing-Nodes">10 Printing Nodes</a></li>
+  <li><a id="toc-Miscellaneous-Commands-1" href="Miscellaneous-Commands.html#Miscellaneous-Commands">11 Miscellaneous Commands</a></li>
+  <li><a id="toc-Manipulating-Variables" href="Variables.html#Variables">12 Manipulating Variables</a></li>
+  <li><a id="toc-Colors-and-Styles-1" href="Colors-and-Styles.html#Colors-and-Styles">13 Colors and Styles</a></li>
+  <li><a id="toc-Customizing-Key-Bindings-and-Variables" href="Custom-Key-Bindings.html#Custom-Key-Bindings">14 Customizing Key Bindings and Variables</a>
+  <ul class="no-bullet">
+    <li><a id="toc-infokey-format-1" href="infokey-format.html#infokey-format">14.1 <code>infokey</code> format</a></li>
+  </ul></li>
+  <li><a id="toc-Index-1" href="Index.html#Index" rel="index">Appendix A Index</a></li>
+</ul>
+</div>
+
+
+<span id="Top"></span><div class="header">
+<p>
+Next: <a href="Stand_002dalone-Info.html" accesskey="n" rel="next">Stand-alone Info</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Stand_002dalone-GNU-Info"></span><h1 class="top">Stand-alone GNU Info</h1>
+
+<p>This documentation describes the stand-alone Info reader which you can
+use to read Info documentation.
+</p>
+<p>If you are new to the Info reader, then you can get started by typing
+&lsquo;<samp>H</samp>&rsquo; for a list of basic key bindings.  You can read through the
+rest of this manual by typing <tt class="key">SPC</tt> and <tt class="key">DEL</tt> (or <tt class="key">Space</tt>
+and <tt class="key">Backspace</tt>) to move forwards and backwards in it.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Stand_002dalone-Info.html" accesskey="1">Stand-alone Info</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What is Info?
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Invoking-Info.html" accesskey="2">Invoking Info</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options you can pass on the command line.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Cursor-Commands.html" accesskey="3">Cursor Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands which move the cursor within a node.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Scrolling-Commands.html" accesskey="4">Scrolling Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for reading the text within a node.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Node-Commands.html" accesskey="5">Node Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for selecting a new node.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Searching-Commands.html" accesskey="6">Searching Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for searching an Info file.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Index-Commands.html" accesskey="7">Index Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for looking up in indices.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Xref-Commands.html" accesskey="8">Xref Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for selecting cross-references.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Window-Commands.html" accesskey="9">Window Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands which manipulate multiple windows.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Printing-Nodes.html">Printing Nodes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to print out the contents of a node.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Miscellaneous-Commands.html">Miscellaneous Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A few commands that defy categorization.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Variables.html">Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to change the default behavior of Info.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Colors-and-Styles.html">Colors and Styles</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customize the colors used by Info.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Custom-Key-Bindings.html">Custom Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to define your own key-to-command bindings.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Index.html" rel="index">Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Global index.
+</td></tr>
+</table>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Stand_002dalone-Info.html" accesskey="n" rel="next">Stand-alone Info</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
