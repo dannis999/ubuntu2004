@@ -1,0 +1,11 @@
+name: core18
+version: '20210722'
+summary: Runtime environment based on Ubuntu 18.04
+description: 'The base snap based on the Ubuntu 18.04 release.
+
+'
+architectures:
+- amd64
+confinement: strict
+grade: stable
+type: base
