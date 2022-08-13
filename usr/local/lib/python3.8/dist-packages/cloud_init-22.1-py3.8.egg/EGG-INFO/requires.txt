@@ -1,0 +1,8 @@
+configobj
+jinja2
+jsonpatch
+jsonschema
+netifaces
+oauthlib
+pyyaml
+requests
