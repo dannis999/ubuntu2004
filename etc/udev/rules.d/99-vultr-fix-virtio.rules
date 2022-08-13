@@ -1,0 +1,6 @@
+KERNEL=="vd*[!0-9]" \
+, ACTION=="add" \
+, RUN+="/usr/sbin/udevadm trigger --name-match=$env{DEVNAME}"
+KERNEL=="vd*[0-9]" \
+, ACTION=="add" \
+, RUN+="/usr/sbin/udevadm trigger --name-match=$env{DEVNAME}"
