@@ -1,0 +1,9 @@
+Log of fsck -C -a -V -t ext4 /dev/vda1 
+Sat Aug 13 07:05:57 2022
+
+fsck from util-linux 2.34
+[/usr/sbin/fsck.ext4 (1) -- /dev/vda1] fsck.ext4 -a -C0 /dev/vda1 
+/dev/vda1: clean, 93166/6502400 files, 1983689/6553339 blocks
+
+Sat Aug 13 07:05:57 2022
+----------------

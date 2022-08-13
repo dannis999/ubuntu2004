@@ -1,0 +1,5 @@
+# This is private data. Do not parse.
+ADMIN_STATE=unmanaged
+OPER_STATE=carrier
+CARRIER_STATE=carrier
+ADDRESS_STATE=off

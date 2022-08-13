@@ -1,0 +1,2 @@
+builtin set cfgdisk='disabled'
+overlayroot disabled

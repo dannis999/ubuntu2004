@@ -1,0 +1,9 @@
+# This is private data. Do not parse
+PRIORITY=30
+LEVEL_PREFIX=1
+FORWARD_TO_SYSLOG=0
+FORWARD_TO_KMSG=0
+FORWARD_TO_CONSOLE=0
+STREAM_ID=df0945133b0344e7a6de0b9ad3720fb6
+IDENTIFIER=accounts-daemon
+UNIT=accounts-daemon.service

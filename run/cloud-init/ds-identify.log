@@ -1,0 +1,33 @@
+[up 3.90s] ds-identify 
+policy loaded: mode=search report=false found=all maybe=all notfound=disabled
+no datasource_list found, using default: MAAS ConfigDrive NoCloud AltCloud Azure Bigstep CloudSigma CloudStack DigitalOcean Vultr AliYun Ec2 GCE OpenNebula OpenStack OVF SmartOS Scaleway Hetzner IBMCloud Oracle Exoscale RbxCloud UpCloud VMware LXD
+DMI_PRODUCT_NAME=VC2
+DMI_SYS_VENDOR=Vultr
+DMI_PRODUCT_SERIAL=60103247
+DMI_PRODUCT_UUID=e4724c11-fcf9-4333-b162-b2fcf2952c55
+PID_1_PRODUCT_NAME=unavailable
+DMI_CHASSIS_ASSET_TAG=
+FS_LABELS=
+ISO9660_DEVS=
+KERNEL_CMDLINE=BOOT_IMAGE=/boot/vmlinuz-5.4.0-122-generic root=UUID=176ccbe8-961e-4b77-bbd0-40bee15e7fa5 ro vultr
+VIRT=microsoft
+UNAME_KERNEL_NAME=Linux
+UNAME_KERNEL_RELEASE=5.4.0-122-generic
+UNAME_KERNEL_VERSION=#138-Ubuntu SMP Wed Jun 22 15:00:31 UTC 2022
+UNAME_MACHINE=x86_64
+UNAME_NODENAME=guest
+UNAME_OPERATING_SYSTEM=GNU/Linux
+DSNAME=
+DSLIST=MAAS ConfigDrive NoCloud AltCloud Azure Bigstep CloudSigma CloudStack DigitalOcean Vultr AliYun Ec2 GCE OpenNebula OpenStack OVF SmartOS Scaleway Hetzner IBMCloud Oracle Exoscale RbxCloud UpCloud VMware LXD
+MODE=search
+ON_FOUND=all
+ON_MAYBE=all
+ON_NOTFOUND=disabled
+pid=385 ppid=362
+is_container=false
+is_ds_enabled(IBMCloud) = true.
+check for 'Vultr' returned found
+ec2 platform is 'Unknown'.
+is_ds_enabled(IBMCloud) = true.
+Found single datasource: Vultr
+[up 4.02s] returning 0

@@ -1,0 +1,6 @@
+# Created by lvs pid 11810 Sat Aug 13 07:07:38 2022
+hints_version: 1.1
+global_filter:a|.*|
+filter:a|.*|
+scan_lvs:0
+devs_hash: 3923045875 5

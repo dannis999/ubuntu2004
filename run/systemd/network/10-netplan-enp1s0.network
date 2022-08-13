@@ -1,0 +1,12 @@
+[Match]
+MACAddress=56:00:04:1a:76:6e
+Name=enp1s0
+
+[Network]
+DHCP=yes
+LinkLocalAddressing=ipv6
+IPv6AcceptRA=yes
+
+[DHCP]
+RouteMetric=100
+UseMTU=true

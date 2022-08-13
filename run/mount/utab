@@ -1,0 +1,6 @@
+SRC=/dev/loop0 TARGET=/snap/core18/2128 ROOT=/ OPTS=x-gdu.hide
+SRC=/dev/loop1 TARGET=/snap/lxd/21029 ROOT=/ OPTS=x-gdu.hide
+SRC=/dev/loop3 TARGET=/snap/snapd/16292 ROOT=/ OPTS=x-gdu.hide
+SRC=/dev/loop4 TARGET=/snap/core20/1587 ROOT=/ OPTS=x-gdu.hide
+SRC=/dev/loop5 TARGET=/snap/lxd/22753 ROOT=/ OPTS=x-gdu.hide
+SRC=/dev/loop6 TARGET=/snap/core18/2538 ROOT=/ OPTS=x-gdu.hide

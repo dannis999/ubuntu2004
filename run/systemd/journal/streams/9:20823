@@ -1,0 +1,9 @@
+# This is private data. Do not parse
+PRIORITY=30
+LEVEL_PREFIX=1
+FORWARD_TO_SYSLOG=0
+FORWARD_TO_KMSG=0
+FORWARD_TO_CONSOLE=0
+STREAM_ID=bee6e4634e814158a21ba6590d685e45
+IDENTIFIER=systemd-networkd
+UNIT=systemd-networkd.service

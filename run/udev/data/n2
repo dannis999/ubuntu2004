@@ -1,0 +1,19 @@
+I:1945791
+E:ID_MM_CANDIDATE=1
+E:ID_NET_NAMING_SCHEME=v245
+E:ID_NET_NAME_MAC=enx5600041a766e
+E:ID_NET_NAME_PATH=enp1s0
+E:ID_BUS=pci
+E:ID_VENDOR_ID=0x1af4
+E:ID_MODEL_ID=0x1041
+E:ID_PCI_CLASS_FROM_DATABASE=Network controller
+E:ID_PCI_SUBCLASS_FROM_DATABASE=Ethernet controller
+E:ID_VENDOR_FROM_DATABASE=Red Hat, Inc.
+E:ID_MODEL_FROM_DATABASE=Virtio network device
+E:ID_PATH=pci-0000:01:00.0
+E:ID_PATH_TAG=pci-0000_01_00_0
+E:ID_NET_DRIVER=virtio_net
+E:ID_NET_LINK_FILE=/run/systemd/network/10-netplan-enp1s0.link
+E:ID_NET_NAME=enp1s0
+E:SYSTEMD_ALIAS=/sys/subsystem/net/devices/enp1s0
+G:systemd
