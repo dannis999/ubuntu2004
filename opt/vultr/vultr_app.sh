@@ -1,0 +1,1 @@
+/var/lib/vultr/vultr_app.sh
