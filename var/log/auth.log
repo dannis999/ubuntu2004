@@ -1,0 +1,354 @@
+
+Aug  5 04:49:38 guest systemd-logind[656]: Creating /run/nologin, blocking further logins...
+Aug  5 04:49:38 guest sudo: pam_unix(sudo:session): session closed for user root
+Aug  5 04:50:38 guest systemd-logind[656]: System is powering down.
+Aug  5 04:50:38 guest sshd[1466]: pam_unix(sshd:session): session closed for user ubuntu
+Aug 13 07:06:11 testgit passwd[737]: password for 'root' changed by 'root'
+Aug 13 07:06:11 testgit sshd[810]: Server listening on 127.0.0.1 port 22.
+Aug 13 07:06:11 testgit systemd-logind[770]: New seat seat0.
+Aug 13 07:06:11 testgit systemd-logind[770]: Watching system buttons on /dev/input/event0 (Power Button)
+Aug 13 07:06:11 testgit systemd-logind[770]: Watching system buttons on /dev/input/event1 (AT Translated Set 2 keyboard)
+Aug 13 07:07:48 testgit sshd[810]: Received SIGHUP; restarting.
+Aug 13 07:07:48 testgit sshd[810]: Server listening on 0.0.0.0 port 22.
+Aug 13 07:07:48 testgit sshd[810]: Server listening on :: port 22.
+Aug 13 07:08:20 testgit sshd[11947]: Accepted password for root from 202.119.48.175 port 61434 ssh2
+Aug 13 07:08:20 testgit sshd[11947]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Aug 13 07:08:20 testgit systemd-logind[770]: New session 1 of user root.
+Aug 13 07:08:20 testgit systemd: pam_unix(systemd-user:session): session opened for user root by (uid=0)
+Aug 13 07:10:30 testgit sshd[12108]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60  user=root
+Aug 13 07:10:31 testgit sshd[12108]: Failed password for root from 85.154.238.60 port 37500 ssh2
+Aug 13 07:10:32 testgit sshd[12108]: Received disconnect from 85.154.238.60 port 37500:11: Bye Bye [preauth]
+Aug 13 07:10:32 testgit sshd[12108]: Disconnected from authenticating user root 85.154.238.60 port 37500 [preauth]
+Aug 13 07:11:22 testgit systemd-logind[770]: Watching system buttons on /dev/input/event0 (Power Button)
+Aug 13 07:11:22 testgit systemd-logind[770]: Watching system buttons on /dev/input/event1 (AT Translated Set 2 keyboard)
+Aug 13 07:11:57 testgit sshd[13119]: Invalid user admin from 81.143.226.60 port 41797
+Aug 13 07:11:57 testgit sshd[13119]: Failed none for invalid user admin from 81.143.226.60 port 41797 ssh2
+Aug 13 07:11:57 testgit sshd[13119]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:11:57 testgit sshd[13119]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=81.143.226.60 
+Aug 13 07:11:59 testgit sshd[13119]: Failed password for invalid user admin from 81.143.226.60 port 41797 ssh2
+Aug 13 07:12:01 testgit sshd[13119]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:12:02 testgit sshd[13119]: Failed password for invalid user admin from 81.143.226.60 port 41797 ssh2
+Aug 13 07:12:04 testgit sshd[13119]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:12:06 testgit sshd[13119]: Failed password for invalid user admin from 81.143.226.60 port 41797 ssh2
+Aug 13 07:12:07 testgit sshd[13119]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:12:09 testgit sshd[13119]: Failed password for invalid user admin from 81.143.226.60 port 41797 ssh2
+Aug 13 07:12:09 testgit sshd[13119]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:12:11 testgit sshd[13119]: Failed password for invalid user admin from 81.143.226.60 port 41797 ssh2
+Aug 13 07:12:12 testgit sshd[13119]: error: maximum authentication attempts exceeded for invalid user admin from 81.143.226.60 port 41797 ssh2 [preauth]
+Aug 13 07:12:12 testgit sshd[13119]: Disconnecting invalid user admin 81.143.226.60 port 41797: Too many authentication failures [preauth]
+Aug 13 07:12:12 testgit sshd[13119]: PAM 4 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=81.143.226.60 
+Aug 13 07:12:12 testgit sshd[13119]: PAM service(sshd) ignoring max retries; 5 > 3
+Aug 13 07:12:12 testgit sshd[13122]: Corrupted MAC on input. [preauth]
+Aug 13 07:12:12 testgit sshd[13122]: ssh_dispatch_run_fatal: Connection from 81.143.226.60 port 41871: message authentication code incorrect [preauth]
+Aug 13 07:14:11 testgit sshd[13220]: Invalid user speech-dispatcher from 167.99.243.12 port 59220
+Aug 13 07:14:11 testgit sshd[13220]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:14:11 testgit sshd[13220]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:14:14 testgit sshd[13220]: Failed password for invalid user speech-dispatcher from 167.99.243.12 port 59220 ssh2
+Aug 13 07:14:15 testgit sshd[13220]: Received disconnect from 167.99.243.12 port 59220:11: Bye Bye [preauth]
+Aug 13 07:14:15 testgit sshd[13220]: Disconnected from invalid user speech-dispatcher 167.99.243.12 port 59220 [preauth]
+Aug 13 07:15:07 testgit sshd[13222]: Invalid user admin from 212.127.95.129 port 56068
+Aug 13 07:15:07 testgit sshd[13222]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:15:07 testgit sshd[13222]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:15:09 testgit sshd[13222]: Failed password for invalid user admin from 212.127.95.129 port 56068 ssh2
+Aug 13 07:15:10 testgit sshd[13222]: Received disconnect from 212.127.95.129 port 56068:11: Bye Bye [preauth]
+Aug 13 07:15:10 testgit sshd[13222]: Disconnected from invalid user admin 212.127.95.129 port 56068 [preauth]
+Aug 13 07:16:56 testgit sshd[13296]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12  user=root
+Aug 13 07:16:57 testgit sshd[13296]: Failed password for root from 167.99.243.12 port 36784 ssh2
+Aug 13 07:16:58 testgit sshd[13296]: Received disconnect from 167.99.243.12 port 36784:11: Bye Bye [preauth]
+Aug 13 07:16:58 testgit sshd[13296]: Disconnected from authenticating user root 167.99.243.12 port 36784 [preauth]
+Aug 13 07:17:01 testgit CRON[13298]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 13 07:17:01 testgit CRON[13298]: pam_unix(cron:session): session closed for user root
+Aug 13 07:17:55 testgit sshd[13310]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12  user=root
+Aug 13 07:17:57 testgit sshd[13310]: Failed password for root from 167.99.243.12 port 54154 ssh2
+Aug 13 07:17:57 testgit sshd[13310]: Received disconnect from 167.99.243.12 port 54154:11: Bye Bye [preauth]
+Aug 13 07:17:57 testgit sshd[13310]: Disconnected from authenticating user root 167.99.243.12 port 54154 [preauth]
+Aug 13 07:18:14 testgit sshd[13312]: Invalid user shiqian from 85.154.238.60 port 37660
+Aug 13 07:18:14 testgit sshd[13312]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:18:14 testgit sshd[13312]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:18:16 testgit sshd[13312]: Failed password for invalid user shiqian from 85.154.238.60 port 37660 ssh2
+Aug 13 07:18:18 testgit sshd[13312]: Received disconnect from 85.154.238.60 port 37660:11: Bye Bye [preauth]
+Aug 13 07:18:18 testgit sshd[13312]: Disconnected from invalid user shiqian 85.154.238.60 port 37660 [preauth]
+Aug 13 07:18:57 testgit sshd[13314]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12  user=root
+Aug 13 07:18:59 testgit sshd[13314]: Failed password for root from 167.99.243.12 port 43302 ssh2
+Aug 13 07:18:59 testgit sshd[13314]: Received disconnect from 167.99.243.12 port 43302:11: Bye Bye [preauth]
+Aug 13 07:18:59 testgit sshd[13314]: Disconnected from authenticating user root 167.99.243.12 port 43302 [preauth]
+Aug 13 07:19:07 testgit sshd[13316]: Invalid user shiqian from 212.127.95.129 port 40626
+Aug 13 07:19:07 testgit sshd[13316]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:19:07 testgit sshd[13316]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:19:10 testgit sshd[13316]: Failed password for invalid user shiqian from 212.127.95.129 port 40626 ssh2
+Aug 13 07:19:11 testgit sshd[13316]: Received disconnect from 212.127.95.129 port 40626:11: Bye Bye [preauth]
+Aug 13 07:19:11 testgit sshd[13316]: Disconnected from invalid user shiqian 212.127.95.129 port 40626 [preauth]
+Aug 13 07:19:44 testgit sshd[13318]: Invalid user infinity from 85.154.238.60 port 60636
+Aug 13 07:19:44 testgit sshd[13318]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:19:44 testgit sshd[13318]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:19:46 testgit sshd[13318]: Failed password for invalid user infinity from 85.154.238.60 port 60636 ssh2
+Aug 13 07:19:47 testgit sshd[13318]: Received disconnect from 85.154.238.60 port 60636:11: Bye Bye [preauth]
+Aug 13 07:19:47 testgit sshd[13318]: Disconnected from invalid user infinity 85.154.238.60 port 60636 [preauth]
+Aug 13 07:20:00 testgit sshd[13321]: Invalid user shiqian from 167.99.243.12 port 60676
+Aug 13 07:20:00 testgit sshd[13321]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:20:00 testgit sshd[13321]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:20:02 testgit sshd[13321]: Failed password for invalid user shiqian from 167.99.243.12 port 60676 ssh2
+Aug 13 07:20:04 testgit sshd[13321]: Received disconnect from 167.99.243.12 port 60676:11: Bye Bye [preauth]
+Aug 13 07:20:04 testgit sshd[13321]: Disconnected from invalid user shiqian 167.99.243.12 port 60676 [preauth]
+Aug 13 07:20:26 testgit sshd[13323]: Invalid user stephen from 212.127.95.129 port 60204
+Aug 13 07:20:26 testgit sshd[13323]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:20:26 testgit sshd[13323]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:20:27 testgit sshd[13323]: Failed password for invalid user stephen from 212.127.95.129 port 60204 ssh2
+Aug 13 07:20:28 testgit sshd[13323]: Received disconnect from 212.127.95.129 port 60204:11: Bye Bye [preauth]
+Aug 13 07:20:28 testgit sshd[13323]: Disconnected from invalid user stephen 212.127.95.129 port 60204 [preauth]
+Aug 13 07:21:04 testgit sshd[13325]: Invalid user pliki from 167.99.243.12 port 49820
+Aug 13 07:21:04 testgit sshd[13325]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:21:04 testgit sshd[13325]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:21:06 testgit sshd[13325]: Failed password for invalid user pliki from 167.99.243.12 port 49820 ssh2
+Aug 13 07:21:07 testgit sshd[13325]: Received disconnect from 167.99.243.12 port 49820:11: Bye Bye [preauth]
+Aug 13 07:21:07 testgit sshd[13325]: Disconnected from invalid user pliki 167.99.243.12 port 49820 [preauth]
+Aug 13 07:21:16 testgit sshd[13339]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60  user=root
+Aug 13 07:21:19 testgit sshd[13339]: Failed password for root from 85.154.238.60 port 53832 ssh2
+Aug 13 07:21:20 testgit sshd[13339]: Received disconnect from 85.154.238.60 port 53832:11: Bye Bye [preauth]
+Aug 13 07:21:20 testgit sshd[13339]: Disconnected from authenticating user root 85.154.238.60 port 53832 [preauth]
+Aug 13 07:21:38 testgit sshd[13342]: Invalid user test from 212.127.95.129 port 51556
+Aug 13 07:21:38 testgit sshd[13342]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:21:38 testgit sshd[13342]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:21:40 testgit sshd[13342]: Failed password for invalid user test from 212.127.95.129 port 51556 ssh2
+Aug 13 07:21:41 testgit sshd[13342]: Received disconnect from 212.127.95.129 port 51556:11: Bye Bye [preauth]
+Aug 13 07:21:41 testgit sshd[13342]: Disconnected from invalid user test 212.127.95.129 port 51556 [preauth]
+Aug 13 07:22:08 testgit sshd[13344]: Invalid user stephen from 167.99.243.12 port 38964
+Aug 13 07:22:08 testgit sshd[13344]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:22:08 testgit sshd[13344]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:22:10 testgit sshd[13344]: Failed password for invalid user stephen from 167.99.243.12 port 38964 ssh2
+Aug 13 07:22:10 testgit sshd[13344]: Received disconnect from 167.99.243.12 port 38964:11: Bye Bye [preauth]
+Aug 13 07:22:10 testgit sshd[13344]: Disconnected from invalid user stephen 167.99.243.12 port 38964 [preauth]
+Aug 13 07:22:46 testgit sshd[13346]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60  user=root
+Aug 13 07:22:47 testgit sshd[13348]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129  user=root
+Aug 13 07:22:48 testgit sshd[13346]: Failed password for root from 85.154.238.60 port 48554 ssh2
+Aug 13 07:22:48 testgit sshd[13346]: Received disconnect from 85.154.238.60 port 48554:11: Bye Bye [preauth]
+Aug 13 07:22:48 testgit sshd[13346]: Disconnected from authenticating user root 85.154.238.60 port 48554 [preauth]
+Aug 13 07:22:49 testgit sshd[13348]: Failed password for root from 212.127.95.129 port 42902 ssh2
+Aug 13 07:22:51 testgit sshd[13348]: Received disconnect from 212.127.95.129 port 42902:11: Bye Bye [preauth]
+Aug 13 07:22:51 testgit sshd[13348]: Disconnected from authenticating user root 212.127.95.129 port 42902 [preauth]
+Aug 13 07:23:09 testgit sshd[13350]: Invalid user myuser from 167.99.243.12 port 56338
+Aug 13 07:23:09 testgit sshd[13350]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:23:09 testgit sshd[13350]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:23:10 testgit sshd[13350]: Failed password for invalid user myuser from 167.99.243.12 port 56338 ssh2
+Aug 13 07:23:11 testgit sshd[13350]: Received disconnect from 167.99.243.12 port 56338:11: Bye Bye [preauth]
+Aug 13 07:23:11 testgit sshd[13350]: Disconnected from invalid user myuser 167.99.243.12 port 56338 [preauth]
+Aug 13 07:23:56 testgit sshd[13365]: Invalid user speech-dispatcher from 212.127.95.129 port 34248
+Aug 13 07:23:56 testgit sshd[13365]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:23:56 testgit sshd[13365]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:23:58 testgit sshd[13365]: Failed password for invalid user speech-dispatcher from 212.127.95.129 port 34248 ssh2
+Aug 13 07:23:58 testgit sshd[13365]: Received disconnect from 212.127.95.129 port 34248:11: Bye Bye [preauth]
+Aug 13 07:23:58 testgit sshd[13365]: Disconnected from invalid user speech-dispatcher 212.127.95.129 port 34248 [preauth]
+Aug 13 07:24:08 testgit sshd[13372]: Invalid user infinity from 167.99.243.12 port 45478
+Aug 13 07:24:08 testgit sshd[13372]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:24:08 testgit sshd[13372]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:24:10 testgit sshd[13372]: Failed password for invalid user infinity from 167.99.243.12 port 45478 ssh2
+Aug 13 07:24:11 testgit sshd[13372]: Received disconnect from 167.99.243.12 port 45478:11: Bye Bye [preauth]
+Aug 13 07:24:11 testgit sshd[13372]: Disconnected from invalid user infinity 167.99.243.12 port 45478 [preauth]
+Aug 13 07:24:14 testgit sshd[13386]: Invalid user mats from 85.154.238.60 port 41914
+Aug 13 07:24:14 testgit sshd[13386]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:24:14 testgit sshd[13386]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:24:15 testgit sshd[13386]: Failed password for invalid user mats from 85.154.238.60 port 41914 ssh2
+Aug 13 07:24:16 testgit sshd[13386]: Received disconnect from 85.154.238.60 port 41914:11: Bye Bye [preauth]
+Aug 13 07:24:16 testgit sshd[13386]: Disconnected from invalid user mats 85.154.238.60 port 41914 [preauth]
+Aug 13 07:25:05 testgit sshd[13401]: Invalid user mats from 212.127.95.129 port 53828
+Aug 13 07:25:05 testgit sshd[13401]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:25:05 testgit sshd[13401]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:25:07 testgit sshd[13401]: Failed password for invalid user mats from 212.127.95.129 port 53828 ssh2
+Aug 13 07:25:09 testgit sshd[13401]: Received disconnect from 212.127.95.129 port 53828:11: Bye Bye [preauth]
+Aug 13 07:25:09 testgit sshd[13401]: Disconnected from invalid user mats 212.127.95.129 port 53828 [preauth]
+Aug 13 07:25:09 testgit sshd[13415]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12  user=root
+Aug 13 07:25:11 testgit sshd[13415]: Failed password for root from 167.99.243.12 port 34624 ssh2
+Aug 13 07:25:11 testgit sshd[13415]: Received disconnect from 167.99.243.12 port 34624:11: Bye Bye [preauth]
+Aug 13 07:25:11 testgit sshd[13415]: Disconnected from authenticating user root 167.99.243.12 port 34624 [preauth]
+Aug 13 07:25:38 testgit sshd[13419]: Invalid user jbc from 85.154.238.60 port 36472
+Aug 13 07:25:38 testgit sshd[13419]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:25:38 testgit sshd[13419]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:25:40 testgit sshd[13419]: Failed password for invalid user jbc from 85.154.238.60 port 36472 ssh2
+Aug 13 07:25:41 testgit sshd[13419]: Received disconnect from 85.154.238.60 port 36472:11: Bye Bye [preauth]
+Aug 13 07:25:41 testgit sshd[13419]: Disconnected from invalid user jbc 85.154.238.60 port 36472 [preauth]
+Aug 13 07:26:13 testgit sshd[13440]: Invalid user test from 167.99.243.12 port 51998
+Aug 13 07:26:13 testgit sshd[13440]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:26:13 testgit sshd[13440]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:26:15 testgit sshd[13440]: Failed password for invalid user test from 167.99.243.12 port 51998 ssh2
+Aug 13 07:26:16 testgit sshd[13440]: Received disconnect from 167.99.243.12 port 51998:11: Bye Bye [preauth]
+Aug 13 07:26:16 testgit sshd[13440]: Disconnected from invalid user test 167.99.243.12 port 51998 [preauth]
+Aug 13 07:26:20 testgit sshd[13452]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129  user=root
+Aug 13 07:26:21 testgit sshd[13452]: Failed password for root from 212.127.95.129 port 45166 ssh2
+Aug 13 07:26:22 testgit sshd[13452]: Received disconnect from 212.127.95.129 port 45166:11: Bye Bye [preauth]
+Aug 13 07:26:22 testgit sshd[13452]: Disconnected from authenticating user root 212.127.95.129 port 45166 [preauth]
+Aug 13 07:27:11 testgit sshd[13485]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60  user=root
+Aug 13 07:27:13 testgit sshd[13485]: Failed password for root from 85.154.238.60 port 57914 ssh2
+Aug 13 07:27:14 testgit sshd[13485]: Received disconnect from 85.154.238.60 port 57914:11: Bye Bye [preauth]
+Aug 13 07:27:14 testgit sshd[13485]: Disconnected from authenticating user root 85.154.238.60 port 57914 [preauth]
+Aug 13 07:27:20 testgit sshd[13488]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12  user=root
+Aug 13 07:27:23 testgit sshd[13488]: Failed password for root from 167.99.243.12 port 41146 ssh2
+Aug 13 07:27:24 testgit sshd[13488]: Received disconnect from 167.99.243.12 port 41146:11: Bye Bye [preauth]
+Aug 13 07:27:24 testgit sshd[13488]: Disconnected from authenticating user root 167.99.243.12 port 41146 [preauth]
+Aug 13 07:27:34 testgit sshd[13502]: Invalid user myuser from 212.127.95.129 port 36514
+Aug 13 07:27:34 testgit sshd[13502]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:27:34 testgit sshd[13502]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:27:36 testgit sshd[13502]: Failed password for invalid user myuser from 212.127.95.129 port 36514 ssh2
+Aug 13 07:27:38 testgit sshd[13502]: Received disconnect from 212.127.95.129 port 36514:11: Bye Bye [preauth]
+Aug 13 07:27:38 testgit sshd[13502]: Disconnected from invalid user myuser 212.127.95.129 port 36514 [preauth]
+Aug 13 07:28:24 testgit sshd[13504]: Invalid user admin from 167.99.243.12 port 58520
+Aug 13 07:28:24 testgit sshd[13504]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:28:24 testgit sshd[13504]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:28:25 testgit sshd[13504]: Failed password for invalid user admin from 167.99.243.12 port 58520 ssh2
+Aug 13 07:28:25 testgit sshd[13504]: Received disconnect from 167.99.243.12 port 58520:11: Bye Bye [preauth]
+Aug 13 07:28:25 testgit sshd[13504]: Disconnected from invalid user admin 167.99.243.12 port 58520 [preauth]
+Aug 13 07:28:39 testgit sshd[13506]: Invalid user pliki from 85.154.238.60 port 52184
+Aug 13 07:28:39 testgit sshd[13506]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:28:39 testgit sshd[13506]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:28:41 testgit sshd[13506]: Failed password for invalid user pliki from 85.154.238.60 port 52184 ssh2
+Aug 13 07:28:42 testgit sshd[13506]: Received disconnect from 85.154.238.60 port 52184:11: Bye Bye [preauth]
+Aug 13 07:28:42 testgit sshd[13506]: Disconnected from invalid user pliki 85.154.238.60 port 52184 [preauth]
+Aug 13 07:28:45 testgit sshd[13508]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129  user=root
+Aug 13 07:28:47 testgit sshd[13508]: Failed password for root from 212.127.95.129 port 56090 ssh2
+Aug 13 07:28:47 testgit sshd[13508]: Received disconnect from 212.127.95.129 port 56090:11: Bye Bye [preauth]
+Aug 13 07:28:47 testgit sshd[13508]: Disconnected from authenticating user root 212.127.95.129 port 56090 [preauth]
+Aug 13 07:29:26 testgit sshd[13510]: Invalid user stjohn from 167.99.243.12 port 47664
+Aug 13 07:29:26 testgit sshd[13510]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:29:26 testgit sshd[13510]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:29:28 testgit sshd[13510]: Failed password for invalid user stjohn from 167.99.243.12 port 47664 ssh2
+Aug 13 07:29:29 testgit sshd[13510]: Received disconnect from 167.99.243.12 port 47664:11: Bye Bye [preauth]
+Aug 13 07:29:29 testgit sshd[13510]: Disconnected from invalid user stjohn 167.99.243.12 port 47664 [preauth]
+Aug 13 07:29:54 testgit sshd[13516]: Invalid user infinity from 212.127.95.129 port 47436
+Aug 13 07:29:54 testgit sshd[13516]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:29:54 testgit sshd[13516]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:29:55 testgit sshd[13516]: Failed password for invalid user infinity from 212.127.95.129 port 47436 ssh2
+Aug 13 07:29:56 testgit sshd[13516]: Received disconnect from 212.127.95.129 port 47436:11: Bye Bye [preauth]
+Aug 13 07:29:56 testgit sshd[13516]: Disconnected from invalid user infinity 212.127.95.129 port 47436 [preauth]
+Aug 13 07:30:06 testgit sshd[13519]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60  user=root
+Aug 13 07:30:08 testgit sshd[13519]: Failed password for root from 85.154.238.60 port 46258 ssh2
+Aug 13 07:30:08 testgit sshd[13519]: Received disconnect from 85.154.238.60 port 46258:11: Bye Bye [preauth]
+Aug 13 07:30:08 testgit sshd[13519]: Disconnected from authenticating user root 85.154.238.60 port 46258 [preauth]
+Aug 13 07:30:29 testgit sshd[13521]: Invalid user jbc from 167.99.243.12 port 36808
+Aug 13 07:30:29 testgit sshd[13521]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:30:29 testgit sshd[13521]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:30:31 testgit sshd[13521]: Failed password for invalid user jbc from 167.99.243.12 port 36808 ssh2
+Aug 13 07:30:32 testgit sshd[13521]: Received disconnect from 167.99.243.12 port 36808:11: Bye Bye [preauth]
+Aug 13 07:30:32 testgit sshd[13521]: Disconnected from invalid user jbc 167.99.243.12 port 36808 [preauth]
+Aug 13 07:31:09 testgit sshd[13524]: Invalid user jbc from 212.127.95.129 port 38786
+Aug 13 07:31:09 testgit sshd[13524]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:31:09 testgit sshd[13524]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:31:10 testgit sshd[13524]: Failed password for invalid user jbc from 212.127.95.129 port 38786 ssh2
+Aug 13 07:31:12 testgit sshd[13524]: Received disconnect from 212.127.95.129 port 38786:11: Bye Bye [preauth]
+Aug 13 07:31:12 testgit sshd[13524]: Disconnected from invalid user jbc 212.127.95.129 port 38786 [preauth]
+Aug 13 07:31:33 testgit sshd[13545]: Invalid user redis from 167.99.243.12 port 54186
+Aug 13 07:31:33 testgit sshd[13545]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:31:33 testgit sshd[13545]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:31:34 testgit sshd[13545]: Failed password for invalid user redis from 167.99.243.12 port 54186 ssh2
+Aug 13 07:31:35 testgit sshd[13545]: Received disconnect from 167.99.243.12 port 54186:11: Bye Bye [preauth]
+Aug 13 07:31:35 testgit sshd[13545]: Disconnected from invalid user redis 167.99.243.12 port 54186 [preauth]
+Aug 13 07:31:35 testgit sshd[13547]: Invalid user speech-dispatcher from 85.154.238.60 port 40106
+Aug 13 07:31:35 testgit sshd[13547]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:31:35 testgit sshd[13547]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:31:37 testgit sshd[13547]: Failed password for invalid user speech-dispatcher from 85.154.238.60 port 40106 ssh2
+Aug 13 07:31:37 testgit sshd[13547]: Received disconnect from 85.154.238.60 port 40106:11: Bye Bye [preauth]
+Aug 13 07:31:37 testgit sshd[13547]: Disconnected from invalid user speech-dispatcher 85.154.238.60 port 40106 [preauth]
+Aug 13 07:32:24 testgit sshd[13580]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129  user=root
+Aug 13 07:32:26 testgit sshd[13580]: Failed password for root from 212.127.95.129 port 58368 ssh2
+Aug 13 07:32:28 testgit sshd[13580]: Received disconnect from 212.127.95.129 port 58368:11: Bye Bye [preauth]
+Aug 13 07:32:28 testgit sshd[13580]: Disconnected from authenticating user root 212.127.95.129 port 58368 [preauth]
+Aug 13 07:32:38 testgit sshd[13584]: Invalid user mats from 167.99.243.12 port 43332
+Aug 13 07:32:38 testgit sshd[13584]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:32:38 testgit sshd[13584]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:32:41 testgit sshd[13584]: Failed password for invalid user mats from 167.99.243.12 port 43332 ssh2
+Aug 13 07:32:42 testgit sshd[13584]: Received disconnect from 167.99.243.12 port 43332:11: Bye Bye [preauth]
+Aug 13 07:32:42 testgit sshd[13584]: Disconnected from invalid user mats 167.99.243.12 port 43332 [preauth]
+Aug 13 07:33:09 testgit sshd[13615]: Invalid user myuser from 85.154.238.60 port 33926
+Aug 13 07:33:09 testgit sshd[13615]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:33:09 testgit sshd[13615]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:33:11 testgit sshd[13615]: Failed password for invalid user myuser from 85.154.238.60 port 33926 ssh2
+Aug 13 07:33:14 testgit sshd[13615]: Received disconnect from 85.154.238.60 port 33926:11: Bye Bye [preauth]
+Aug 13 07:33:14 testgit sshd[13615]: Disconnected from invalid user myuser 85.154.238.60 port 33926 [preauth]
+Aug 13 07:33:42 testgit sshd[13635]: Invalid user stjohn from 212.127.95.129 port 49712
+Aug 13 07:33:42 testgit sshd[13635]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:33:42 testgit sshd[13635]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:33:44 testgit sshd[13635]: Failed password for invalid user stjohn from 212.127.95.129 port 49712 ssh2
+Aug 13 07:33:44 testgit sshd[13635]: Received disconnect from 212.127.95.129 port 49712:11: Bye Bye [preauth]
+Aug 13 07:33:44 testgit sshd[13635]: Disconnected from invalid user stjohn 212.127.95.129 port 49712 [preauth]
+Aug 13 07:33:45 testgit sshd[13639]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12  user=root
+Aug 13 07:33:47 testgit sshd[13639]: Failed password for root from 167.99.243.12 port 60712 ssh2
+Aug 13 07:33:49 testgit sshd[13639]: Received disconnect from 167.99.243.12 port 60712:11: Bye Bye [preauth]
+Aug 13 07:33:49 testgit sshd[13639]: Disconnected from authenticating user root 167.99.243.12 port 60712 [preauth]
+Aug 13 07:33:49 testgit sshd[13647]: Invalid user ftp1 from 207.154.244.110 port 35482
+Aug 13 07:33:49 testgit sshd[13647]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:33:49 testgit sshd[13647]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=207.154.244.110 
+Aug 13 07:33:51 testgit sshd[13647]: Failed password for invalid user ftp1 from 207.154.244.110 port 35482 ssh2
+Aug 13 07:33:54 testgit sshd[13647]: Received disconnect from 207.154.244.110 port 35482:11: Bye Bye [preauth]
+Aug 13 07:33:54 testgit sshd[13647]: Disconnected from invalid user ftp1 207.154.244.110 port 35482 [preauth]
+Aug 13 07:34:45 testgit sshd[13667]: Invalid user gogs from 85.154.238.60 port 56466
+Aug 13 07:34:45 testgit sshd[13667]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:34:45 testgit sshd[13667]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:34:47 testgit sshd[13667]: Failed password for invalid user gogs from 85.154.238.60 port 56466 ssh2
+Aug 13 07:34:49 testgit sshd[13667]: Received disconnect from 85.154.238.60 port 56466:11: Bye Bye [preauth]
+Aug 13 07:34:49 testgit sshd[13667]: Disconnected from invalid user gogs 85.154.238.60 port 56466 [preauth]
+Aug 13 07:34:51 testgit sshd[13669]: Invalid user noreply from 167.99.243.12 port 49852
+Aug 13 07:34:51 testgit sshd[13669]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:34:51 testgit sshd[13669]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:34:53 testgit sshd[13669]: Failed password for invalid user noreply from 167.99.243.12 port 49852 ssh2
+Aug 13 07:34:53 testgit sshd[13669]: Received disconnect from 167.99.243.12 port 49852:11: Bye Bye [preauth]
+Aug 13 07:34:53 testgit sshd[13669]: Disconnected from invalid user noreply 167.99.243.12 port 49852 [preauth]
+Aug 13 07:34:56 testgit sshd[13671]: Invalid user gogs from 212.127.95.129 port 41052
+Aug 13 07:34:56 testgit sshd[13671]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:34:56 testgit sshd[13671]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:34:58 testgit sshd[13671]: Failed password for invalid user gogs from 212.127.95.129 port 41052 ssh2
+Aug 13 07:34:58 testgit sshd[13671]: Received disconnect from 212.127.95.129 port 41052:11: Bye Bye [preauth]
+Aug 13 07:34:58 testgit sshd[13671]: Disconnected from invalid user gogs 212.127.95.129 port 41052 [preauth]
+Aug 13 07:35:54 testgit sshd[13688]: Invalid user gogs from 167.99.243.12 port 38996
+Aug 13 07:35:54 testgit sshd[13688]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:35:54 testgit sshd[13688]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=167.99.243.12 
+Aug 13 07:35:55 testgit sshd[13688]: Failed password for invalid user gogs from 167.99.243.12 port 38996 ssh2
+Aug 13 07:35:56 testgit sshd[13688]: Received disconnect from 167.99.243.12 port 38996:11: Bye Bye [preauth]
+Aug 13 07:35:56 testgit sshd[13688]: Disconnected from invalid user gogs 167.99.243.12 port 38996 [preauth]
+Aug 13 07:36:08 testgit sshd[13691]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129  user=root
+Aug 13 07:36:09 testgit sshd[13691]: Failed password for root from 212.127.95.129 port 60630 ssh2
+Aug 13 07:36:10 testgit sshd[13691]: Received disconnect from 212.127.95.129 port 60630:11: Bye Bye [preauth]
+Aug 13 07:36:10 testgit sshd[13691]: Disconnected from authenticating user root 212.127.95.129 port 60630 [preauth]
+Aug 13 07:36:11 testgit sshd[13693]: Invalid user admin from 85.154.238.60 port 49848
+Aug 13 07:36:11 testgit sshd[13693]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:36:11 testgit sshd[13693]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:36:13 testgit sshd[13693]: Failed password for invalid user admin from 85.154.238.60 port 49848 ssh2
+Aug 13 07:36:15 testgit sshd[13693]: Received disconnect from 85.154.238.60 port 49848:11: Bye Bye [preauth]
+Aug 13 07:36:15 testgit sshd[13693]: Disconnected from invalid user admin 85.154.238.60 port 49848 [preauth]
+Aug 13 07:36:15 testgit sshd[13700]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=207.154.244.110  user=root
+Aug 13 07:36:17 testgit sshd[13700]: Failed password for root from 207.154.244.110 port 38802 ssh2
+Aug 13 07:36:17 testgit sshd[13700]: Received disconnect from 207.154.244.110 port 38802:11: Bye Bye [preauth]
+Aug 13 07:36:17 testgit sshd[13700]: Disconnected from authenticating user root 207.154.244.110 port 38802 [preauth]
+Aug 13 07:37:18 testgit sshd[13743]: Invalid user pliki from 212.127.95.129 port 51970
+Aug 13 07:37:18 testgit sshd[13743]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:37:18 testgit sshd[13743]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:37:20 testgit sshd[13743]: Failed password for invalid user pliki from 212.127.95.129 port 51970 ssh2
+Aug 13 07:37:21 testgit sshd[13743]: Received disconnect from 212.127.95.129 port 51970:11: Bye Bye [preauth]
+Aug 13 07:37:21 testgit sshd[13743]: Disconnected from invalid user pliki 212.127.95.129 port 51970 [preauth]
+Aug 13 07:37:33 testgit sshd[13754]: Invalid user dz from 207.154.244.110 port 58858
+Aug 13 07:37:33 testgit sshd[13754]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:37:33 testgit sshd[13754]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=207.154.244.110 
+Aug 13 07:37:35 testgit sshd[13754]: Failed password for invalid user dz from 207.154.244.110 port 58858 ssh2
+Aug 13 07:37:36 testgit sshd[13754]: Received disconnect from 207.154.244.110 port 58858:11: Bye Bye [preauth]
+Aug 13 07:37:36 testgit sshd[13754]: Disconnected from invalid user dz 207.154.244.110 port 58858 [preauth]
+Aug 13 07:37:38 testgit sshd[13756]: Invalid user stjohn from 85.154.238.60 port 43406
+Aug 13 07:37:38 testgit sshd[13756]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:37:38 testgit sshd[13756]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:37:40 testgit sshd[13756]: Failed password for invalid user stjohn from 85.154.238.60 port 43406 ssh2
+Aug 13 07:37:42 testgit sshd[13756]: Received disconnect from 85.154.238.60 port 43406:11: Bye Bye [preauth]
+Aug 13 07:37:42 testgit sshd[13756]: Disconnected from invalid user stjohn 85.154.238.60 port 43406 [preauth]
+Aug 13 07:38:30 testgit sshd[13777]: Invalid user noreply from 212.127.95.129 port 43318
+Aug 13 07:38:30 testgit sshd[13777]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:38:30 testgit sshd[13777]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=212.127.95.129 
+Aug 13 07:38:32 testgit sshd[13777]: Failed password for invalid user noreply from 212.127.95.129 port 43318 ssh2
+Aug 13 07:38:32 testgit sshd[13777]: Received disconnect from 212.127.95.129 port 43318:11: Bye Bye [preauth]
+Aug 13 07:38:32 testgit sshd[13777]: Disconnected from invalid user noreply 212.127.95.129 port 43318 [preauth]
+Aug 13 07:38:51 testgit sshd[13781]: Invalid user fond from 207.154.244.110 port 50682
+Aug 13 07:38:51 testgit sshd[13781]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:38:51 testgit sshd[13781]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=207.154.244.110 
+Aug 13 07:38:53 testgit sshd[13781]: Failed password for invalid user fond from 207.154.244.110 port 50682 ssh2
+Aug 13 07:38:55 testgit sshd[13781]: Received disconnect from 207.154.244.110 port 50682:11: Bye Bye [preauth]
+Aug 13 07:38:55 testgit sshd[13781]: Disconnected from invalid user fond 207.154.244.110 port 50682 [preauth]
+Aug 13 07:39:07 testgit sshd[13798]: Invalid user redis from 85.154.238.60 port 37796
+Aug 13 07:39:07 testgit sshd[13798]: pam_unix(sshd:auth): check pass; user unknown
+Aug 13 07:39:07 testgit sshd[13798]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.154.238.60 
+Aug 13 07:39:09 testgit sshd[13798]: Failed password for invalid user redis from 85.154.238.60 port 37796 ssh2
+Aug 13 07:39:11 testgit sshd[13798]: Received disconnect from 85.154.238.60 port 37796:11: Bye Bye [preauth]
+Aug 13 07:39:11 testgit sshd[13798]: Disconnected from invalid user redis 85.154.238.60 port 37796 [preauth]

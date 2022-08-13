@@ -1,0 +1,259 @@
+Cloud-init v. 22.1 running 'init-local' at Sat, 13 Aug 2022 07:06:02 +0000. Up 8.92 seconds.
+Cloud-init v. 22.1 running 'init' at Sat, 13 Aug 2022 07:06:09 +0000. Up 15.55 seconds.
+ci-info: +++++++++++++++++++++++++++++++++++++++++++++Net device info++++++++++++++++++++++++++++++++++++++++++++++
+ci-info: +--------+------+-------------------------------------------+---------------+--------+-------------------+
+ci-info: | Device |  Up  |                  Address                  |      Mask     | Scope  |     Hw-Address    |
+ci-info: +--------+------+-------------------------------------------+---------------+--------+-------------------+
+ci-info: | enp1s0 | True |                217.69.8.125               | 255.255.254.0 | global | 56:00:04:1a:76:6e |
+ci-info: | enp1s0 | True | 2001:19f0:6801:19c7:5400:4ff:fe1a:766e/64 |       .       | global | 56:00:04:1a:76:6e |
+ci-info: | enp1s0 | True |        fe80::5400:4ff:fe1a:766e/64        |       .       |  link  | 56:00:04:1a:76:6e |
+ci-info: |   lo   | True |                 127.0.0.1                 |   255.0.0.0   |  host  |         .         |
+ci-info: |   lo   | True |                  ::1/128                  |       .       |  host  |         .         |
+ci-info: +--------+------+-------------------------------------------+---------------+--------+-------------------+
+ci-info: +++++++++++++++++++++++++++++++Route IPv4 info++++++++++++++++++++++++++++++++
+ci-info: +-------+-----------------+------------+-----------------+-----------+-------+
+ci-info: | Route |   Destination   |  Gateway   |     Genmask     | Interface | Flags |
+ci-info: +-------+-----------------+------------+-----------------+-----------+-------+
+ci-info: |   0   |     0.0.0.0     | 217.69.8.1 |     0.0.0.0     |   enp1s0  |   UG  |
+ci-info: |   1   | 169.254.169.254 | 217.69.8.1 | 255.255.255.255 |   enp1s0  |  UGH  |
+ci-info: |   2   |    217.69.8.0   |  0.0.0.0   |  255.255.254.0  |   enp1s0  |   U   |
+ci-info: +-------+-----------------+------------+-----------------+-----------+-------+
+ci-info: ++++++++++++++++++++++++++++++++++Route IPv6 info++++++++++++++++++++++++++++++++++
+ci-info: +-------+--------------------------+--------------------------+-----------+-------+
+ci-info: | Route |       Destination        |         Gateway          | Interface | Flags |
+ci-info: +-------+--------------------------+--------------------------+-----------+-------+
+ci-info: |   1   | 2001:19f0:6801:19c7::/64 |            ::            |   enp1s0  |   Ue  |
+ci-info: |   2   |        fe80::/64         |            ::            |   enp1s0  |   U   |
+ci-info: |   3   |           ::/0           | fe80::fc00:4ff:fe1a:766e |   enp1s0  |  UGe  |
+ci-info: |   5   |          local           |            ::            |   enp1s0  |   U   |
+ci-info: |   6   |          local           |            ::            |   enp1s0  |   U   |
+ci-info: |   7   |        multicast         |            ::            |   enp1s0  |   U   |
+ci-info: +-------+--------------------------+--------------------------+-----------+-------+
+Generating public/private rsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_rsa_key
+Your public key has been saved in /etc/ssh/ssh_host_rsa_key.pub
+The key fingerprint is:
+SHA256:TU8SPjmjBUWoWxpsHKeeeMa+l3gJiVfzOU4BKsAaK/g root@testgit
+The key's randomart image is:
++---[RSA 3072]----+
+| .      .++      |
+|. o   . +o o     |
+|.+ . o * .X .    |
+|=   . O +=.B     |
+|..   B OSo.o.    |
+|  E o %   =      |
+|     = o = .     |
+|      o = .      |
+|      .+         |
++----[SHA256]-----+
+Generating public/private dsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_dsa_key
+Your public key has been saved in /etc/ssh/ssh_host_dsa_key.pub
+The key fingerprint is:
+SHA256:s0WkurkhHive06Yfdy30mDMpPRIaVtYTGfDQG+TqIYo root@testgit
+The key's randomart image is:
++---[DSA 1024]----+
+|        o+=o     |
+|         B+.     |
+|        + *o     |
+|       + o..     |
+|      = S o      |
+|   . o B O *     |
+|  E +.* * @ o    |
+|  .o.+o= + =     |
+| ...==o          |
++----[SHA256]-----+
+Generating public/private ecdsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_ecdsa_key
+Your public key has been saved in /etc/ssh/ssh_host_ecdsa_key.pub
+The key fingerprint is:
+SHA256:rO9EffPIGdN1N2cxwVzFAFfwACEuYNm71jb7CsZU/vg root@testgit
+The key's randomart image is:
++---[ECDSA 256]---+
+|      oo  . ++BOB|
+|     ..... . . =+|
+|        ..o    .B|
+|       ..=   . o=|
+|        Soo = .  |
+|       =o += B   |
+|      ..=..o= .  |
+|       + ...     |
+|       .o .oE    |
++----[SHA256]-----+
+Generating public/private ed25519 key pair.
+Your identification has been saved in /etc/ssh/ssh_host_ed25519_key
+Your public key has been saved in /etc/ssh/ssh_host_ed25519_key.pub
+The key fingerprint is:
+SHA256:AI/MgWGNAbHpyfn7dNSTYcz+jVsXl8favkO42eduElg root@testgit
+The key's randomart image is:
++--[ED25519 256]--+
+|oo+*o            |
+| +oo.=  o        |
+|o   + o  =       |
+|o o    .+ o   E..|
+| =     .S=   o.o+|
+|  .   .   o +..++|
+|   . . .   o o*o.|
+|    o .     ooo+o|
+|   ...     .   *B|
++----[SHA256]-----+
+Cloud-init v. 22.1 running 'modules:config' at Sat, 13 Aug 2022 07:06:14 +0000. Up 20.86 seconds.
+Get:1 https://apprepo.vultr.com/ubuntu universal InRelease [1,746 B]
+Get:2 http://fr.clouds.archive.ubuntu.com/ubuntu focal InRelease [265 kB]
+Get:3 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:4 https://apprepo.vultr.com/ubuntu universal/main amd64 Packages [447 B]
+Get:5 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:6 http://fr.clouds.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:7 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [1,672 kB]
+Get:8 http://fr.clouds.archive.ubuntu.com/ubuntu focal/main amd64 Packages [970 kB]
+Get:9 http://security.ubuntu.com/ubuntu focal-security/main Translation-en [282 kB]
+Get:10 http://security.ubuntu.com/ubuntu focal-security/main amd64 c-n-f Metadata [10.8 kB]
+Get:11 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1,138 kB]
+Get:12 http://security.ubuntu.com/ubuntu focal-security/restricted Translation-en [162 kB]
+Get:13 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 c-n-f Metadata [588 B]
+Get:14 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [714 kB]
+Get:15 http://security.ubuntu.com/ubuntu focal-security/universe Translation-en [130 kB]
+Get:16 http://security.ubuntu.com/ubuntu focal-security/universe amd64 c-n-f Metadata [14.7 kB]
+Get:17 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [22.2 kB]
+Get:18 http://security.ubuntu.com/ubuntu focal-security/multiverse Translation-en [5,376 B]
+Get:19 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 c-n-f Metadata [508 B]
+Get:20 http://fr.clouds.archive.ubuntu.com/ubuntu focal/main Translation-en [506 kB]
+Get:21 http://fr.clouds.archive.ubuntu.com/ubuntu focal/main amd64 c-n-f Metadata [29.5 kB]
+Get:22 http://fr.clouds.archive.ubuntu.com/ubuntu focal/restricted amd64 Packages [22.0 kB]
+Get:23 http://fr.clouds.archive.ubuntu.com/ubuntu focal/restricted Translation-en [6,212 B]
+Get:24 http://fr.clouds.archive.ubuntu.com/ubuntu focal/restricted amd64 c-n-f Metadata [392 B]
+Get:25 http://fr.clouds.archive.ubuntu.com/ubuntu focal/universe amd64 Packages [8,628 kB]
+Get:26 http://fr.clouds.archive.ubuntu.com/ubuntu focal/universe Translation-en [5,124 kB]
+Get:27 http://fr.clouds.archive.ubuntu.com/ubuntu focal/universe amd64 c-n-f Metadata [265 kB]
+Get:28 http://fr.clouds.archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [144 kB]
+Get:29 http://fr.clouds.archive.ubuntu.com/ubuntu focal/multiverse Translation-en [104 kB]
+Get:30 http://fr.clouds.archive.ubuntu.com/ubuntu focal/multiverse amd64 c-n-f Metadata [9,136 B]
+Get:31 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2,036 kB]
+Get:32 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [364 kB]
+Get:33 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 c-n-f Metadata [15.6 kB]
+Get:34 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1,222 kB]
+Get:35 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/restricted Translation-en [174 kB]
+Get:36 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 c-n-f Metadata [584 B]
+Get:37 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [936 kB]
+Get:38 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [210 kB]
+Get:39 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/universe amd64 c-n-f Metadata [21.0 kB]
+Get:40 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [24.4 kB]
+Get:41 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/multiverse Translation-en [7,336 B]
+Get:42 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 c-n-f Metadata [588 B]
+Get:43 http://fr.clouds.archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [45.6 kB]
+Get:44 http://fr.clouds.archive.ubuntu.com/ubuntu focal-backports/main Translation-en [16.3 kB]
+Get:45 http://fr.clouds.archive.ubuntu.com/ubuntu focal-backports/main amd64 c-n-f Metadata [1,420 B]
+Get:46 http://fr.clouds.archive.ubuntu.com/ubuntu focal-backports/restricted amd64 c-n-f Metadata [116 B]
+Get:47 http://fr.clouds.archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [24.0 kB]
+Get:48 http://fr.clouds.archive.ubuntu.com/ubuntu focal-backports/universe Translation-en [16.0 kB]
+Get:49 http://fr.clouds.archive.ubuntu.com/ubuntu focal-backports/universe amd64 c-n-f Metadata [860 B]
+Get:50 http://fr.clouds.archive.ubuntu.com/ubuntu focal-backports/multiverse amd64 c-n-f Metadata [116 B]
+Fetched 25.7 MB in 7s (3,597 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following NEW packages will be installed:
+  linux-headers-5.4.0-124 linux-headers-5.4.0-124-generic
+  linux-image-5.4.0-124-generic linux-modules-5.4.0-124-generic
+  linux-modules-extra-5.4.0-124-generic
+The following packages will be upgraded:
+  libgstreamer1.0-0 linux-generic linux-headers-generic linux-image-generic
+  linux-libc-dev
+5 upgraded, 5 newly installed, 0 to remove and 0 not upgraded.
+5 standard security updates
+Need to get 79.0 MB of archives.
+After this operation, 380 MB of additional disk space will be used.
+Get:1 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 libgstreamer1.0-0 amd64 1.16.3-0ubuntu1.1 [894 kB]
+Get:2 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-modules-5.4.0-124-generic amd64 5.4.0-124.140 [15.0 MB]
+Get:3 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-image-5.4.0-124-generic amd64 5.4.0-124.140 [10.5 MB]
+Get:4 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-modules-extra-5.4.0-124-generic amd64 5.4.0-124.140 [39.2 MB]
+Get:5 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-generic amd64 5.4.0.124.125 [1,900 B]
+Get:6 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-image-generic amd64 5.4.0.124.125 [2,576 B]
+Get:7 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-headers-5.4.0-124 all 5.4.0-124.140 [11.0 MB]
+Get:8 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-headers-5.4.0-124-generic amd64 5.4.0-124.140 [1,386 kB]
+Get:9 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-headers-generic amd64 5.4.0.124.125 [2,436 B]
+Get:10 http://fr.clouds.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-libc-dev amd64 5.4.0-124.140 [1,104 kB]
+Fetched 79.0 MB in 3s (26.3 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 82331 files and directories currently installed.)
+Preparing to unpack .../0-libgstreamer1.0-0_1.16.3-0ubuntu1.1_amd64.deb ...
+Unpacking libgstreamer1.0-0:amd64 (1.16.3-0ubuntu1.1) over (1.16.3-0ubuntu1) ...
+Selecting previously unselected package linux-modules-5.4.0-124-generic.
+Preparing to unpack .../1-linux-modules-5.4.0-124-generic_5.4.0-124.140_amd64.deb ...
+Unpacking linux-modules-5.4.0-124-generic (5.4.0-124.140) ...
+Selecting previously unselected package linux-image-5.4.0-124-generic.
+Preparing to unpack .../2-linux-image-5.4.0-124-generic_5.4.0-124.140_amd64.deb ...
+Unpacking linux-image-5.4.0-124-generic (5.4.0-124.140) ...
+Selecting previously unselected package linux-modules-extra-5.4.0-124-generic.
+Preparing to unpack .../3-linux-modules-extra-5.4.0-124-generic_5.4.0-124.140_amd64.deb ...
+Unpacking linux-modules-extra-5.4.0-124-generic (5.4.0-124.140) ...
+Preparing to unpack .../4-linux-generic_5.4.0.124.125_amd64.deb ...
+Unpacking linux-generic (5.4.0.124.125) over (5.4.0.122.123) ...
+Preparing to unpack .../5-linux-image-generic_5.4.0.124.125_amd64.deb ...
+Unpacking linux-image-generic (5.4.0.124.125) over (5.4.0.122.123) ...
+Selecting previously unselected package linux-headers-5.4.0-124.
+Preparing to unpack .../6-linux-headers-5.4.0-124_5.4.0-124.140_all.deb ...
+Unpacking linux-headers-5.4.0-124 (5.4.0-124.140) ...
+Selecting previously unselected package linux-headers-5.4.0-124-generic.
+Preparing to unpack .../7-linux-headers-5.4.0-124-generic_5.4.0-124.140_amd64.deb ...
+Unpacking linux-headers-5.4.0-124-generic (5.4.0-124.140) ...
+Preparing to unpack .../8-linux-headers-generic_5.4.0.124.125_amd64.deb ...
+Unpacking linux-headers-generic (5.4.0.124.125) over (5.4.0.122.123) ...
+Preparing to unpack .../9-linux-libc-dev_5.4.0-124.140_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (5.4.0-124.140) over (5.4.0-122.138) ...
+Setting up linux-modules-5.4.0-124-generic (5.4.0-124.140) ...
+Setting up linux-libc-dev:amd64 (5.4.0-124.140) ...
+Setting up linux-headers-5.4.0-124 (5.4.0-124.140) ...
+Setting up linux-image-5.4.0-124-generic (5.4.0-124.140) ...
+I: /boot/vmlinuz is now a symlink to vmlinuz-5.4.0-124-generic
+I: /boot/initrd.img is now a symlink to initrd.img-5.4.0-124-generic
+Setting up linux-headers-5.4.0-124-generic (5.4.0-124.140) ...
+Setting up libgstreamer1.0-0:amd64 (1.16.3-0ubuntu1.1) ...
+Setcap worked! gst-ptp-helper is not suid!
+Setting up linux-modules-extra-5.4.0-124-generic (5.4.0-124.140) ...
+Setting up linux-headers-generic (5.4.0.124.125) ...
+Setting up linux-image-generic (5.4.0.124.125) ...
+Setting up linux-generic (5.4.0.124.125) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.9) ...
+/sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn_ops_train.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn_adv_train.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn_cnn_train.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn_adv_infer.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn_cnn_infer.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn_ops_infer.so.8 is not a symbolic link
+
+Processing triggers for linux-image-5.4.0-124-generic (5.4.0-124.140) ...
+/etc/kernel/postinst.d/initramfs-tools:
+update-initramfs: Generating /boot/initrd.img-5.4.0-124-generic
+/etc/kernel/postinst.d/zz-update-grub:
+Sourcing file `/etc/default/grub'
+Sourcing file `/etc/default/grub.d/init-select.cfg'
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-5.4.0-124-generic
+Found initrd image: /boot/initrd.img-5.4.0-124-generic
+Found linux image: /boot/vmlinuz-5.4.0-122-generic
+Found initrd image: /boot/initrd.img-5.4.0-122-generic
+done
+2400+0 records in
+2400+0 records out
+2516582400 bytes (2.5 GB, 2.3 GiB) copied, 6.82383 s, 369 MB/s
+Setting up swapspace version 1, size = 2.4 GiB (2516578304 bytes)
+no label, UUID=0c215bcb-b1a2-40ea-a081-630244d45e24
+combined unmodified, ignoring
+no channel parameters changed.
+current values: rx 0 tx 0 other 0 combined 1
+net.ipv6.conf.enp1s0.accept_ra = 2
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+net.ipv4.tcp_rmem = 4096 87380 33554432
+net.ipv4.tcp_wmem = 4096 87380 33554432
+Cloud-init v. 22.1 running 'modules:final' at Sat, 13 Aug 2022 07:06:16 +0000. Up 22.98 seconds.
+Cloud-init v. 22.1 finished at Sat, 13 Aug 2022 07:07:48 +0000. Datasource DataSourceVultr.  Up 113.90 seconds

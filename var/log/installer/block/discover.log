@@ -1,0 +1,112 @@
+2022-08-05 04:24:07,327 curtin:89 Running command ['dpkg', '--print-architecture'] with allowed return codes [0] (capture=True)
+2022-08-05 04:24:07,893 curtin.reporting.start.subiquity/Meta/status_GET:45 start: subiquity/Meta/status_GET: 
+2022-08-05 04:24:07,894 curtin.reporting.finish.subiquity/Meta/status_GET:45 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "CLOUD_INIT_WAIT", "confirming_tty": "", "error": null, "cloud_init...
+2022-08-05 04:24:07,906 curtin.reporting.start.subiquity/Meta/status_GET:45 start: subiquity/Meta/status_GET: 
+2022-08-05 04:24:08,619 curtin.reporting.start.subiquity/Reporting/load_autoinstall_data:45 start: subiquity/Reporting/load_autoinstall_data: 
+2022-08-05 04:24:08,631 curtin.reporting.finish.subiquity/Reporting/load_autoinstall_data:45 finish: subiquity/Reporting/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:11,325 probert.dasd:131 Probing DASD devies
+2022-08-05 04:24:11,325 probert.dasd:134 DASD devices only present on s390x, arch=x86_64
+2022-08-05 04:24:11,327 curtin:1294 Extracting storage config from probe data
+2022-08-05 04:24:11,327 curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:24:11,327 curtin:86 /dev/sr0 is multipath device partition? False
+2022-08-05 04:24:11,327 curtin:73 /dev/sr1 is multipath device member? False
+2022-08-05 04:24:11,327 curtin:86 /dev/sr1 is multipath device partition? False
+2022-08-05 04:24:11,327 curtin:73 /dev/vda is multipath device member? False
+2022-08-05 04:24:11,327 curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:24:11,328 curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:24:11,328 curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:24:11,328 curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:24:11,336 curtin:73 /dev/fd0 is multipath device member? False
+2022-08-05 04:24:11,336 curtin:86 /dev/fd0 is multipath device partition? False
+2022-08-05 04:24:11,336 curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:24:11,336 curtin:1301 Sorting extracted configurations
+2022-08-05 04:24:11,337 curtin:1320 Validating extracted storage config components
+2022-08-05 04:24:11,345 curtin:1339 Extracted (unmerged) storage config:
+storage:
+-   id: disk-vda
+    path: /dev/vda
+    type: disk
+
+2022-08-05 04:24:11,345 curtin:1341 Generating storage config dependencies
+2022-08-05 04:24:11,345 curtin:1347 Merging storage config dependencies
+2022-08-05 04:24:11,345 curtin:1354 Merged storage config:
+storage:
+    config:
+    -   id: disk-vda
+        path: /dev/vda
+        type: disk
+    version: 1
+
+2022-08-05 04:24:16,128 probert.dasd:131 Probing DASD devies
+2022-08-05 04:24:16,128 probert.dasd:134 DASD devices only present on s390x, arch=x86_64
+2022-08-05 04:24:16,132 curtin:1294 Extracting storage config from probe data
+2022-08-05 04:24:16,132 curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:24:16,132 curtin:86 /dev/sr0 is multipath device partition? False
+2022-08-05 04:24:16,132 curtin:73 /dev/sr1 is multipath device member? False
+2022-08-05 04:24:16,132 curtin:86 /dev/sr1 is multipath device partition? False
+2022-08-05 04:24:16,132 curtin:73 /dev/vda is multipath device member? False
+2022-08-05 04:24:16,132 curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:24:16,132 curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:24:16,132 curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:24:16,132 curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:24:16,141 curtin:73 /dev/fd0 is multipath device member? False
+2022-08-05 04:24:16,141 curtin:86 /dev/fd0 is multipath device partition? False
+2022-08-05 04:24:16,141 curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:24:16,141 curtin:1301 Sorting extracted configurations
+2022-08-05 04:24:16,141 curtin:1320 Validating extracted storage config components
+2022-08-05 04:24:16,149 curtin:1339 Extracted (unmerged) storage config:
+storage:
+-   id: disk-vda
+    path: /dev/vda
+    type: disk
+
+2022-08-05 04:24:16,149 curtin:1341 Generating storage config dependencies
+2022-08-05 04:24:16,149 curtin:1347 Merging storage config dependencies
+2022-08-05 04:24:16,150 curtin:1354 Merged storage config:
+storage:
+    config:
+    -   id: disk-vda
+        path: /dev/vda
+        type: disk
+    version: 1
+
+2022-08-05 04:30:44,356 curtin:87 Running command ['dpkg', '--print-architecture'] with allowed return codes [0] (capture=True)
+2022-08-05 04:30:45,260 curtin.reporting.start.subiquity/Meta/status_GET:45 start: subiquity/Meta/status_GET: 
+2022-08-05 04:30:45,261 curtin.reporting.finish.subiquity/Meta/status_GET:45 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "CLOUD_INIT_WAIT", "confirming_tty": "", "error": null, "cloud_init...
+2022-08-05 04:30:45,274 curtin.reporting.start.subiquity/Meta/status_GET:45 start: subiquity/Meta/status_GET: 
+2022-08-05 04:30:45,351 curtin.reporting.start.subiquity/Reporting/load_autoinstall_data:45 start: subiquity/Reporting/load_autoinstall_data: 
+2022-08-05 04:30:45,352 curtin.reporting.finish.subiquity/Reporting/load_autoinstall_data:45 finish: subiquity/Reporting/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,587 curtin:1008 unknown type for url 'cp:///media/filesystem', assuming type 'tgz'
+2022-08-05 04:30:45,968 probert.dasd:134 Probing DASD devies
+2022-08-05 04:30:45,968 probert.dasd:137 DASD devices only present on s390x, arch=x86_64
+2022-08-05 04:30:45,982 curtin:1296 Extracting storage config from probe data
+2022-08-05 04:30:45,982 curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:30:45,982 curtin:86 /dev/sr0 is multipath device partition? False
+2022-08-05 04:30:45,983 curtin:73 /dev/sr1 is multipath device member? False
+2022-08-05 04:30:45,983 curtin:86 /dev/sr1 is multipath device partition? False
+2022-08-05 04:30:45,983 curtin:73 /dev/vda is multipath device member? False
+2022-08-05 04:30:45,983 curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:30:45,983 curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:30:45,983 curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:30:45,983 curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:30:45,995 curtin:73 /dev/fd0 is multipath device member? False
+2022-08-05 04:30:45,996 curtin:86 /dev/fd0 is multipath device partition? False
+2022-08-05 04:30:45,996 curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:30:45,996 curtin:1303 Sorting extracted configurations
+2022-08-05 04:30:45,996 curtin:1322 Validating extracted storage config components
+2022-08-05 04:30:46,004 curtin:1339 Extracted (unmerged) storage config:
+storage:
+-   id: disk-vda
+    path: /dev/vda
+    type: disk
+
+2022-08-05 04:30:46,004 curtin:1343 Generating storage config dependencies
+2022-08-05 04:30:46,004 curtin:1349 Merging storage config dependencies
+2022-08-05 04:30:46,004 curtin:1354 Merged storage config:
+storage:
+    config:
+    -   id: disk-vda
+        path: /dev/vda
+        type: disk
+    version: 2
+

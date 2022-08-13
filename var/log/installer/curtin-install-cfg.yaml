@@ -1,0 +1,138 @@
+apply_net_commands:
+  builtin: []
+curthooks_commands:
+  001-mount-cdrom:
+  - mount
+  - --bind
+  - /cdrom
+  - /target/cdrom
+  builtin:
+  - curtin
+  - curthooks
+debconf_selections:
+  subiquity: ''
+extract_commands:
+  builtin:
+  - curtin
+  - extract
+grub:
+  probe_additional_os: true
+  terminal: unmodified
+hook_commands:
+  builtin:
+  - curtin
+  - hook
+install:
+  error_tarfile: /var/log/curtin/curtin-error-logs.tar
+  log_file: /var/log/curtin/install.log
+  save_install_config: /var/log/installer/curtin-install-cfg.yaml
+  save_install_log: /var/log/installer/curtin-install.log
+  target: /target
+  unmount: disabled
+kernel:
+  package: linux-generic
+late_commands:
+  builtin: []
+network_commands:
+  builtin:
+  - curtin
+  - net-meta
+  - auto
+partitioning_commands:
+  builtin:
+  - curtin
+  - block-meta
+  - simple
+pollinate:
+  user_agent:
+    subiquity: 22.07.2_3698
+proxy: {}
+reporting:
+  subiquity:
+    identifier: curtin_event.2820.3
+    type: journald
+sources:
+  00_cmdline:
+    type: tgz
+    uri: cp:///tmp/tmp60jcv6em/mount
+stages:
+- early
+- partitioning
+- extract
+- curthooks
+- hook
+- late
+storage:
+  config:
+  - grub_device: true
+    id: disk-vda
+    name: ''
+    path: /dev/vda
+    preserve: false
+    ptable: msdos
+    type: disk
+    wipe: superblock-recursive
+  - device: disk-vda
+    flag: boot
+    grub_device: false
+    id: partition-0
+    number: 1
+    preserve: false
+    size: 8386510848
+    type: partition
+    wipe: superblock
+  - fstype: ext4
+    id: format-0
+    preserve: false
+    type: format
+    volume: partition-0
+  - device: format-0
+    id: mount-0
+    path: /
+    type: mount
+  version: 1
+write_files:
+  etc_default_keyboard:
+    content: '# KEYBOARD CONFIGURATION FILE
+
+
+      # Consult the keyboard(5) manual page.
+
+
+      XKBMODEL="pc105"
+
+      XKBLAYOUT="en"
+
+      XKBVARIANT="us"
+
+      XKBOPTIONS=""
+
+
+      BACKSPACE="guess"
+
+      '
+    path: etc/default/keyboard
+    permissions: 420
+  etc_machine_id:
+    content: '23a704b61f364e959fea0466cd5fbdbf
+
+      '
+    path: etc/machine-id
+    permissions: 292
+  etc_netplan_installer:
+    content: "# This is the network config written by 'subiquity'\nnetwork:\n  ethernets:\n\
+      \    ens3:\n      dhcp4: true\n  version: 2\n"
+    path: etc/netplan/00-installer-config.yaml
+  md5check:
+    content: "{\n  \"checksum_missmatch\": [\n],\n  \"result\": \"pass\"\n}\n"
+    path: var/log/installer/casper-md5check.json
+    permissions: 420
+  media_info:
+    content: Ubuntu-Server 20.04.3 LTS "Focal Fossa" - Release amd64 (20210824)
+    path: var/log/installer/media-info
+    permissions: 420
+  nonet:
+    content: 'network: {config: disabled}
+
+      '
+    path: etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg

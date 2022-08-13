@@ -1,0 +1,686 @@
+2022-08-05 04:30:44,354 INFO subiquity:112 Starting Subiquity server revision 3698
+2022-08-05 04:30:44,354 INFO subiquity:113 Arguments passed: ['/snap/subiquity/3698/lib/python3.8/site-packages/subiquity/cmd/server.py']
+2022-08-05 04:30:44,354 DEBUG asyncio:59 Using selector: EpollSelector
+2022-08-05 04:30:44,355 DEBUG subiquitycore.prober:34 Prober() init finished, data:None
+2022-08-05 04:30:44,356 DEBUG curtin:87 Running command ['dpkg', '--print-architecture'] with allowed return codes [0] (capture=True)
+2022-08-05 04:30:44,362 DEBUG subiquitycore.netplan:109 config for zz-all-en = {'dhcp4': True, 'match': {'name': 'en*'}}
+2022-08-05 04:30:44,362 DEBUG subiquitycore.netplan:109 config for zz-all-eth = {'dhcp4': True, 'match': {'name': 'eth*'}}
+2022-08-05 04:30:44,368 DEBUG subiquitycore.utils:92 arun_command called: ['cloud-init', 'status', '--wait']
+2022-08-05 04:30:45,260 DEBUG curtin.reporting.start.subiquity/Meta/status_GET:45 start: subiquity/Meta/status_GET: 
+2022-08-05 04:30:45,261 DEBUG curtin.reporting.finish.subiquity/Meta/status_GET:45 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "CLOUD_INIT_WAIT", "confirming_tty": "", "error": null, "cloud_init...
+2022-08-05 04:30:45,261 INFO aiohttp.access:233  [05/Aug/2022:04:30:45 +0000] "GET /meta/status?cur=null HTTP/1.1" 200 420 "-" "Python/3.8 aiohttp/3.6.2"
+2022-08-05 04:30:45,274 DEBUG curtin.reporting.start.subiquity/Meta/status_GET:45 start: subiquity/Meta/status_GET: 
+2022-08-05 04:30:45,287 DEBUG subiquitycore.utils:101 arun_command ['cloud-init', 'status', '--wait'] exited with code 0
+2022-08-05 04:30:45,287 DEBUG subiquity.server.server:519 waited 0.9190452098846436s for cloud-init
+2022-08-05 04:30:45,288 DEBUG subiquity.server.server:521 loading cloud config
+2022-08-05 04:30:45,288 DEBUG cloudinit.util:1478 Reading from /etc/cloud/cloud.cfg (quiet=False)
+2022-08-05 04:30:45,288 DEBUG cloudinit.util:1489 Read 3487 bytes from /etc/cloud/cloud.cfg
+2022-08-05 04:30:45,288 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 3487 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,296 DEBUG cloudinit.util:1478 Reading from /etc/cloud/cloud.cfg.d/90_dpkg.cfg (quiet=False)
+2022-08-05 04:30:45,296 DEBUG cloudinit.util:1489 Read 301 bytes from /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+2022-08-05 04:30:45,296 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 301 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,297 DEBUG cloudinit.util:1478 Reading from /etc/cloud/cloud.cfg.d/05_logging.cfg (quiet=False)
+2022-08-05 04:30:45,297 DEBUG cloudinit.util:1489 Read 2070 bytes from /etc/cloud/cloud.cfg.d/05_logging.cfg
+2022-08-05 04:30:45,297 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 2070 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,301 DEBUG cloudinit.util:1478 Reading from /run/cloud-init/cloud.cfg (quiet=False)
+2022-08-05 04:30:45,301 DEBUG cloudinit.util:1489 Read 35 bytes from /run/cloud-init/cloud.cfg
+2022-08-05 04:30:45,301 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 35 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,302 DEBUG cloudinit.subp:245 Running command ['systemd-detect-virt', '--quiet', '--container'] with allowed return codes [0] (shell=False, capture=True)
+2022-08-05 04:30:45,314 DEBUG cloudinit.util:1478 Reading from /etc/os-release (quiet=False)
+2022-08-05 04:30:45,315 DEBUG cloudinit.util:1489 Read 382 bytes from /etc/os-release
+2022-08-05 04:30:45,315 DEBUG cloudinit.util:1478 Reading from /proc/1/environ (quiet=False)
+2022-08-05 04:30:45,315 DEBUG cloudinit.util:1489 Read 278 bytes from /proc/1/environ
+2022-08-05 04:30:45,315 DEBUG cloudinit.util:1478 Reading from /proc/self/status (quiet=False)
+2022-08-05 04:30:45,315 DEBUG cloudinit.util:1489 Read 1310 bytes from /proc/self/status
+2022-08-05 04:30:45,315 DEBUG cloudinit.util:1478 Reading from /proc/cmdline (quiet=False)
+2022-08-05 04:30:45,315 DEBUG cloudinit.util:1489 Read 84 bytes from /proc/cmdline
+2022-08-05 04:30:45,315 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 0 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,316 DEBUG cloudinit.util:933 loaded blob returned None, returning default.
+2022-08-05 04:30:45,316 DEBUG cloudinit.util:1478 Reading from /var/lib/cloud/instance/cloud-config.txt (quiet=False)
+2022-08-05 04:30:45,316 DEBUG cloudinit.util:1489 Read 1549 bytes from /var/lib/cloud/instance/cloud-config.txt
+2022-08-05 04:30:45,316 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 1549 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,321 DEBUG cloudinit.util:1478 Reading from /var/lib/cloud/instance/obj.pkl (quiet=False)
+2022-08-05 04:30:45,321 DEBUG cloudinit.util:1489 Read 9794 bytes from /var/lib/cloud/instance/obj.pkl
+2022-08-05 04:30:45,331 DEBUG cloudinit.util:1478 Reading from /run/cloud-init/.instance-id (quiet=False)
+2022-08-05 04:30:45,331 DEBUG cloudinit.util:1489 Read 6 bytes from /run/cloud-init/.instance-id
+2022-08-05 04:30:45,331 DEBUG cloudinit.stages:314 restored from cache with run check: DataSourceNoCloudNet [seed=cmdline,/var/lib/cloud/seed/nocloud,http://10.0.2.2:8823/][dsmode=net]
+2022-08-05 04:30:45,331 DEBUG cloudinit.util:1478 Reading from /etc/cloud/cloud.cfg (quiet=False)
+2022-08-05 04:30:45,331 DEBUG cloudinit.util:1489 Read 3487 bytes from /etc/cloud/cloud.cfg
+2022-08-05 04:30:45,331 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 3487 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,338 DEBUG cloudinit.util:1478 Reading from /etc/cloud/cloud.cfg.d/90_dpkg.cfg (quiet=False)
+2022-08-05 04:30:45,338 DEBUG cloudinit.util:1489 Read 301 bytes from /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+2022-08-05 04:30:45,338 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 301 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,339 DEBUG cloudinit.util:1478 Reading from /etc/cloud/cloud.cfg.d/05_logging.cfg (quiet=False)
+2022-08-05 04:30:45,339 DEBUG cloudinit.util:1489 Read 2070 bytes from /etc/cloud/cloud.cfg.d/05_logging.cfg
+2022-08-05 04:30:45,339 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 2070 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,341 DEBUG cloudinit.util:1478 Reading from /run/cloud-init/cloud.cfg (quiet=False)
+2022-08-05 04:30:45,341 DEBUG cloudinit.util:1489 Read 35 bytes from /run/cloud-init/cloud.cfg
+2022-08-05 04:30:45,341 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 35 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,341 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 0 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,341 DEBUG cloudinit.util:933 loaded blob returned None, returning default.
+2022-08-05 04:30:45,341 DEBUG cloudinit.util:1478 Reading from /var/lib/cloud/instance/cloud-config.txt (quiet=False)
+2022-08-05 04:30:45,341 DEBUG cloudinit.util:1489 Read 1549 bytes from /var/lib/cloud/instance/cloud-config.txt
+2022-08-05 04:30:45,342 DEBUG cloudinit.util:925 Attempting to load yaml from string of length 1549 with allowed root types (<class 'dict'>,)
+2022-08-05 04:30:45,346 DEBUG cloudinit.stages:137 Using distro class <class 'cloudinit.distros.ubuntu.Distro'>
+2022-08-05 04:30:45,347 DEBUG subiquity.server.server:471 load_autoinstall_config only_early True
+2022-08-05 04:30:45,351 DEBUG curtin.reporting.start.subiquity/Reporting/load_autoinstall_data:45 start: subiquity/Reporting/load_autoinstall_data: 
+2022-08-05 04:30:45,352 DEBUG curtin.reporting.finish.subiquity/Reporting/load_autoinstall_data:45 finish: subiquity/Reporting/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,352 DEBUG root:39 start: subiquity/Error/load_autoinstall_data: 
+2022-08-05 04:30:45,353 DEBUG root:39 finish: subiquity/Error/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,353 INFO root:39 start: subiquity/core_validation: 
+2022-08-05 04:30:45,354 INFO root:39 finish: subiquity/core_validation: SUCCESS: 
+2022-08-05 04:30:45,354 DEBUG root:39 start: subiquity/Early/load_autoinstall_data: 
+2022-08-05 04:30:45,354 DEBUG root:39 finish: subiquity/Early/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,354 DEBUG subiquity.server.server:471 load_autoinstall_config only_early False
+2022-08-05 04:30:45,358 DEBUG root:39 start: subiquity/Early/load_autoinstall_data: 
+2022-08-05 04:30:45,359 DEBUG root:39 finish: subiquity/Early/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,359 DEBUG root:39 start: subiquity/Reporting/load_autoinstall_data: 
+2022-08-05 04:30:45,359 DEBUG root:39 finish: subiquity/Reporting/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,359 DEBUG root:39 start: subiquity/Error/load_autoinstall_data: 
+2022-08-05 04:30:45,359 DEBUG root:39 finish: subiquity/Error/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,359 DEBUG root:39 start: subiquity/Userdata/load_autoinstall_data: 
+2022-08-05 04:30:45,360 DEBUG root:39 finish: subiquity/Userdata/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,360 DEBUG root:39 start: subiquity/Package/load_autoinstall_data: 
+2022-08-05 04:30:45,360 DEBUG root:39 finish: subiquity/Package/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,360 DEBUG root:39 start: subiquity/Debconf/load_autoinstall_data: 
+2022-08-05 04:30:45,361 DEBUG root:39 finish: subiquity/Debconf/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,361 DEBUG root:39 start: subiquity/Locale/load_autoinstall_data: 
+2022-08-05 04:30:45,361 DEBUG root:39 finish: subiquity/Locale/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,361 DEBUG root:39 start: subiquity/Refresh/load_autoinstall_data: 
+2022-08-05 04:30:45,361 DEBUG root:39 finish: subiquity/Refresh/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,362 DEBUG root:39 start: subiquity/Kernel/load_autoinstall_data: 
+2022-08-05 04:30:45,362 DEBUG root:39 finish: subiquity/Kernel/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,362 DEBUG root:39 start: subiquity/Keyboard/load_autoinstall_data: 
+2022-08-05 04:30:45,362 DEBUG root:39 finish: subiquity/Keyboard/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,362 DEBUG root:39 start: subiquity/Zdev/load_autoinstall_data: 
+2022-08-05 04:30:45,363 DEBUG root:39 finish: subiquity/Zdev/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,363 DEBUG root:39 start: subiquity/Source/load_autoinstall_data: 
+2022-08-05 04:30:45,363 DEBUG root:39 finish: subiquity/Source/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,363 DEBUG root:39 start: subiquity/Network/load_autoinstall_data: 
+2022-08-05 04:30:45,363 DEBUG root:39 finish: subiquity/Network/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,363 DEBUG root:39 start: subiquity/UbuntuAdvantage/load_autoinstall_data: 
+2022-08-05 04:30:45,363 DEBUG root:39 finish: subiquity/UbuntuAdvantage/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,363 DEBUG root:39 start: subiquity/Proxy/load_autoinstall_data: 
+2022-08-05 04:30:45,363 DEBUG root:39 finish: subiquity/Proxy/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,364 DEBUG root:39 start: subiquity/Mirror/load_autoinstall_data: 
+2022-08-05 04:30:45,364 DEBUG root:39 finish: subiquity/Mirror/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,364 DEBUG root:39 start: subiquity/Filesystem/load_autoinstall_data: 
+2022-08-05 04:30:45,364 DEBUG subiquity.server.controller.filesystem:95 load_autoinstall_data {'config': [{'grub_device': True, 'id': 'disk-vda', 'path': '/dev/vda', 'ptable': 'dos', 'type': 'disk', 'wipe': 'superblock-recursive'}, {'device': 'disk-vda', 'flag': 'boot', 'id': 'partition-0', 'number': 1, 'size': -1, 'type': 'partition', 'wipe': 'superblock'}, {'fstype': 'ext4', 'id': 'format-0', 'type': 'format', 'volume': 'partition-0'}, {'device': 'format-0', 'id': 'mount-0', 'path': '/', 'type': 'mount'}]}
+2022-08-05 04:30:45,364 DEBUG subiquity.server.controller.filesystem:105 self.ai_data = {'config': [{'grub_device': True, 'id': 'disk-vda', 'path': '/dev/vda', 'ptable': 'dos', 'type': 'disk', 'wipe': 'superblock-recursive'}, {'device': 'disk-vda', 'flag': 'boot', 'id': 'partition-0', 'number': 1, 'size': -1, 'type': 'partition', 'wipe': 'superblock'}, {'fstype': 'ext4', 'id': 'format-0', 'type': 'format', 'volume': 'partition-0'}, {'device': 'format-0', 'id': 'mount-0', 'path': '/', 'type': 'mount'}]}
+2022-08-05 04:30:45,364 DEBUG root:39 finish: subiquity/Filesystem/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,364 DEBUG root:39 start: subiquity/Identity/load_autoinstall_data: 
+2022-08-05 04:30:45,365 DEBUG root:39 finish: subiquity/Identity/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,365 DEBUG root:39 start: subiquity/SSH/load_autoinstall_data: 
+2022-08-05 04:30:45,365 DEBUG root:39 finish: subiquity/SSH/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,365 DEBUG root:39 start: subiquity/SnapList/load_autoinstall_data: 
+2022-08-05 04:30:45,366 DEBUG root:39 finish: subiquity/SnapList/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,366 DEBUG root:39 start: subiquity/Drivers/load_autoinstall_data: 
+2022-08-05 04:30:45,366 DEBUG root:39 finish: subiquity/Drivers/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,366 DEBUG root:39 start: subiquity/TimeZone/load_autoinstall_data: 
+2022-08-05 04:30:45,386 DEBUG root:39 finish: subiquity/TimeZone/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,387 DEBUG root:39 start: subiquity/Install/load_autoinstall_data: 
+2022-08-05 04:30:45,387 DEBUG root:39 finish: subiquity/Install/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,387 DEBUG root:39 start: subiquity/Updates/load_autoinstall_data: 
+2022-08-05 04:30:45,388 DEBUG root:39 finish: subiquity/Updates/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,388 DEBUG root:39 start: subiquity/Late/load_autoinstall_data: 
+2022-08-05 04:30:45,388 DEBUG root:39 finish: subiquity/Late/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,389 DEBUG root:39 start: subiquity/Shutdown/load_autoinstall_data: 
+2022-08-05 04:30:45,389 DEBUG root:39 finish: subiquity/Shutdown/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:30:45,390 DEBUG subiquitycore.core:120 starting controllers
+2022-08-05 04:30:45,395 DEBUG probert.network:585 event for link_change: NEW {'ifindex': 1, 'flags': 65609, 'arptype': 772, 'family': 0, 'is_vlan': False, 'name': b'lo'}
+2022-08-05 04:30:45,395 DEBUG probert.network:585 event for link_change: NEW {'ifindex': 2, 'flags': 69699, 'arptype': 1, 'family': 0, 'is_vlan': False, 'name': b'ens3'}
+2022-08-05 04:30:45,395 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 1, 'flags': 128, 'family': 2, 'scope': 254, 'local': b'127.0.0.1/8'}
+2022-08-05 04:30:45,395 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 2, 'flags': 0, 'family': 2, 'scope': 0, 'local': b'10.0.2.15/24'}
+2022-08-05 04:30:45,395 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 1, 'flags': 128, 'family': 10, 'scope': 254, 'local': b'::1'}
+2022-08-05 04:30:45,395 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:45,395 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 2, 'flags': 128, 'family': 10, 'scope': 253, 'local': b'fe80::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:45,395 DEBUG probert.network:672 link_change NEW {'ifindex': 1, 'flags': 65609, 'arptype': 772, 'family': 0, 'is_vlan': False, 'name': b'lo'}
+2022-08-05 04:30:45,431 DEBUG subiquitycore.models.network:421 new_link 1 lo lo
+2022-08-05 04:30:45,431 DEBUG subiquitycore.models.network:423 ignoring based on type
+2022-08-05 04:30:45,431 DEBUG probert.network:672 link_change NEW {'ifindex': 2, 'flags': 69699, 'arptype': 1, 'family': 0, 'is_vlan': False, 'name': b'ens3'}
+2022-08-05 04:30:45,467 DEBUG subiquitycore.models.network:421 new_link 2 ens3 eth
+2022-08-05 04:30:45,468 DEBUG subiquitycore.models.network:452 new_link 2 ens3 with config {'dhcp4': True}
+2022-08-05 04:30:45,468 DEBUG root:39 start: subiquity/Network/_send_update: NEW ens3
+2022-08-05 04:30:45,468 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:45,468 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: NEW ens3
+2022-08-05 04:30:45,469 DEBUG probert.network:717 addr_change NEW {'ifindex': 1, 'flags': 128, 'family': 2, 'scope': 254, 'local': b'127.0.0.1/8'}
+2022-08-05 04:30:45,469 DEBUG probert.network:717 addr_change NEW {'ifindex': 2, 'flags': 0, 'family': 2, 'scope': 0, 'local': b'10.0.2.15/24'}
+2022-08-05 04:30:45,469 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:45,469 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:45,469 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:45,469 DEBUG probert.network:717 addr_change NEW {'ifindex': 1, 'flags': 128, 'family': 10, 'scope': 254, 'local': b'::1'}
+2022-08-05 04:30:45,469 DEBUG probert.network:717 addr_change NEW {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:45,469 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:45,469 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:45,470 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:45,470 DEBUG probert.network:717 addr_change NEW {'ifindex': 2, 'flags': 128, 'family': 10, 'scope': 253, 'local': b'fe80::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:45,470 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:45,470 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:45,470 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:45,470 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 1, 'table': 254, 'dst': b'default', 'ifindex': 2}
+2022-08-05 04:30:45,470 DEBUG subiquitycore.controller.network:94 default routes {2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 1, 'table': 254, 'dst': b'10.0.2.0/24', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 1, 'table': 254, 'dst': b'10.0.2.2', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'10.0.2.0', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 2, 'table': 255, 'dst': b'10.0.2.15', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'10.0.2.255', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'127.0.0.0', 'ifindex': 1}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 2, 'table': 255, 'dst': b'127.0.0.0/8', 'ifindex': 1}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 2, 'table': 255, 'dst': b'127.0.0.1', 'ifindex': 1}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'127.255.255.255', 'ifindex': 1}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'::1', 'ifindex': 1}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'fe80::/64', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'fec0::/64', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'default', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG subiquitycore.controller.network:94 default routes {2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 2, 'table': 255, 'dst': b'::1', 'ifindex': 1}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 2, 'table': 255, 'dst': b'fe80::5054:ff:fe12:3456', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 2, 'table': 255, 'dst': b'fec0::5054:ff:fe12:3456', 'ifindex': 2}
+2022-08-05 04:30:45,471 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 5, 'table': 255, 'dst': b'ff00::/8', 'ifindex': 2}
+2022-08-05 04:30:45,472 DEBUG subiquitycore.core:123 controllers started
+2022-08-05 04:30:45,472 INFO root:39 start: subiquity/apply_autoinstall_config: 
+2022-08-05 04:30:45,473 DEBUG root:39 start: subiquity/Early/apply_autoinstall_config: 
+2022-08-05 04:30:45,473 DEBUG root:39 finish: subiquity/Early/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,473 DEBUG root:39 start: subiquity/Reporting/apply_autoinstall_config: 
+2022-08-05 04:30:45,473 DEBUG root:39 finish: subiquity/Reporting/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,473 DEBUG root:39 start: subiquity/Error/apply_autoinstall_config: 
+2022-08-05 04:30:45,474 DEBUG root:39 finish: subiquity/Error/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,474 DEBUG root:39 start: subiquity/Userdata/apply_autoinstall_config: 
+2022-08-05 04:30:45,474 DEBUG root:39 finish: subiquity/Userdata/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,474 DEBUG subiquity.models.subiquity:202 model userdata for postinstall stage is configured, to go {'ubuntu_advantage', 'ssh', 'network', 'locale', 'snaplist', 'packages', 'identity', 'drivers'}
+2022-08-05 04:30:45,474 DEBUG root:39 start: subiquity/Package/apply_autoinstall_config: 
+2022-08-05 04:30:45,474 DEBUG root:39 finish: subiquity/Package/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,475 DEBUG subiquity.models.subiquity:202 model packages for postinstall stage is configured, to go {'ubuntu_advantage', 'ssh', 'network', 'locale', 'snaplist', 'identity', 'drivers'}
+2022-08-05 04:30:45,475 DEBUG root:39 start: subiquity/Debconf/apply_autoinstall_config: 
+2022-08-05 04:30:45,475 DEBUG root:39 finish: subiquity/Debconf/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,475 DEBUG subiquity.models.subiquity:202 model debconf_selections for install stage is configured, to go {'mirror', 'source', 'network', 'proxy', 'filesystem', 'kernel', 'keyboard'}
+2022-08-05 04:30:45,475 DEBUG root:39 start: subiquity/Locale/apply_autoinstall_config: 
+2022-08-05 04:30:45,475 DEBUG root:39 finish: subiquity/Locale/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,475 DEBUG subiquity.models.subiquity:202 model locale for postinstall stage is configured, to go {'ubuntu_advantage', 'ssh', 'network', 'snaplist', 'identity', 'drivers'}
+2022-08-05 04:30:45,475 DEBUG root:39 start: subiquity/Refresh/apply_autoinstall_config: 
+2022-08-05 04:30:45,476 INFO root:39 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "WAITING", "confirming_tty": "", "error": null, "cloud_init_ok": tr...
+2022-08-05 04:30:45,476 DEBUG subiquity.models.subiquity:202 model locale for postinstall stage is configured, to go {'ubuntu_advantage', 'ssh', 'network', 'snaplist', 'identity', 'drivers'}
+2022-08-05 04:30:45,476 DEBUG root:39 start: subiquity/Refresh/configure_snapd: 
+2022-08-05 04:30:45,477 DEBUG root:39 start: subiquity/Refresh/configure_snapd/get_details: 
+2022-08-05 04:30:45,478 DEBUG root:39 start: subiquity/Refresh/check_for_update: 
+2022-08-05 04:30:45,479 DEBUG root:39 start: subiquity/Network/wait_for_initial_config: 
+2022-08-05 04:30:45,480 DEBUG root:39 finish: subiquity/Network/wait_for_initial_config: SUCCESS: 
+2022-08-05 04:30:45,484 DEBUG root:39 start: subiquity/Drivers/_list_drivers: 
+2022-08-05 04:30:45,485 DEBUG root:39 start: subiquity/Drivers/_list_drivers/wait_apt: 
+2022-08-05 04:30:45,485 DEBUG root:39 start: subiquity/Install/install: 
+2022-08-05 04:30:45,486 INFO aiohttp.access:233  [05/Aug/2022:04:30:45 +0000] "GET /meta/status?cur=%22CLOUD_INIT_WAIT%22 HTTP/1.1" 200 413 "-" "Python/3.8 aiohttp/3.6.2"
+2022-08-05 04:30:45,488 DEBUG root:39 start: subiquity/Filesystem/_probe: 
+2022-08-05 04:30:45,489 DEBUG urllib3.connectionpool:1003 Starting new HTTPS connection (1): geoip.ubuntu.com:443
+2022-08-05 04:30:45,490 DEBUG root:39 start: subiquity/Refresh/check_for_update: 
+2022-08-05 04:30:45,491 DEBUG root:39 start: subiquity/Refresh/check_for_update: 
+2022-08-05 04:30:45,491 DEBUG urllib3.connectionpool:1003 Starting new HTTPS connection (1): geoip.ubuntu.com:443
+2022-08-05 04:30:45,491 DEBUG root:39 start: subiquity/Filesystem/_probe/probe_once: restricted=False
+2022-08-05 04:30:45,492 ERROR root:39 finish: subiquity/Refresh/check_for_update: FAIL: cancelled
+2022-08-05 04:30:45,493 DEBUG urllib3.connectionpool:456 http://localhost:None "GET /v2/snaps/subiquity HTTP/1.1" 200 1096
+2022-08-05 04:30:45,492 ERROR root:39 finish: subiquity/Refresh/check_for_update: FAIL: cancelled
+2022-08-05 04:30:45,494 INFO root:39 start: subiquity/Meta/status_GET: 
+2022-08-05 04:30:45,497 DEBUG root:39 finish: subiquity/Refresh/configure_snapd/get_details: SUCCESS: current version of snap is: '22.07.2'
+2022-08-05 04:30:45,498 DEBUG root:39 start: subiquity/Refresh/configure_snapd/switching: switching subiquity to stable/ubuntu-20.04.3
+2022-08-05 04:30:45,504 DEBUG urllib3.connectionpool:456 http://localhost:None "POST /v2/snaps/subiquity HTTP/1.1" 202 81
+2022-08-05 04:30:45,516 DEBUG urllib3.connectionpool:456 http://localhost:None "GET /v2/changes/6 HTTP/1.1" 200 514
+2022-08-05 04:30:45,517 DEBUG root:39 finish: subiquity/Refresh/configure_snapd/switching: SUCCESS: switched to stable/ubuntu-20.04.3
+2022-08-05 04:30:45,517 DEBUG root:39 finish: subiquity/Refresh/configure_snapd: SUCCESS: 
+2022-08-05 04:30:45,518 DEBUG root:39 finish: subiquity/Refresh/check_for_update: SUCCESS: not offered update when already updated
+2022-08-05 04:30:45,518 DEBUG root:39 finish: subiquity/Refresh/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,518 DEBUG root:39 start: subiquity/Kernel/apply_autoinstall_config: 
+2022-08-05 04:30:45,518 DEBUG root:39 finish: subiquity/Kernel/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,519 DEBUG subiquity.models.subiquity:202 model kernel for install stage is configured, to go {'mirror', 'source', 'network', 'proxy', 'filesystem', 'keyboard'}
+2022-08-05 04:30:45,519 DEBUG root:39 start: subiquity/Keyboard/apply_autoinstall_config: 
+2022-08-05 04:30:45,519 DEBUG subiquitycore.utils:92 arun_command called: ['setupcon', '--save', '--force', '--keyboard-only']
+2022-08-05 04:30:45,580 DEBUG subiquitycore.utils:101 arun_command ['setupcon', '--save', '--force', '--keyboard-only'] exited with code 1
+2022-08-05 04:30:45,581 DEBUG subiquitycore.utils:92 arun_command called: ['/snap/subiquity/3698/bin/subiquity-loadkeys']
+2022-08-05 04:30:45,585 DEBUG subiquitycore.utils:101 arun_command ['/snap/subiquity/3698/bin/subiquity-loadkeys'] exited with code 0
+2022-08-05 04:30:45,585 DEBUG root:39 finish: subiquity/Keyboard/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,586 DEBUG subiquity.models.subiquity:202 model keyboard for install stage is configured, to go {'mirror', 'source', 'network', 'proxy', 'filesystem'}
+2022-08-05 04:30:45,586 DEBUG root:39 start: subiquity/Zdev/apply_autoinstall_config: 
+2022-08-05 04:30:45,586 DEBUG root:39 finish: subiquity/Zdev/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,587 DEBUG root:39 start: subiquity/Source/apply_autoinstall_config: 
+2022-08-05 04:30:45,587 DEBUG root:39 finish: subiquity/Source/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:45,587 DEBUG curtin:1008 unknown type for url 'cp:///media/filesystem', assuming type 'tgz'
+2022-08-05 04:30:45,587 DEBUG subiquity.models.subiquity:202 model source for install stage is configured, to go {'proxy', 'network', 'mirror', 'filesystem'}
+2022-08-05 04:30:45,587 DEBUG root:39 start: subiquity/Network/apply_autoinstall_config: 
+2022-08-05 04:30:45,587 DEBUG root:39 start: subiquity/Network/apply_autoinstall_config/wait_initial_config: 
+2022-08-05 04:30:45,588 DEBUG root:39 finish: subiquity/Network/apply_autoinstall_config/wait_initial_config: SUCCESS: 
+2022-08-05 04:30:45,588 DEBUG subiquitycore.controller.network:190 updating initial NIC config
+2022-08-05 04:30:45,588 DEBUG root:39 start: subiquity/Network/apply_autoinstall_config/wait_for_apply: 
+2022-08-05 04:30:45,588 INFO root:39 start: subiquity/Network/apply_autoinstall_config/apply_config: silent=False
+2022-08-05 04:30:45,589 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:45,589 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:45,589 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:45,590 DEBUG subiquitycore.controller.network:238 network config: 
+network:
+  ethernets:
+    ens3:
+      dhcp4: true
+  version: 2
+
+2022-08-05 04:30:45,592 DEBUG subiquitycore.netplan:109 config for ens3 = {'dhcp4': True}
+2022-08-05 04:30:45,592 DEBUG subiquitycore.utils:92 arun_command called: ['netplan', 'apply']
+2022-08-05 04:30:45,739 DEBUG urllib3.connectionpool:456 https://geoip.ubuntu.com:443 "GET /lookup HTTP/1.1" 200 None
+2022-08-05 04:30:45,740 DEBUG urllib3.connectionpool:456 https://geoip.ubuntu.com:443 "GET /lookup HTTP/1.1" 200 None
+2022-08-05 04:30:45,968 DEBUG probert.dasd:134 Probing DASD devies
+2022-08-05 04:30:45,968 DEBUG probert.dasd:137 DASD devices only present on s390x, arch=x86_64
+2022-08-05 04:30:45,982 DEBUG curtin:1296 Extracting storage config from probe data
+2022-08-05 04:30:45,982 DEBUG curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:30:45,982 DEBUG curtin:86 /dev/sr0 is multipath device partition? False
+2022-08-05 04:30:45,983 DEBUG curtin:73 /dev/sr1 is multipath device member? False
+2022-08-05 04:30:45,983 DEBUG curtin:86 /dev/sr1 is multipath device partition? False
+2022-08-05 04:30:45,983 DEBUG curtin:73 /dev/vda is multipath device member? False
+2022-08-05 04:30:45,983 DEBUG curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:30:45,983 DEBUG curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:30:45,983 DEBUG curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:30:45,983 DEBUG curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:30:45,995 DEBUG curtin:73 /dev/fd0 is multipath device member? False
+2022-08-05 04:30:45,996 DEBUG curtin:86 /dev/fd0 is multipath device partition? False
+2022-08-05 04:30:45,996 DEBUG curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:30:45,996 DEBUG curtin:1303 Sorting extracted configurations
+2022-08-05 04:30:45,996 INFO curtin:1322 Validating extracted storage config components
+2022-08-05 04:30:46,004 DEBUG curtin:1339 Extracted (unmerged) storage config:
+storage:
+-   id: disk-vda
+    path: /dev/vda
+    type: disk
+
+2022-08-05 04:30:46,004 DEBUG curtin:1343 Generating storage config dependencies
+2022-08-05 04:30:46,004 DEBUG curtin:1349 Merging storage config dependencies
+2022-08-05 04:30:46,004 DEBUG curtin:1354 Merged storage config:
+storage:
+    config:
+    -   id: disk-vda
+        path: /dev/vda
+        type: disk
+    version: 2
+
+2022-08-05 04:30:46,005 DEBUG subiquity.models.filesystem:1164 exclusions set()
+2022-08-05 04:30:46,005 DEBUG root:39 finish: subiquity/Filesystem/_probe/probe_once: SUCCESS: restricted=False
+2022-08-05 04:30:46,005 DEBUG subiquitycore.utils:64 run_command called: ['udevadm', 'settle', '-t', '0']
+2022-08-05 04:30:46,013 DEBUG subiquitycore.utils:77 run_command ['udevadm', 'settle', '-t', '0'] exited with code 0
+2022-08-05 04:30:46,013 DEBUG probert.network:585 event for addr_change: DEL {'ifindex': 2, 'flags': 0, 'family': 2, 'scope': 0, 'local': b'10.0.2.15/24'}
+2022-08-05 04:30:46,013 DEBUG probert.network:731 route_change DEL {'family': 2, 'type': 1, 'table': 254, 'dst': b'10.0.2.2', 'ifindex': 2}
+2022-08-05 04:30:46,013 DEBUG probert.network:731 route_change DEL {'family': 2, 'type': 1, 'table': 254, 'dst': b'default', 'ifindex': 2}
+2022-08-05 04:30:46,014 DEBUG subiquitycore.controller.network:94 default routes set()
+2022-08-05 04:30:46,014 DEBUG probert.network:717 addr_change DEL {'ifindex': 2, 'flags': 0, 'family': 2, 'scope': 0, 'local': b'10.0.2.15/24'}
+2022-08-05 04:30:46,014 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:46,014 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:46,015 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:46,015 DEBUG probert.network:731 route_change DEL {'family': 2, 'type': 1, 'table': 254, 'dst': b'10.0.2.0/24', 'ifindex': 2}
+2022-08-05 04:30:46,015 DEBUG probert.network:731 route_change DEL {'family': 2, 'type': 3, 'table': 255, 'dst': b'10.0.2.255', 'ifindex': 2}
+2022-08-05 04:30:46,015 DEBUG probert.network:731 route_change DEL {'family': 2, 'type': 3, 'table': 255, 'dst': b'10.0.2.0', 'ifindex': 2}
+2022-08-05 04:30:46,015 DEBUG probert.network:731 route_change DEL {'family': 2, 'type': 2, 'table': 255, 'dst': b'10.0.2.15', 'ifindex': 2}
+2022-08-05 04:30:46,015 DEBUG root:39 finish: subiquity/Filesystem/_probe: SUCCESS: 
+2022-08-05 04:30:46,083 DEBUG subiquitycore.utils:101 arun_command ['netplan', 'apply'] exited with code 0
+2022-08-05 04:30:46,084 DEBUG subiquitycore.utils:64 run_command called: ['udevadm', 'settle', '-t', '0']
+2022-08-05 04:30:46,105 DEBUG subiquitycore.utils:77 run_command ['udevadm', 'settle', '-t', '0'] exited with code 0
+2022-08-05 04:30:46,105 DEBUG probert.network:585 event for link_change: CHANGE {'ifindex': 2, 'flags': 69699, 'arptype': 1, 'family': 0, 'is_vlan': False, 'name': b'ens3'}
+2022-08-05 04:30:46,105 DEBUG probert.network:585 event for addr_change: DEL {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:46,106 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 2, 'flags': 0, 'family': 2, 'scope': 0, 'local': b'10.0.2.15/24'}
+2022-08-05 04:30:46,106 DEBUG probert.network:672 link_change CHANGE {'ifindex': 2, 'flags': 69699, 'arptype': 1, 'family': 0, 'is_vlan': False, 'name': b'ens3'}
+2022-08-05 04:30:46,106 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:46,106 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:46,107 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:46,107 DEBUG probert.network:717 addr_change DEL {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:46,107 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:46,107 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:46,107 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:46,107 DEBUG probert.network:731 route_change DEL {'family': 10, 'type': 2, 'table': 255, 'dst': b'fec0::5054:ff:fe12:3456', 'ifindex': 2}
+2022-08-05 04:30:46,108 DEBUG probert.network:731 route_change DEL {'family': 10, 'type': 1, 'table': 254, 'dst': b'fec0::/64', 'ifindex': 2}
+2022-08-05 04:30:46,108 DEBUG probert.network:731 route_change DEL {'family': 10, 'type': 1, 'table': 254, 'dst': b'default', 'ifindex': 2}
+2022-08-05 04:30:46,108 DEBUG subiquitycore.controller.network:94 default routes set()
+2022-08-05 04:30:46,108 DEBUG probert.network:717 addr_change NEW {'ifindex': 2, 'flags': 0, 'family': 2, 'scope': 0, 'local': b'10.0.2.15/24'}
+2022-08-05 04:30:46,108 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:46,108 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:46,108 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:46,109 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 2, 'table': 255, 'dst': b'10.0.2.15', 'ifindex': 2}
+2022-08-05 04:30:46,109 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'10.0.2.255', 'ifindex': 2}
+2022-08-05 04:30:46,109 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 1, 'table': 254, 'dst': b'10.0.2.0/24', 'ifindex': 2}
+2022-08-05 04:30:46,109 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'10.0.2.0', 'ifindex': 2}
+2022-08-05 04:30:46,109 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 1, 'table': 254, 'dst': b'10.0.2.2', 'ifindex': 2}
+2022-08-05 04:30:46,109 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 1, 'table': 254, 'dst': b'default', 'ifindex': 2}
+2022-08-05 04:30:46,109 DEBUG subiquitycore.controller.network:94 default routes {2}
+2022-08-05 04:30:46,109 INFO root:39 finish: subiquity/Network/apply_autoinstall_config/apply_config: SUCCESS: silent=False
+2022-08-05 04:30:46,110 DEBUG root:39 finish: subiquity/Network/apply_autoinstall_config/wait_for_apply: SUCCESS: 
+2022-08-05 04:30:46,110 DEBUG root:39 finish: subiquity/Network/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,110 DEBUG subiquity.models.subiquity:202 model network for install stage is configured, to go {'proxy', 'mirror', 'filesystem'}
+2022-08-05 04:30:46,110 DEBUG subiquity.models.subiquity:202 model network for postinstall stage is configured, to go {'ubuntu_advantage', 'ssh', 'snaplist', 'identity', 'drivers'}
+2022-08-05 04:30:46,111 DEBUG root:39 start: subiquity/UbuntuAdvantage/apply_autoinstall_config: 
+2022-08-05 04:30:46,111 DEBUG root:39 finish: subiquity/UbuntuAdvantage/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,111 DEBUG subiquity.models.subiquity:202 model ubuntu_advantage for postinstall stage is configured, to go {'snaplist', 'identity', 'drivers', 'ssh'}
+2022-08-05 04:30:46,111 DEBUG root:39 start: subiquity/Proxy/apply_autoinstall_config: 
+2022-08-05 04:30:46,111 DEBUG root:39 finish: subiquity/Proxy/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,112 DEBUG subiquity.models.subiquity:202 model proxy for install stage is configured, to go {'mirror', 'filesystem'}
+2022-08-05 04:30:46,112 DEBUG root:39 start: subiquity/Mirror/apply_autoinstall_config: 
+2022-08-05 04:30:46,112 DEBUG root:39 start: subiquity/Mirror/apply_autoinstall_config/waiting: 
+2022-08-05 04:30:46,112 DEBUG root:39 finish: subiquity/Mirror/apply_autoinstall_config/waiting: SUCCESS: 
+2022-08-05 04:30:46,112 DEBUG root:39 finish: subiquity/Mirror/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,113 DEBUG subiquity.models.subiquity:202 model mirror for install stage is configured, to go {'filesystem'}
+2022-08-05 04:30:46,113 DEBUG root:39 start: subiquity/Filesystem/apply_autoinstall_config: 
+2022-08-05 04:30:46,113 DEBUG root:39 start: subiquity/Filesystem/apply_autoinstall_config/convert_autoinstall_config: 
+2022-08-05 04:30:46,113 DEBUG subiquity.server.controller.filesystem:452 self.ai_data = {'config': [{'grub_device': True, 'id': 'disk-vda', 'path': '/dev/vda', 'ptable': 'dos', 'type': 'disk', 'wipe': 'superblock-recursive'}, {'device': 'disk-vda', 'flag': 'boot', 'id': 'partition-0', 'number': 1, 'size': -1, 'type': 'partition', 'wipe': 'superblock'}, {'fstype': 'ext4', 'id': 'format-0', 'type': 'format', 'volume': 'partition-0'}, {'device': 'format-0', 'id': 'mount-0', 'path': '/', 'type': 'mount'}]}
+2022-08-05 04:30:46,113 DEBUG subiquity.models.filesystem:1164 exclusions set()
+2022-08-05 04:30:46,114 DEBUG root:39 finish: subiquity/Filesystem/apply_autoinstall_config/convert_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,114 DEBUG root:39 finish: subiquity/Filesystem/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,114 DEBUG subiquity.models.subiquity:202 model filesystem for install stage is configured, to go set()
+2022-08-05 04:30:46,114 DEBUG root:39 start: subiquity/Identity/apply_autoinstall_config: 
+2022-08-05 04:30:46,114 DEBUG root:39 finish: subiquity/Identity/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,115 DEBUG subiquity.models.subiquity:202 model identity for postinstall stage is configured, to go {'snaplist', 'drivers', 'ssh'}
+2022-08-05 04:30:46,115 DEBUG root:39 start: subiquity/SSH/apply_autoinstall_config: 
+2022-08-05 04:30:46,115 DEBUG root:39 finish: subiquity/SSH/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,115 DEBUG subiquity.models.subiquity:202 model ssh for postinstall stage is configured, to go {'snaplist', 'drivers'}
+2022-08-05 04:30:46,115 DEBUG root:39 start: subiquity/SnapList/apply_autoinstall_config: 
+2022-08-05 04:30:46,115 DEBUG root:39 finish: subiquity/SnapList/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,116 DEBUG subiquity.models.subiquity:202 model snaplist for postinstall stage is configured, to go {'drivers'}
+2022-08-05 04:30:46,116 DEBUG root:39 start: subiquity/Drivers/apply_autoinstall_config: 
+2022-08-05 04:30:46,116 DEBUG root:39 finish: subiquity/Drivers/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,116 DEBUG subiquity.models.subiquity:202 model drivers for postinstall stage is configured, to go set()
+2022-08-05 04:30:46,116 DEBUG root:39 start: subiquity/TimeZone/apply_autoinstall_config: 
+2022-08-05 04:30:46,116 DEBUG root:39 finish: subiquity/TimeZone/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,117 DEBUG subiquity.server.server:463 apply_autoinstall_config: skipping Install as interactive
+2022-08-05 04:30:46,117 DEBUG root:39 start: subiquity/Updates/apply_autoinstall_config: 
+2022-08-05 04:30:46,117 DEBUG root:39 finish: subiquity/Updates/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,117 DEBUG root:39 start: subiquity/Late/apply_autoinstall_config: 
+2022-08-05 04:30:46,117 DEBUG root:39 finish: subiquity/Late/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,117 DEBUG root:39 start: subiquity/Shutdown/apply_autoinstall_config: 
+2022-08-05 04:30:46,118 DEBUG root:39 finish: subiquity/Shutdown/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,118 INFO root:39 finish: subiquity/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:30:46,119 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'mount', '-o', 'lowerdir=/media/filesystem,upperdir=/tmp/tmpemhxc33g/upper,workdir=/tmp/tmpemhxc33g/work', '-t', 'overlay', 'overlay', '/tmp/tmpemhxc33g/mount']
+2022-08-05 04:30:46,127 INFO root:39 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "NEEDS_CONFIRMATION", "confirming_tty": "", "error": null, "cloud_i...
+2022-08-05 04:30:46,128 INFO aiohttp.access:233  [05/Aug/2022:04:30:45 +0000] "GET /meta/status?cur=%22WAITING%22 HTTP/1.1" 200 424 "-" "Python/3.8 aiohttp/3.6.2"
+2022-08-05 04:30:46,128 INFO root:39 start: subiquity/Install/install/configure_apt: configuring apt
+2022-08-05 04:30:46,129 INFO root:39 start: subiquity/Meta/status_GET: 
+2022-08-05 04:30:46,130 INFO root:39 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "RUNNING", "confirming_tty": "", "error": null, "cloud_init_ok": tr...
+2022-08-05 04:30:46,130 INFO aiohttp.access:233  [05/Aug/2022:04:30:46 +0000] "GET /meta/status?cur=%22NEEDS_CONFIRMATION%22 HTTP/1.1" 200 413 "-" "Python/3.8 aiohttp/3.6.2"
+2022-08-05 04:30:46,131 INFO root:39 start: subiquity/Meta/status_GET: 
+2022-08-05 04:30:46,144 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--property', 'PrivateMounts=yes', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.1"}}', '-c', '/var/log/installer/subiquity-curtin-apt.conf', 'apt-config', '-t', '/tmp/tmpemhxc33g/mount']
+2022-08-05 04:30:46,822 DEBUG root:39 start: subiquity/Mirror/cmd-apt-config: curtin command apt-config
+2022-08-05 04:30:47,204 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:30:47,304 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:30:47,404 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:30:47,505 DEBUG subiquity.server.curtin:123 waited 0.4 seconds for events to drain
+2022-08-05 04:30:47,573 DEBUG root:39 finish: subiquity/Mirror/cmd-apt-config: SUCCESS: curtin command apt-config
+2022-08-05 04:30:47,585 DEBUG subiquitycore.utils:64 run_command called: ['udevadm', 'settle', '-t', '0']
+2022-08-05 04:30:47,601 DEBUG subiquitycore.utils:77 run_command ['udevadm', 'settle', '-t', '0'] exited with code 0
+2022-08-05 04:30:47,601 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 2, 'flags': 832, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:47,601 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'default', 'ifindex': 2}
+2022-08-05 04:30:47,601 DEBUG subiquitycore.controller.network:94 default routes {2}
+2022-08-05 04:30:47,602 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'fec0::/64', 'ifindex': 2}
+2022-08-05 04:30:47,602 DEBUG probert.network:717 addr_change NEW {'ifindex': 2, 'flags': 832, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:47,602 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:47,602 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:47,603 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:47,606 DEBUG subiquity.server.curtin:123 waited 0.5 seconds for events to drain
+2022-08-05 04:30:47,607 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'mount', '-o', 'lowerdir=/tmp/tmpemhxc33g/upper:/media/filesystem,upperdir=/tmp/tmp60jcv6em/upper,workdir=/tmp/tmp60jcv6em/work', '-t', 'overlay', 'overlay', '/tmp/tmp60jcv6em/mount']
+2022-08-05 04:30:47,623 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'mount', '-o', 'bind', '/cdrom', '/tmp/tmp60jcv6em/mount/cdrom']
+2022-08-05 04:30:47,639 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--property', 'PrivateMounts=yes', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.2"}}', 'in-target', '-t', '/tmp/tmp60jcv6em/mount', '--', 'apt-get', 'update']
+2022-08-05 04:30:48,367 DEBUG root:39 start: subiquity/Install/install/configure_apt/cmd-in-target: curtin command in-target
+2022-08-05 04:30:49,612 DEBUG subiquitycore.utils:64 run_command called: ['udevadm', 'settle', '-t', '0']
+2022-08-05 04:30:49,625 DEBUG subiquitycore.utils:77 run_command ['udevadm', 'settle', '-t', '0'] exited with code 0
+2022-08-05 04:30:49,625 DEBUG probert.network:585 event for addr_change: CHANGE {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:49,625 DEBUG probert.network:717 addr_change CHANGE {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:30:49,626 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:30:49,626 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:30:49,627 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:30:49,627 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 2, 'table': 255, 'dst': b'fec0::5054:ff:fe12:3456', 'ifindex': 2}
+2022-08-05 04:30:57,956 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:30:58,056 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:30:58,157 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:30:58,199 DEBUG root:39 finish: subiquity/Install/install/configure_apt/cmd-in-target: SUCCESS: curtin command in-target
+2022-08-05 04:30:58,258 DEBUG subiquity.server.curtin:123 waited 0.4 seconds for events to drain
+2022-08-05 04:30:58,258 INFO root:39 finish: subiquity/Install/install/configure_apt: SUCCESS: configuring apt
+2022-08-05 04:30:58,259 INFO root:39 start: subiquity/Install/install/curtin_install: installing system
+2022-08-05 04:30:58,260 DEBUG subiquity.models.subiquity:399 merging config from <subiquity.models.mirror.MirrorModel object at 0x7f1a3dbefd30>
+2022-08-05 04:30:58,260 DEBUG subiquity.models.subiquity:399 merging config from <subiquity.models.source.SourceModel object at 0x7f1a3dbefe50>
+2022-08-05 04:30:58,261 DEBUG subiquity.models.subiquity:399 merging config from <subiquity.models.network.NetworkModel object at 0x7f1a3dbefd00>
+2022-08-05 04:30:58,261 DEBUG subiquity.models.subiquity:399 merging config from <subiquity.models.proxy.ProxyModel object at 0x7f1a3dbeffa0>
+2022-08-05 04:30:58,262 DEBUG subiquity.models.subiquity:399 merging config from <subiquity.models.filesystem.FilesystemModel object at 0x7f1a3dbefbe0>
+2022-08-05 04:30:58,262 DEBUG subiquity.models.filesystem:1229 mountpoints {'/': 'mount-0'}
+2022-08-05 04:30:58,262 DEBUG subiquity.models.subiquity:399 merging config from <subiquity.models.kernel.KernelModel object at 0x7f1a3dbefb20>
+2022-08-05 04:30:58,262 DEBUG subiquity.models.subiquity:399 merging config from <subiquity.models.keyboard.KeyboardModel object at 0x7f1a3dbefc70>
+2022-08-05 04:30:58,263 DEBUG subiquity.models.subiquity:399 merging config from <subiquity.models.subiquity.DebconfSelectionsModel object at 0x7f1a3dbefb50>
+2022-08-05 04:30:58,268 DEBUG root:39 finish: subiquity/Drivers/_list_drivers/wait_apt: SUCCESS: 
+2022-08-05 04:30:58,268 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'mount', '-o', 'lowerdir=/media/filesystem:/tmp/tmpemhxc33g/upper:/tmp/tmp60jcv6em/upper,upperdir=/tmp/tmpm18oii23/upper,workdir=/tmp/tmpm18oii23/work', '-t', 'overlay', 'overlay', '/tmp/tmpm18oii23/mount']
+2022-08-05 04:30:58,271 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.3"}}', '-c', '/var/log/installer/subiquity-curtin-install.conf', 'install', 'cp:///tmp/tmp60jcv6em/mount']
+2022-08-05 04:30:58,288 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'chroot', '/tmp/tmpm18oii23/mount', 'sh', '-c', 'command -v ubuntu-drivers']
+2022-08-05 04:30:58,305 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'umount', '/tmp/tmpm18oii23/mount']
+2022-08-05 04:30:58,324 DEBUG subiquity.server.controllers.drivers:88 Available drivers to install: []
+2022-08-05 04:30:58,325 DEBUG subiquity.models.subiquity:202 model drivers for postinstall stage is configured, to go set()
+2022-08-05 04:30:58,325 DEBUG root:39 finish: subiquity/Drivers/_list_drivers: SUCCESS: 
+2022-08-05 04:30:59,199 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install: curtin command install
+2022-08-05 04:30:59,199 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-early: preparing for installation
+2022-08-05 04:30:59,200 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-early: SUCCESS: preparing for installation
+2022-08-05 04:30:59,200 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning: configuring storage
+2022-08-05 04:30:59,200 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin: running 'curtin block-meta simple'
+2022-08-05 04:30:59,450 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta: curtin command block-meta
+2022-08-05 04:30:59,746 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta/clear-holders: removing previous storage devices
+2022-08-05 04:31:01,699 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta/clear-holders: SUCCESS: removing previous storage devices
+2022-08-05 04:31:01,699 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta/: configuring disk: disk-vda
+2022-08-05 04:31:01,700 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta/: SUCCESS: configuring disk: disk-vda
+2022-08-05 04:31:01,700 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta: configuring partition: partition-0
+2022-08-05 04:31:01,969 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta: SUCCESS: configuring partition: partition-0
+2022-08-05 04:31:01,970 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta: configuring format: format-0
+2022-08-05 04:31:02,221 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta: SUCCESS: configuring format: format-0
+2022-08-05 04:31:02,221 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta: configuring mount: mount-0
+2022-08-05 04:31:02,699 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin/cmd-block-meta: SUCCESS: configuring mount: mount-0
+2022-08-05 04:31:02,700 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning/builtin: SUCCESS: running 'curtin block-meta simple'
+2022-08-05 04:31:02,700 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-partitioning: SUCCESS: configuring storage
+2022-08-05 04:31:02,700 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-extract: writing install sources to disk
+2022-08-05 04:31:02,701 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-extract/builtin: running 'curtin extract'
+2022-08-05 04:31:03,199 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-extract/builtin/cmd-extract: curtin command extract
+2022-08-05 04:31:03,199 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-extract/builtin/cmd-extract/: acquiring and extracting image from cp:///tmp/tmp60jcv6em/mount
+2022-08-05 04:31:25,698 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-extract/builtin/cmd-extract/: SUCCESS: acquiring and extracting image from cp:///tmp/tmp60jcv6em/mount
+2022-08-05 04:31:25,699 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-extract/builtin: SUCCESS: running 'curtin extract'
+2022-08-05 04:31:25,699 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-extract: SUCCESS: writing install sources to disk
+2022-08-05 04:31:25,700 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks: configuring installed system
+2022-08-05 04:31:25,700 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/001-mount-cdrom: running 'mount --bind /cdrom /target/cdrom'
+2022-08-05 04:31:25,700 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/001-mount-cdrom: SUCCESS: running 'mount --bind /cdrom /target/cdrom'
+2022-08-05 04:31:25,701 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin: running 'curtin curthooks'
+2022-08-05 04:31:26,199 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks: curtin command curthooks
+2022-08-05 04:31:26,199 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/writing-apt-config: configuring apt configuring apt
+2022-08-05 04:31:27,100 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/writing-apt-config: SUCCESS: configuring apt configuring apt
+2022-08-05 04:31:27,101 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/installing-missing-packages: installing missing packages
+2022-08-05 04:31:27,101 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/installing-missing-packages: SUCCESS: installing missing packages
+2022-08-05 04:31:27,101 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/configuring-iscsi-service: configuring iscsi service
+2022-08-05 04:31:27,102 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/configuring-iscsi-service: SUCCESS: configuring iscsi service
+2022-08-05 04:31:27,102 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/configuring-mdadm-service: configuring raid (mdadm) service
+2022-08-05 04:31:27,102 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/configuring-mdadm-service: SUCCESS: configuring raid (mdadm) service
+2022-08-05 04:31:27,102 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/installing-kernel: installing kernel
+2022-08-05 04:32:08,753 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/installing-kernel: SUCCESS: installing kernel
+2022-08-05 04:32:08,753 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/setting-up-swap: setting up swap
+2022-08-05 04:32:08,754 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/setting-up-swap: SUCCESS: setting up swap
+2022-08-05 04:32:08,754 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/apply-networking-config: apply networking config
+2022-08-05 04:32:08,754 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/apply-networking-config: SUCCESS: apply networking config
+2022-08-05 04:32:08,754 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/writing-etc-fstab: writing etc/fstab
+2022-08-05 04:32:08,755 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/writing-etc-fstab: SUCCESS: writing etc/fstab
+2022-08-05 04:32:08,755 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/configuring-multipath: configuring multipath
+2022-08-05 04:32:09,016 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/configuring-multipath: SUCCESS: configuring multipath
+2022-08-05 04:32:09,016 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/system-upgrade: updating packages on target system
+2022-08-05 04:32:09,017 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/system-upgrade: SUCCESS: updating packages on target system
+2022-08-05 04:32:09,017 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/pollinate-user-agent: configuring pollinate user-agent on target
+2022-08-05 04:32:09,017 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/pollinate-user-agent: SUCCESS: configuring pollinate user-agent on target
+2022-08-05 04:32:09,018 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/updating-initramfs-configuration: updating initramfs configuration
+2022-08-05 04:32:30,580 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/updating-initramfs-configuration: SUCCESS: updating initramfs configuration
+2022-08-05 04:32:30,580 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/configuring-bootloader: configuring target system bootloader
+2022-08-05 04:32:30,580 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/install-grub: installing grub to target devices
+2022-08-05 04:32:32,449 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/install-grub: SUCCESS: installing grub to target devices
+2022-08-05 04:32:32,449 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks/configuring-bootloader: SUCCESS: configuring target system bootloader
+2022-08-05 04:32:32,449 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin/cmd-curthooks: SUCCESS: curtin command curthooks
+2022-08-05 04:32:32,450 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks/builtin: SUCCESS: running 'curtin curthooks'
+2022-08-05 04:32:32,450 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-curthooks: SUCCESS: configuring installed system
+2022-08-05 04:32:32,450 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-hook: finalizing installation
+2022-08-05 04:32:32,450 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-hook/builtin: running 'curtin hook'
+2022-08-05 04:32:32,935 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:32:33,036 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:32:33,137 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:32:33,199 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-hook/builtin/cmd-hook: curtin command hook
+2022-08-05 04:32:33,199 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-hook/builtin/cmd-hook: SUCCESS: curtin command hook
+2022-08-05 04:32:33,200 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-hook/builtin: SUCCESS: running 'curtin hook'
+2022-08-05 04:32:33,200 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-hook: SUCCESS: finalizing installation
+2022-08-05 04:32:33,200 DEBUG root:39 start: subiquity/Install/install/curtin_install/cmd-install/stage-late: executing late commands
+2022-08-05 04:32:33,201 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install/stage-late: SUCCESS: executing late commands
+2022-08-05 04:32:33,201 DEBUG root:39 finish: subiquity/Install/install/curtin_install/cmd-install: SUCCESS: curtin command install
+2022-08-05 04:32:33,238 DEBUG subiquity.server.curtin:123 waited 0.4 seconds for events to drain
+2022-08-05 04:32:33,238 INFO root:39 finish: subiquity/Install/install/curtin_install: SUCCESS: installing system
+2022-08-05 04:32:33,240 INFO root:39 start: subiquity/Install/install/postinstall: final system configuration
+2022-08-05 04:32:33,240 DEBUG subiquity.models.filesystem:1229 mountpoints {'/': 'mount-0'}
+2022-08-05 04:32:33,245 DEBUG root:39 start: subiquity/Install/install/postinstall/configure_cloud_init: configuring cloud-init
+2022-08-05 04:32:33,246 INFO root:39 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "POST_RUNNING", "confirming_tty": "", "error": null, "cloud_init_ok...
+2022-08-05 04:32:33,247 INFO aiohttp.access:233  [05/Aug/2022:04:30:46 +0000] "GET /meta/status?cur=%22RUNNING%22 HTTP/1.1" 200 418 "-" "Python/3.8 aiohttp/3.6.2"
+2022-08-05 04:32:33,247 DEBUG subiquitycore.utils:64 run_command called: ['chroot', '/target', 'getent', 'group']
+2022-08-05 04:32:33,250 INFO root:39 start: subiquity/Meta/status_GET: 
+2022-08-05 04:32:33,252 DEBUG subiquitycore.utils:77 run_command ['chroot', '/target', 'getent', 'group'] exited with code 0
+2022-08-05 04:32:33,257 DEBUG root:39 finish: subiquity/Install/install/postinstall/configure_cloud_init: SUCCESS: configuring cloud-init
+2022-08-05 04:32:33,257 DEBUG root:39 start: subiquity/Install/install/postinstall/get_target_packages: calculating extra packages to install
+2022-08-05 04:32:33,258 DEBUG root:39 finish: subiquity/Install/install/postinstall/get_target_packages: SUCCESS: calculating extra packages to install
+2022-08-05 04:32:33,258 DEBUG root:39 start: subiquity/Install/install/postinstall/install_openssh-server: installing openssh-server
+2022-08-05 04:32:33,259 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.4"}}', 'system-install', '-t', '/target', '--', 'openssh-server']
+2022-08-05 04:32:34,200 DEBUG root:39 start: subiquity/Install/install/postinstall/install_openssh-server/cmd-system-install: curtin command system-install
+2022-08-05 04:32:42,754 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:32:42,855 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:32:42,950 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_openssh-server/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:32:42,955 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:32:42,956 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_openssh-server: SUCCESS: installing openssh-server
+2022-08-05 04:32:42,956 DEBUG root:39 start: subiquity/Install/install/postinstall/install_curl: installing curl
+2022-08-05 04:32:42,957 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.5"}}', 'system-install', '-t', '/target', '--', 'curl']
+2022-08-05 04:32:43,949 DEBUG root:39 start: subiquity/Install/install/postinstall/install_curl/cmd-system-install: curtin command system-install
+2022-08-05 04:32:45,932 DEBUG subiquitycore.utils:64 run_command called: ['udevadm', 'settle', '-t', '0']
+2022-08-05 04:32:45,953 DEBUG subiquitycore.utils:77 run_command ['udevadm', 'settle', '-t', '0'] exited with code 0
+2022-08-05 04:32:45,953 DEBUG probert.network:585 event for addr_change: CHANGE {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:32:45,953 DEBUG probert.network:717 addr_change CHANGE {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:32:45,954 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:32:45,955 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:32:45,955 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:32:51,039 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:32:51,139 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:32:51,199 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_curl/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:32:51,240 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:32:51,240 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_curl: SUCCESS: installing curl
+2022-08-05 04:32:51,241 DEBUG root:39 start: subiquity/Install/install/postinstall/install_wget: installing wget
+2022-08-05 04:32:51,241 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.6"}}', 'system-install', '-t', '/target', '--', 'wget']
+2022-08-05 04:32:52,199 DEBUG root:39 start: subiquity/Install/install/postinstall/install_wget/cmd-system-install: curtin command system-install
+2022-08-05 04:33:01,732 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:01,833 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:33:01,933 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:33:01,949 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_wget/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:02,034 DEBUG subiquity.server.curtin:123 waited 0.4 seconds for events to drain
+2022-08-05 04:33:02,035 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_wget: SUCCESS: installing wget
+2022-08-05 04:33:02,035 DEBUG root:39 start: subiquity/Install/install/postinstall/install_parted: installing parted
+2022-08-05 04:33:02,037 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.7"}}', 'system-install', '-t', '/target', '--', 'parted']
+2022-08-05 04:33:03,199 DEBUG root:39 start: subiquity/Install/install/postinstall/install_parted/cmd-system-install: curtin command system-install
+2022-08-05 04:33:05,097 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:05,198 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:33:05,199 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_parted/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:05,298 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:33:05,299 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_parted: SUCCESS: installing parted
+2022-08-05 04:33:05,299 DEBUG root:39 start: subiquity/Install/install/postinstall/install_mlocate: installing mlocate
+2022-08-05 04:33:05,300 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.8"}}', 'system-install', '-t', '/target', '--', 'mlocate']
+2022-08-05 04:33:06,449 DEBUG root:39 start: subiquity/Install/install/postinstall/install_mlocate/cmd-system-install: curtin command system-install
+2022-08-05 04:33:15,859 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:15,949 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_mlocate/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:15,960 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:33:15,961 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_mlocate: SUCCESS: installing mlocate
+2022-08-05 04:33:15,961 DEBUG root:39 start: subiquity/Install/install/postinstall/install_libpam-cracklib: installing libpam-cracklib
+2022-08-05 04:33:15,962 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.9"}}', 'system-install', '-t', '/target', '--', 'libpam-cracklib']
+2022-08-05 04:33:16,949 DEBUG root:39 start: subiquity/Install/install/postinstall/install_libpam-cracklib/cmd-system-install: curtin command system-install
+2022-08-05 04:33:25,275 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:25,376 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:33:25,449 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_libpam-cracklib/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:25,477 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:33:25,478 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_libpam-cracklib: SUCCESS: installing libpam-cracklib
+2022-08-05 04:33:25,478 DEBUG root:39 start: subiquity/Install/install/postinstall/install_cracklib-runtime: installing cracklib-runtime
+2022-08-05 04:33:25,479 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.10"}}', 'system-install', '-t', '/target', '--', 'cracklib-runtime']
+2022-08-05 04:33:26,449 DEBUG root:39 start: subiquity/Install/install/postinstall/install_cracklib-runtime/cmd-system-install: curtin command system-install
+2022-08-05 04:33:28,035 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_cracklib-runtime/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:28,038 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_cracklib-runtime: SUCCESS: installing cracklib-runtime
+2022-08-05 04:33:28,039 DEBUG root:39 start: subiquity/Install/install/postinstall/install_ethtool: installing ethtool
+2022-08-05 04:33:28,040 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.11"}}', 'system-install', '-t', '/target', '--', 'ethtool']
+2022-08-05 04:33:28,949 DEBUG root:39 start: subiquity/Install/install/postinstall/install_ethtool/cmd-system-install: curtin command system-install
+2022-08-05 04:33:30,699 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_ethtool/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:30,700 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:30,701 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_ethtool: SUCCESS: installing ethtool
+2022-08-05 04:33:30,701 DEBUG root:39 start: subiquity/Install/install/postinstall/install_zip: installing zip
+2022-08-05 04:33:30,702 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.12"}}', 'system-install', '-t', '/target', '--', 'zip']
+2022-08-05 04:33:31,700 DEBUG root:39 start: subiquity/Install/install/postinstall/install_zip/cmd-system-install: curtin command system-install
+2022-08-05 04:33:39,457 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:39,558 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:33:39,658 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:33:39,700 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_zip/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:39,761 DEBUG subiquity.server.curtin:123 waited 0.4 seconds for events to drain
+2022-08-05 04:33:39,761 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_zip: SUCCESS: installing zip
+2022-08-05 04:33:39,762 DEBUG root:39 start: subiquity/Install/install/postinstall/install_unzip: installing unzip
+2022-08-05 04:33:39,762 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.13"}}', 'system-install', '-t', '/target', '--', 'unzip']
+2022-08-05 04:33:40,699 DEBUG root:39 start: subiquity/Install/install/postinstall/install_unzip/cmd-system-install: curtin command system-install
+2022-08-05 04:33:42,449 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_unzip/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:42,497 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:42,498 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_unzip: SUCCESS: installing unzip
+2022-08-05 04:33:42,498 DEBUG root:39 start: subiquity/Install/install/postinstall/install_nano: installing nano
+2022-08-05 04:33:42,499 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.14"}}', 'system-install', '-t', '/target', '--', 'nano']
+2022-08-05 04:33:43,449 DEBUG root:39 start: subiquity/Install/install/postinstall/install_nano/cmd-system-install: curtin command system-install
+2022-08-05 04:33:45,077 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:45,178 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:33:45,199 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_nano/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:45,279 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:33:45,280 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_nano: SUCCESS: installing nano
+2022-08-05 04:33:45,280 DEBUG root:39 start: subiquity/Install/install/postinstall/install_linux-headers-generic: installing linux-headers-generic
+2022-08-05 04:33:45,281 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.15"}}', 'system-install', '-t', '/target', '--', 'linux-headers-generic']
+2022-08-05 04:33:46,200 DEBUG root:39 start: subiquity/Install/install/postinstall/install_linux-headers-generic/cmd-system-install: curtin command system-install
+2022-08-05 04:33:47,626 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:47,699 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_linux-headers-generic/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:47,727 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:33:47,727 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_linux-headers-generic: SUCCESS: installing linux-headers-generic
+2022-08-05 04:33:47,728 DEBUG root:39 start: subiquity/Install/install/postinstall/install_openssh-server: installing openssh-server
+2022-08-05 04:33:47,729 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.16"}}', 'system-install', '-t', '/target', '--', 'openssh-server']
+2022-08-05 04:33:48,700 DEBUG root:39 start: subiquity/Install/install/postinstall/install_openssh-server/cmd-system-install: curtin command system-install
+2022-08-05 04:33:49,814 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:33:49,915 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:33:49,950 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_openssh-server/cmd-system-install: SUCCESS: curtin command system-install
+2022-08-05 04:33:50,016 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:33:50,016 DEBUG root:39 finish: subiquity/Install/install/postinstall/install_openssh-server: SUCCESS: installing openssh-server
+2022-08-05 04:33:50,017 DEBUG root:39 start: subiquity/Install/install/postinstall/run_unattended_upgrades: downloading and installing security updates
+2022-08-05 04:33:50,018 INFO root:39 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "UU_RUNNING", "confirming_tty": "", "error": null, "cloud_init_ok":...
+2022-08-05 04:33:50,018 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--property', 'PrivateMounts=yes', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.17"}}', 'in-target', '-t', '/target', '--', 'unattended-upgrades', '-v']
+2022-08-05 04:33:50,021 INFO aiohttp.access:233  [05/Aug/2022:04:32:33 +0000] "GET /meta/status?cur=%22POST_RUNNING%22 HTTP/1.1" 200 416 "-" "Python/3.8 aiohttp/3.6.2"
+2022-08-05 04:33:50,022 INFO root:39 start: subiquity/Meta/status_GET: 
+2022-08-05 04:33:50,949 DEBUG root:39 start: subiquity/Install/install/postinstall/run_unattended_upgrades/cmd-in-target: curtin command in-target
+2022-08-05 04:41:05,528 DEBUG subiquitycore.utils:64 run_command called: ['udevadm', 'settle', '-t', '0']
+2022-08-05 04:41:05,553 DEBUG subiquitycore.utils:77 run_command ['udevadm', 'settle', '-t', '0'] exited with code 0
+2022-08-05 04:41:05,553 DEBUG probert.network:585 event for addr_change: CHANGE {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:41:05,553 DEBUG probert.network:717 addr_change CHANGE {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:41:05,554 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:41:05,554 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:41:05,555 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:44:00,799 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:44:00,900 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:44:00,949 DEBUG root:39 finish: subiquity/Install/install/postinstall/run_unattended_upgrades/cmd-in-target: SUCCESS: curtin command in-target
+2022-08-05 04:44:01,001 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:44:01,001 DEBUG root:39 finish: subiquity/Install/install/postinstall/run_unattended_upgrades: SUCCESS: downloading and installing security updates
+2022-08-05 04:44:01,002 DEBUG root:39 start: subiquity/Install/install/postinstall/restore_apt_config: restoring apt configuration
+2022-08-05 04:44:01,002 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'umount', '/target/cdrom']
+2022-08-05 04:44:01,073 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'cp', '-aT', '/tmp/tmpemhxc33g/mount/etc/apt', '/target/etc/apt']
+2022-08-05 04:44:01,091 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--property', 'PrivateMounts=yes', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', '/snap/subiquity/3698/usr/bin/python3.8', '-m', 'curtin', '--showtrace', '-vvv', '--set', 'json:reporting={"subiquity": {"type": "journald", "identifier": "curtin_event.2820.18"}}', 'in-target', '-t', '/target', '--', 'apt-get', 'update']
+2022-08-05 04:44:01,779 DEBUG root:39 start: subiquity/Install/install/postinstall/restore_apt_config/cmd-in-target: curtin command in-target
+2022-08-05 04:44:03,652 DEBUG subiquity.server.curtin:123 waited 0.1 seconds for events to drain
+2022-08-05 04:44:03,752 DEBUG subiquity.server.curtin:123 waited 0.2 seconds for events to drain
+2022-08-05 04:44:03,852 DEBUG subiquity.server.curtin:123 waited 0.30000000000000004 seconds for events to drain
+2022-08-05 04:44:03,950 DEBUG root:39 finish: subiquity/Install/install/postinstall/restore_apt_config/cmd-in-target: SUCCESS: curtin command in-target
+2022-08-05 04:44:03,953 DEBUG subiquity.server.curtin:123 waited 0.4 seconds for events to drain
+2022-08-05 04:44:03,954 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'umount', '/tmp/tmp60jcv6em/mount/cdrom']
+2022-08-05 04:44:03,969 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'umount', '/tmp/tmp60jcv6em/mount']
+2022-08-05 04:44:03,985 DEBUG subiquitycore.utils:112 astart_command called: ['systemd-run', '--wait', '--same-dir', '--property', 'SyslogIdentifier=subiquity_log.2820', '--setenv', 'PATH=/snap/subiquity/3698/bin:/snap/subiquity/3698/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/subiquity/3698/bin', '--setenv', 'PYTHONPATH=:/snap/subiquity/3698/lib/python3.8/site-packages', '--setenv', 'PYTHON=/snap/subiquity/3698/usr/bin/python3.8', '--setenv', 'SNAP=/snap/subiquity/3698', '--', 'umount', '/tmp/tmpemhxc33g/mount']
+2022-08-05 04:44:04,018 DEBUG root:39 finish: subiquity/Install/install/postinstall/restore_apt_config: SUCCESS: restoring apt configuration
+2022-08-05 04:44:04,019 INFO root:39 finish: subiquity/Install/install/postinstall: SUCCESS: final system configuration
+2022-08-05 04:44:04,019 DEBUG root:39 finish: subiquity/Install/install: SUCCESS: 
+2022-08-05 04:44:04,020 INFO root:39 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "DONE", "confirming_tty": "", "error": null, "cloud_init_ok": true,...
+2022-08-05 04:44:04,020 DEBUG root:39 start: subiquity/Late/run: 
+2022-08-05 04:44:04,020 DEBUG root:39 start: subiquity/Late/run/command_0: echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+2022-08-05 04:44:04,021 DEBUG subiquitycore.utils:92 arun_command called: ['systemd-cat', '--level-prefix=false', '--identifier=subiquity_log.2820', 'sh', '-c', "echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu"]
+2022-08-05 04:44:04,026 INFO aiohttp.access:233  [05/Aug/2022:04:33:50 +0000] "GET /meta/status?cur=%22UU_RUNNING%22 HTTP/1.1" 200 410 "-" "Python/3.8 aiohttp/3.6.2"
+2022-08-05 04:44:04,027 INFO root:39 start: subiquity/Meta/status_GET: 
+2022-08-05 04:44:04,029 DEBUG subiquitycore.utils:101 arun_command ['systemd-cat', '--level-prefix=false', '--identifier=subiquity_log.2820', 'sh', '-c', "echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu"] exited with code 0
+2022-08-05 04:44:04,029 DEBUG root:39 finish: subiquity/Late/run/command_0: SUCCESS: echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+2022-08-05 04:44:04,030 DEBUG root:39 finish: subiquity/Late/run: SUCCESS: 
+2022-08-05 04:44:04,030 DEBUG root:39 start: subiquity/Shutdown/copy_logs_to_target: 
+2022-08-05 04:44:04,030 DEBUG subiquitycore.utils:92 arun_command called: ['cp', '-aT', '/var/log/installer', '/target/var/log/installer']

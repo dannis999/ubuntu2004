@@ -1,0 +1,383 @@
+2022-08-05 04:24:07,321 INFO subiquity:102 Starting Subiquity server revision 2651
+2022-08-05 04:24:07,322 INFO subiquity:103 Arguments passed: ['/snap/subiquity/2651/usr/bin/subiquity-server']
+2022-08-05 04:24:07,322 DEBUG asyncio:54 Using selector: EpollSelector
+2022-08-05 04:24:07,325 DEBUG subiquitycore.prober:34 Prober() init finished, data:None
+2022-08-05 04:24:07,327 DEBUG curtin:89 Running command ['dpkg', '--print-architecture'] with allowed return codes [0] (capture=True)
+2022-08-05 04:24:07,336 DEBUG subiquitycore.netplan:111 config for zz-all-en = {'dhcp4': True, 'match': {'name': 'en*'}}
+2022-08-05 04:24:07,336 DEBUG subiquitycore.netplan:111 config for zz-all-eth = {'dhcp4': True, 'match': {'name': 'eth*'}}
+2022-08-05 04:24:07,345 DEBUG subiquitycore.utils:74 arun_command called: ['cloud-init', 'status', '--wait']
+2022-08-05 04:24:07,893 DEBUG curtin.reporting.start.subiquity/Meta/status_GET:45 start: subiquity/Meta/status_GET: 
+2022-08-05 04:24:07,894 DEBUG curtin.reporting.finish.subiquity/Meta/status_GET:45 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "CLOUD_INIT_WAIT", "confirming_tty": "", "error": null, "cloud_init...
+2022-08-05 04:24:07,895 INFO aiohttp.access:206  [05/Aug/2022:04:24:07 +0000] "GET /meta/status HTTP/1.1" 200 425 "-" "Python/3.6 aiohttp/3.7.4.post0"
+2022-08-05 04:24:07,906 DEBUG curtin.reporting.start.subiquity/Meta/status_GET:45 start: subiquity/Meta/status_GET: 
+2022-08-05 04:24:08,432 DEBUG subiquitycore.utils:83 arun_command ['cloud-init', 'status', '--wait'] exited with code 0
+2022-08-05 04:24:08,432 DEBUG subiquity.server.server:436 waited 1.087571382522583s for cloud-init
+2022-08-05 04:24:08,434 DEBUG subiquity.server.server:438 loading cloud config
+2022-08-05 04:24:08,434 DEBUG cloudinit.util:1308 Reading from /etc/cloud/cloud.cfg (quiet=False)
+2022-08-05 04:24:08,434 DEBUG cloudinit.util:1319 Read 3487 bytes from /etc/cloud/cloud.cfg
+2022-08-05 04:24:08,434 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 3487 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,446 DEBUG cloudinit.util:1308 Reading from /etc/cloud/cloud.cfg.d/90_dpkg.cfg (quiet=False)
+2022-08-05 04:24:08,447 DEBUG cloudinit.util:1319 Read 301 bytes from /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+2022-08-05 04:24:08,447 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 301 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,449 DEBUG cloudinit.util:1308 Reading from /etc/cloud/cloud.cfg.d/05_logging.cfg (quiet=False)
+2022-08-05 04:24:08,449 DEBUG cloudinit.util:1319 Read 2070 bytes from /etc/cloud/cloud.cfg.d/05_logging.cfg
+2022-08-05 04:24:08,449 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 2070 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,456 DEBUG cloudinit.util:1308 Reading from /run/cloud-init/cloud.cfg (quiet=False)
+2022-08-05 04:24:08,456 DEBUG cloudinit.util:1319 Read 35 bytes from /run/cloud-init/cloud.cfg
+2022-08-05 04:24:08,456 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 35 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,457 DEBUG cloudinit.subp:221 Running command ['systemd-detect-virt', '--quiet', '--container'] with allowed return codes [0] (shell=False, capture=True)
+2022-08-05 04:24:08,468 DEBUG cloudinit.util:1308 Reading from /etc/os-release (quiet=False)
+2022-08-05 04:24:08,468 DEBUG cloudinit.util:1319 Read 382 bytes from /etc/os-release
+2022-08-05 04:24:08,469 DEBUG cloudinit.util:1308 Reading from /proc/1/environ (quiet=False)
+2022-08-05 04:24:08,469 DEBUG cloudinit.util:1319 Read 278 bytes from /proc/1/environ
+2022-08-05 04:24:08,469 DEBUG cloudinit.util:1308 Reading from /proc/self/status (quiet=False)
+2022-08-05 04:24:08,469 DEBUG cloudinit.util:1319 Read 1305 bytes from /proc/self/status
+2022-08-05 04:24:08,469 DEBUG cloudinit.util:1308 Reading from /proc/cmdline (quiet=False)
+2022-08-05 04:24:08,469 DEBUG cloudinit.util:1319 Read 84 bytes from /proc/cmdline
+2022-08-05 04:24:08,469 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 0 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,470 DEBUG cloudinit.util:819 loaded blob returned None, returning default.
+2022-08-05 04:24:08,470 DEBUG cloudinit.util:1308 Reading from /var/lib/cloud/instance/cloud-config.txt (quiet=False)
+2022-08-05 04:24:08,470 DEBUG cloudinit.util:1319 Read 1549 bytes from /var/lib/cloud/instance/cloud-config.txt
+2022-08-05 04:24:08,470 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 1549 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,477 DEBUG cloudinit.util:1308 Reading from /var/lib/cloud/instance/obj.pkl (quiet=False)
+2022-08-05 04:24:08,477 DEBUG cloudinit.util:1319 Read 9794 bytes from /var/lib/cloud/instance/obj.pkl
+2022-08-05 04:24:08,485 DEBUG cloudinit.util:1308 Reading from /run/cloud-init/.instance-id (quiet=False)
+2022-08-05 04:24:08,485 DEBUG cloudinit.util:1319 Read 6 bytes from /run/cloud-init/.instance-id
+2022-08-05 04:24:08,485 DEBUG cloudinit.stages:248 restored from cache with run check: DataSourceNoCloudNet [seed=cmdline,/var/lib/cloud/seed/nocloud,http://10.0.2.2:8823/][dsmode=net]
+2022-08-05 04:24:08,486 DEBUG cloudinit.util:1308 Reading from /etc/cloud/cloud.cfg (quiet=False)
+2022-08-05 04:24:08,486 DEBUG cloudinit.util:1319 Read 3487 bytes from /etc/cloud/cloud.cfg
+2022-08-05 04:24:08,486 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 3487 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,499 DEBUG cloudinit.util:1308 Reading from /etc/cloud/cloud.cfg.d/90_dpkg.cfg (quiet=False)
+2022-08-05 04:24:08,499 DEBUG cloudinit.util:1319 Read 301 bytes from /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+2022-08-05 04:24:08,499 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 301 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,501 DEBUG cloudinit.util:1308 Reading from /etc/cloud/cloud.cfg.d/05_logging.cfg (quiet=False)
+2022-08-05 04:24:08,501 DEBUG cloudinit.util:1319 Read 2070 bytes from /etc/cloud/cloud.cfg.d/05_logging.cfg
+2022-08-05 04:24:08,501 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 2070 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,503 DEBUG cloudinit.util:1308 Reading from /run/cloud-init/cloud.cfg (quiet=False)
+2022-08-05 04:24:08,503 DEBUG cloudinit.util:1319 Read 35 bytes from /run/cloud-init/cloud.cfg
+2022-08-05 04:24:08,503 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 35 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,504 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 0 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,504 DEBUG cloudinit.util:819 loaded blob returned None, returning default.
+2022-08-05 04:24:08,504 DEBUG cloudinit.util:1308 Reading from /var/lib/cloud/instance/cloud-config.txt (quiet=False)
+2022-08-05 04:24:08,504 DEBUG cloudinit.util:1319 Read 1549 bytes from /var/lib/cloud/instance/cloud-config.txt
+2022-08-05 04:24:08,504 DEBUG cloudinit.util:816 Attempting to load yaml from string of length 1549 with allowed root types (<class 'dict'>,)
+2022-08-05 04:24:08,510 DEBUG cloudinit.stages:83 Using distro class <class 'cloudinit.distros.ubuntu.Distro'>
+2022-08-05 04:24:08,515 DEBUG cloudinit.atomic_helper:31 Atomically writing to file /autoinstall.yaml (via temporary file /tmpqruiiyh_) - wb: [600] 1254 bytes/chars
+2022-08-05 04:24:08,515 DEBUG subiquitycore.utils:48 run_command called: ['ssh-keygen', '-lf', '/home/installer/.ssh/authorized_keys']
+2022-08-05 04:24:08,590 DEBUG subiquitycore.utils:61 run_command ['ssh-keygen', '-lf', '/home/installer/.ssh/authorized_keys'] exited with code 255
+2022-08-05 04:24:08,590 DEBUG subiquitycore.ssh:49 ssh-keygen -lf /home/installer/.ssh/authorized_keys failed '/home/installer/.ssh/authorized_keys is not a public key file.\r\n'
+2022-08-05 04:24:08,591 DEBUG subiquitycore.utils:48 run_command called: chpasswd
+2022-08-05 04:24:08,607 DEBUG subiquitycore.utils:61 run_command chpasswd exited with code 0
+2022-08-05 04:24:08,608 DEBUG subiquity.server.server:390 load_autoinstall_config only_early True
+2022-08-05 04:24:08,619 DEBUG curtin.reporting.start.subiquity/Reporting/load_autoinstall_data:45 start: subiquity/Reporting/load_autoinstall_data: 
+2022-08-05 04:24:08,631 DEBUG curtin.reporting.finish.subiquity/Reporting/load_autoinstall_data:45 finish: subiquity/Reporting/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:08,631 DEBUG root:39 start: subiquity/Error/load_autoinstall_data: 
+2022-08-05 04:24:08,634 DEBUG root:39 finish: subiquity/Error/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:08,634 INFO root:39 start: subiquity/core_validation: 
+2022-08-05 04:24:08,635 INFO root:39 finish: subiquity/core_validation: SUCCESS: 
+2022-08-05 04:24:08,635 DEBUG root:39 start: subiquity/Early/load_autoinstall_data: 
+2022-08-05 04:24:08,638 DEBUG root:39 finish: subiquity/Early/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:08,639 INFO root:39 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "EARLY_COMMANDS", "confirming_tty": "", "error": null, "cloud_init_...
+2022-08-05 04:24:08,639 INFO aiohttp.access:206  [05/Aug/2022:04:24:07 +0000] "GET /meta/status?cur=%22CLOUD_INIT_WAIT%22 HTTP/1.1" 200 424 "-" "Python/3.6 aiohttp/3.7.4.post0"
+2022-08-05 04:24:08,640 INFO root:39 start: subiquity/Meta/status_GET: 
+2022-08-05 04:24:09,640 DEBUG root:39 start: subiquity/Early/run: 
+2022-08-05 04:24:09,640 DEBUG root:39 start: subiquity/Early/run/command_0: systemctl stop ssh
+2022-08-05 04:24:09,641 DEBUG subiquitycore.utils:74 arun_command called: ['systemd-cat', '--level-prefix=false', '--identifier=subiquity_echo.2103', 'sh', '-c', 'systemctl stop ssh']
+2022-08-05 04:24:09,657 DEBUG subiquitycore.utils:83 arun_command ['systemd-cat', '--level-prefix=false', '--identifier=subiquity_echo.2103', 'sh', '-c', 'systemctl stop ssh'] exited with code 0
+2022-08-05 04:24:09,657 DEBUG root:39 finish: subiquity/Early/run/command_0: SUCCESS: systemctl stop ssh
+2022-08-05 04:24:09,657 DEBUG root:39 start: subiquity/Early/run/command_1: sed -i 's/inode_ratio = 16384/inode_ratio = 4096/g' /etc/mke2fs.conf
+2022-08-05 04:24:09,657 DEBUG subiquitycore.utils:74 arun_command called: ['systemd-cat', '--level-prefix=false', '--identifier=subiquity_echo.2103', 'sh', '-c', "sed -i 's/inode_ratio = 16384/inode_ratio = 4096/g' /etc/mke2fs.conf"]
+2022-08-05 04:24:09,666 DEBUG subiquitycore.utils:83 arun_command ['systemd-cat', '--level-prefix=false', '--identifier=subiquity_echo.2103', 'sh', '-c', "sed -i 's/inode_ratio = 16384/inode_ratio = 4096/g' /etc/mke2fs.conf"] exited with code 0
+2022-08-05 04:24:09,666 DEBUG root:39 finish: subiquity/Early/run/command_1: SUCCESS: sed -i 's/inode_ratio = 16384/inode_ratio = 4096/g' /etc/mke2fs.conf
+2022-08-05 04:24:09,667 DEBUG root:39 finish: subiquity/Early/run: SUCCESS: 
+2022-08-05 04:24:10,668 DEBUG subiquity.server.server:390 load_autoinstall_config only_early False
+2022-08-05 04:24:10,673 DEBUG root:39 start: subiquity/Early/load_autoinstall_data: 
+2022-08-05 04:24:10,674 DEBUG root:39 finish: subiquity/Early/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,674 DEBUG root:39 start: subiquity/Reporting/load_autoinstall_data: 
+2022-08-05 04:24:10,674 DEBUG root:39 finish: subiquity/Reporting/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,674 DEBUG root:39 start: subiquity/Error/load_autoinstall_data: 
+2022-08-05 04:24:10,675 DEBUG root:39 finish: subiquity/Error/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,675 DEBUG root:39 start: subiquity/Userdata/load_autoinstall_data: 
+2022-08-05 04:24:10,675 DEBUG root:39 finish: subiquity/Userdata/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,675 DEBUG root:39 start: subiquity/Package/load_autoinstall_data: 
+2022-08-05 04:24:10,675 DEBUG root:39 finish: subiquity/Package/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,676 DEBUG root:39 start: subiquity/Debconf/load_autoinstall_data: 
+2022-08-05 04:24:10,676 DEBUG root:39 finish: subiquity/Debconf/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,676 DEBUG root:39 start: subiquity/Locale/load_autoinstall_data: 
+2022-08-05 04:24:10,676 DEBUG root:39 finish: subiquity/Locale/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,676 DEBUG root:39 start: subiquity/Refresh/load_autoinstall_data: 
+2022-08-05 04:24:10,677 DEBUG root:39 finish: subiquity/Refresh/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,677 DEBUG root:39 start: subiquity/Kernel/load_autoinstall_data: 
+2022-08-05 04:24:10,677 DEBUG root:39 finish: subiquity/Kernel/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,677 DEBUG root:39 start: subiquity/Keyboard/load_autoinstall_data: 
+2022-08-05 04:24:10,678 DEBUG root:39 finish: subiquity/Keyboard/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,678 DEBUG root:39 start: subiquity/Zdev/load_autoinstall_data: 
+2022-08-05 04:24:10,678 DEBUG root:39 finish: subiquity/Zdev/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,678 DEBUG root:39 start: subiquity/Network/load_autoinstall_data: 
+2022-08-05 04:24:10,678 DEBUG root:39 finish: subiquity/Network/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,678 DEBUG root:39 start: subiquity/Proxy/load_autoinstall_data: 
+2022-08-05 04:24:10,678 DEBUG root:39 finish: subiquity/Proxy/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,678 DEBUG root:39 start: subiquity/Mirror/load_autoinstall_data: 
+2022-08-05 04:24:10,679 DEBUG root:39 finish: subiquity/Mirror/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,679 DEBUG root:39 start: subiquity/Filesystem/load_autoinstall_data: 
+2022-08-05 04:24:10,679 DEBUG subiquity.server.controller.filesystem:93 load_autoinstall_data {'config': [{'grub_device': True, 'id': 'disk-vda', 'path': '/dev/vda', 'ptable': 'dos', 'type': 'disk', 'wipe': 'superblock-recursive'}, {'device': 'disk-vda', 'flag': 'boot', 'id': 'partition-0', 'number': 1, 'size': -1, 'type': 'partition', 'wipe': 'superblock'}, {'fstype': 'ext4', 'id': 'format-0', 'type': 'format', 'volume': 'partition-0'}, {'device': 'format-0', 'id': 'mount-0', 'path': '/', 'type': 'mount'}]}
+2022-08-05 04:24:10,679 DEBUG subiquity.server.controller.filesystem:103 self.ai_data = {'config': [{'grub_device': True, 'id': 'disk-vda', 'path': '/dev/vda', 'ptable': 'dos', 'type': 'disk', 'wipe': 'superblock-recursive'}, {'device': 'disk-vda', 'flag': 'boot', 'id': 'partition-0', 'number': 1, 'size': -1, 'type': 'partition', 'wipe': 'superblock'}, {'fstype': 'ext4', 'id': 'format-0', 'type': 'format', 'volume': 'partition-0'}, {'device': 'format-0', 'id': 'mount-0', 'path': '/', 'type': 'mount'}]}
+2022-08-05 04:24:10,679 DEBUG root:39 finish: subiquity/Filesystem/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,679 DEBUG root:39 start: subiquity/Identity/load_autoinstall_data: 
+2022-08-05 04:24:10,680 DEBUG root:39 finish: subiquity/Identity/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,680 DEBUG root:39 start: subiquity/SSH/load_autoinstall_data: 
+2022-08-05 04:24:10,680 DEBUG root:39 finish: subiquity/SSH/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,680 DEBUG root:39 start: subiquity/SnapList/load_autoinstall_data: 
+2022-08-05 04:24:10,681 DEBUG root:39 finish: subiquity/SnapList/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,681 DEBUG root:39 start: subiquity/TimeZone/load_autoinstall_data: 
+2022-08-05 04:24:10,681 DEBUG root:39 finish: subiquity/TimeZone/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,681 DEBUG root:39 start: subiquity/Install/load_autoinstall_data: 
+2022-08-05 04:24:10,681 DEBUG root:39 finish: subiquity/Install/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,682 DEBUG root:39 start: subiquity/Updates/load_autoinstall_data: 
+2022-08-05 04:24:10,682 DEBUG root:39 finish: subiquity/Updates/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,682 DEBUG root:39 start: subiquity/Late/load_autoinstall_data: 
+2022-08-05 04:24:10,682 DEBUG root:39 finish: subiquity/Late/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,682 DEBUG root:39 start: subiquity/Reboot/load_autoinstall_data: 
+2022-08-05 04:24:10,683 DEBUG root:39 finish: subiquity/Reboot/load_autoinstall_data: SUCCESS: 
+2022-08-05 04:24:10,683 DEBUG subiquitycore.core:113 starting controllers
+2022-08-05 04:24:10,683 DEBUG subiquity.models.subiquity:162 model locale for postinstall is configured, to go {'ssh', 'userdata', 'identity', 'snaplist', 'timezone', 'packages'}
+2022-08-05 04:24:10,688 DEBUG probert.network:585 event for link_change: NEW {'ifindex': 1, 'flags': 65609, 'arptype': 772, 'family': 0, 'is_vlan': False, 'name': b'lo'}
+2022-08-05 04:24:10,688 DEBUG probert.network:585 event for link_change: NEW {'ifindex': 2, 'flags': 69699, 'arptype': 1, 'family': 0, 'is_vlan': False, 'name': b'ens3'}
+2022-08-05 04:24:10,688 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 1, 'flags': 128, 'family': 2, 'scope': 254, 'local': b'127.0.0.1/8'}
+2022-08-05 04:24:10,688 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 2, 'flags': 0, 'family': 2, 'scope': 0, 'local': b'10.0.2.15/24'}
+2022-08-05 04:24:10,688 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 1, 'flags': 128, 'family': 10, 'scope': 254, 'local': b'::1'}
+2022-08-05 04:24:10,688 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:24:10,688 DEBUG probert.network:585 event for addr_change: NEW {'ifindex': 2, 'flags': 128, 'family': 10, 'scope': 253, 'local': b'fe80::5054:ff:fe12:3456/64'}
+2022-08-05 04:24:10,688 DEBUG probert.network:672 link_change NEW {'ifindex': 1, 'flags': 65609, 'arptype': 772, 'family': 0, 'is_vlan': False, 'name': b'lo'}
+2022-08-05 04:24:10,720 DEBUG subiquitycore.models.network:421 new_link 1 lo lo
+2022-08-05 04:24:10,720 DEBUG subiquitycore.models.network:423 ignoring based on type
+2022-08-05 04:24:10,720 DEBUG probert.network:672 link_change NEW {'ifindex': 2, 'flags': 69699, 'arptype': 1, 'family': 0, 'is_vlan': False, 'name': b'ens3'}
+2022-08-05 04:24:10,752 DEBUG subiquitycore.models.network:421 new_link 2 ens3 eth
+2022-08-05 04:24:10,752 DEBUG subiquitycore.models.network:454 new_link 2 ens3 with config {'dhcp4': True}
+2022-08-05 04:24:10,753 DEBUG root:39 start: subiquity/Network/_send_update: NEW ens3
+2022-08-05 04:24:10,753 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:24:10,753 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: NEW ens3
+2022-08-05 04:24:10,753 DEBUG probert.network:717 addr_change NEW {'ifindex': 1, 'flags': 128, 'family': 2, 'scope': 254, 'local': b'127.0.0.1/8'}
+2022-08-05 04:24:10,753 DEBUG probert.network:717 addr_change NEW {'ifindex': 2, 'flags': 0, 'family': 2, 'scope': 0, 'local': b'10.0.2.15/24'}
+2022-08-05 04:24:10,754 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:24:10,754 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:24:10,754 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:24:10,754 DEBUG probert.network:717 addr_change NEW {'ifindex': 1, 'flags': 128, 'family': 10, 'scope': 254, 'local': b'::1'}
+2022-08-05 04:24:10,754 DEBUG probert.network:717 addr_change NEW {'ifindex': 2, 'flags': 768, 'family': 10, 'scope': 200, 'local': b'fec0::5054:ff:fe12:3456/64'}
+2022-08-05 04:24:10,754 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:24:10,754 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:24:10,754 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:24:10,754 DEBUG probert.network:717 addr_change NEW {'ifindex': 2, 'flags': 128, 'family': 10, 'scope': 253, 'local': b'fe80::5054:ff:fe12:3456/64'}
+2022-08-05 04:24:10,755 DEBUG root:39 start: subiquity/Network/_send_update: CHANGE ens3
+2022-08-05 04:24:10,755 DEBUG subiquity.server.controllers.network:354 dev_info ens3 {'dhcp4': True}
+2022-08-05 04:24:10,755 DEBUG root:39 finish: subiquity/Network/_send_update: SUCCESS: CHANGE ens3
+2022-08-05 04:24:10,755 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 1, 'table': 254, 'dst': b'default', 'ifindex': 2}
+2022-08-05 04:24:10,755 DEBUG subiquitycore.controller.network:93 default routes {2}
+2022-08-05 04:24:10,756 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 1, 'table': 254, 'dst': b'10.0.2.0/24', 'ifindex': 2}
+2022-08-05 04:24:10,756 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 1, 'table': 254, 'dst': b'10.0.2.2', 'ifindex': 2}
+2022-08-05 04:24:10,756 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'10.0.2.0', 'ifindex': 2}
+2022-08-05 04:24:10,756 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 2, 'table': 255, 'dst': b'10.0.2.15', 'ifindex': 2}
+2022-08-05 04:24:10,756 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'10.0.2.255', 'ifindex': 2}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'127.0.0.0', 'ifindex': 1}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 2, 'table': 255, 'dst': b'127.0.0.0/8', 'ifindex': 1}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 2, 'table': 255, 'dst': b'127.0.0.1', 'ifindex': 1}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 2, 'type': 3, 'table': 255, 'dst': b'127.255.255.255', 'ifindex': 1}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'::1', 'ifindex': 1}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'fe80::/64', 'ifindex': 2}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'fec0::/64', 'ifindex': 2}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 1, 'table': 254, 'dst': b'default', 'ifindex': 2}
+2022-08-05 04:24:10,757 DEBUG subiquitycore.controller.network:93 default routes {2}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 2, 'table': 255, 'dst': b'::1', 'ifindex': 1}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 2, 'table': 255, 'dst': b'fe80::5054:ff:fe12:3456', 'ifindex': 2}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 2, 'table': 255, 'dst': b'fec0::5054:ff:fe12:3456', 'ifindex': 2}
+2022-08-05 04:24:10,757 DEBUG probert.network:731 route_change NEW {'family': 10, 'type': 5, 'table': 255, 'dst': b'ff00::/8', 'ifindex': 2}
+2022-08-05 04:24:10,792 DEBUG subiquitycore.core:116 controllers started
+2022-08-05 04:24:10,792 INFO root:39 start: subiquity/apply_autoinstall_config: 
+2022-08-05 04:24:10,792 DEBUG root:39 start: subiquity/Early/apply_autoinstall_config: 
+2022-08-05 04:24:10,793 DEBUG root:39 finish: subiquity/Early/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:24:10,793 DEBUG root:39 start: subiquity/Reporting/apply_autoinstall_config: 
+2022-08-05 04:24:10,793 DEBUG root:39 finish: subiquity/Reporting/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:24:10,793 DEBUG root:39 start: subiquity/Error/apply_autoinstall_config: 
+2022-08-05 04:24:10,793 DEBUG root:39 finish: subiquity/Error/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:24:10,793 DEBUG root:39 start: subiquity/Userdata/apply_autoinstall_config: 
+2022-08-05 04:24:10,794 DEBUG root:39 finish: subiquity/Userdata/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:24:10,794 DEBUG subiquity.models.subiquity:162 model userdata for postinstall is configured, to go {'ssh', 'identity', 'snaplist', 'timezone', 'packages'}
+2022-08-05 04:24:10,794 DEBUG root:39 start: subiquity/Package/apply_autoinstall_config: 
+2022-08-05 04:24:10,794 DEBUG root:39 finish: subiquity/Package/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:24:10,794 DEBUG subiquity.models.subiquity:162 model packages for postinstall is configured, to go {'timezone', 'snaplist', 'ssh', 'identity'}
+2022-08-05 04:24:10,794 DEBUG root:39 start: subiquity/Debconf/apply_autoinstall_config: 
+2022-08-05 04:24:10,794 DEBUG root:39 finish: subiquity/Debconf/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:24:10,795 DEBUG subiquity.models.subiquity:162 model debconf_selections for install is configured, to go {'keyboard', 'kernel', 'mirror', 'filesystem', 'proxy', 'network'}
+2022-08-05 04:24:10,795 DEBUG root:39 start: subiquity/Locale/apply_autoinstall_config: 
+2022-08-05 04:24:10,795 DEBUG root:39 finish: subiquity/Locale/apply_autoinstall_config: SUCCESS: 
+2022-08-05 04:24:10,795 DEBUG subiquity.models.subiquity:162 model locale for postinstall is configured, to go {'timezone', 'snaplist', 'ssh', 'identity'}
+2022-08-05 04:24:10,795 DEBUG root:39 start: subiquity/Refresh/apply_autoinstall_config: 
+2022-08-05 04:24:10,796 INFO root:39 finish: subiquity/Meta/status_GET: SUCCESS: 200 {"state": "WAITING", "confirming_tty": "", "error": null, "cloud_init_ok": tr...
+2022-08-05 04:24:10,796 INFO aiohttp.access:206  [05/Aug/2022:04:24:08 +0000] "GET /meta/status?cur=%22EARLY_COMMANDS%22 HTTP/1.1" 200 418 "-" "Python/3.6 aiohttp/3.7.4.post0"
+2022-08-05 04:24:10,796 DEBUG root:39 start: subiquity/Refresh/configure_snapd: 
+2022-08-05 04:24:10,796 DEBUG root:39 start: subiquity/Refresh/configure_snapd/get_details: 
+2022-08-05 04:24:10,799 DEBUG root:39 start: subiquity/Refresh/check_for_update: 
+2022-08-05 04:24:10,799 DEBUG root:39 start: subiquity/Network/wait_for_initial_config: 
+2022-08-05 04:24:10,800 DEBUG root:39 finish: subiquity/Network/wait_for_initial_config: SUCCESS: 
+2022-08-05 04:24:10,807 DEBUG root:39 start: subiquity/Install/install: 
+2022-08-05 04:24:10,809 DEBUG urllib3.connectionpool:826 Starting new HTTPS connection (1): geoip.ubuntu.com
+2022-08-05 04:24:10,812 DEBUG root:39 start: subiquity/Filesystem/_probe: 
+2022-08-05 04:24:10,813 DEBUG urllib3.connectionpool:826 Starting new HTTPS connection (1): geoip.ubuntu.com
+2022-08-05 04:24:10,813 DEBUG root:39 start: subiquity/Refresh/check_for_update: 
+2022-08-05 04:24:10,814 DEBUG root:39 start: subiquity/Refresh/check_for_update: 
+2022-08-05 04:24:10,815 DEBUG root:39 start: subiquity/Filesystem/_probe/probe_once: restricted=False
+2022-08-05 04:24:10,815 ERROR root:39 finish: subiquity/Refresh/check_for_update: FAIL: cancelled
+2022-08-05 04:24:10,818 ERROR root:39 finish: subiquity/Refresh/check_for_update: FAIL: cancelled
+2022-08-05 04:24:10,819 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/snaps/subiquity HTTP/1.1" 200 975
+2022-08-05 04:24:10,820 DEBUG root:39 finish: subiquity/Refresh/configure_snapd/get_details: SUCCESS: current version of snap is: '21.08.2'
+2022-08-05 04:24:10,823 DEBUG root:39 start: subiquity/Refresh/configure_snapd/switching: switching subiquity to stable/ubuntu-20.04.3
+2022-08-05 04:24:10,829 DEBUG urllib3.connectionpool:396 http://localhost:None "POST /v2/snaps/subiquity HTTP/1.1" 202 81
+2022-08-05 04:24:10,835 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/4 HTTP/1.1" 200 596
+2022-08-05 04:24:10,836 DEBUG root:39 finish: subiquity/Refresh/configure_snapd/switching: SUCCESS: switched to stable/ubuntu-20.04.3
+2022-08-05 04:24:10,836 DEBUG root:39 finish: subiquity/Refresh/configure_snapd: SUCCESS: 
+2022-08-05 04:24:11,081 DEBUG urllib3.connectionpool:396 https://geoip.ubuntu.com:443 "GET /lookup HTTP/1.1" 200 None
+2022-08-05 04:24:11,086 DEBUG urllib3.connectionpool:396 https://geoip.ubuntu.com:443 "GET /lookup HTTP/1.1" 200 None
+2022-08-05 04:24:11,299 INFO root:39 start: subiquity/Meta/status_GET: 
+2022-08-05 04:24:11,325 DEBUG probert.dasd:131 Probing DASD devies
+2022-08-05 04:24:11,325 DEBUG probert.dasd:134 DASD devices only present on s390x, arch=x86_64
+2022-08-05 04:24:11,327 DEBUG curtin:1294 Extracting storage config from probe data
+2022-08-05 04:24:11,327 DEBUG curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:24:11,327 DEBUG curtin:86 /dev/sr0 is multipath device partition? False
+2022-08-05 04:24:11,327 DEBUG curtin:73 /dev/sr1 is multipath device member? False
+2022-08-05 04:24:11,327 DEBUG curtin:86 /dev/sr1 is multipath device partition? False
+2022-08-05 04:24:11,327 DEBUG curtin:73 /dev/vda is multipath device member? False
+2022-08-05 04:24:11,327 DEBUG curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:24:11,328 DEBUG curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:24:11,328 DEBUG curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:24:11,328 DEBUG curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:24:11,336 DEBUG curtin:73 /dev/fd0 is multipath device member? False
+2022-08-05 04:24:11,336 DEBUG curtin:86 /dev/fd0 is multipath device partition? False
+2022-08-05 04:24:11,336 DEBUG curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:24:11,336 DEBUG curtin:1301 Sorting extracted configurations
+2022-08-05 04:24:11,337 INFO curtin:1320 Validating extracted storage config components
+2022-08-05 04:24:11,345 DEBUG curtin:1339 Extracted (unmerged) storage config:
+storage:
+-   id: disk-vda
+    path: /dev/vda
+    type: disk
+
+2022-08-05 04:24:11,345 DEBUG curtin:1341 Generating storage config dependencies
+2022-08-05 04:24:11,345 DEBUG curtin:1347 Merging storage config dependencies
+2022-08-05 04:24:11,345 DEBUG curtin:1354 Merged storage config:
+storage:
+    config:
+    -   id: disk-vda
+        path: /dev/vda
+        type: disk
+    version: 1
+
+2022-08-05 04:24:11,346 DEBUG subiquity.models.filesystem:1121 exclusions set()
+2022-08-05 04:24:11,346 DEBUG root:39 finish: subiquity/Filesystem/_probe/probe_once: SUCCESS: restricted=False
+2022-08-05 04:24:11,346 DEBUG root:39 finish: subiquity/Filesystem/_probe: SUCCESS: 
+2022-08-05 04:24:11,395 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/find?select=refresh HTTP/1.1" 200 None
+2022-08-05 04:24:11,396 DEBUG subiquity.server.controllers.refresh:177 check_for_update received {'type': 'sync', 'status-code': 200, 'status': 'OK', 'result': [{'id': 'CSO04Jhav2yK0uz97cr0ipQRyqg0qQL6', 'title': 'Core 18', 'summary': 'Runtime environment based on Ubuntu 18.04', 'description': 'The base snap based on the Ubuntu 18.04 release.', 'download-size': 58261504, 'name': 'core18', 'publisher': {'id': 'canonical', 'username': 'canonical', 'display-name': 'Canonical', 'validation': 'verified'}, 'developer': 'canonical', 'status': 'available', 'type': 'base', 'version': '20220706', 'channel': 'latest/stable', 'ignore-validation': False, 'revision': '2538', 'confinement': 'strict', 'private': False, 'devmode': False, 'jailmode': False, 'contact': '', 'license': 'Other Open Source'}, {'id': 'J60k4JY0HppjwOjW8dZdYc8obXKxujRu', 'title': 'lxd', 'summary': 'LXD - container and VM manager', 'description': "LXD is a system container and virtual machine manager.\n\nIt offers a simple CLI and REST API to manage local or remote instances,\nuses an image based workflow and support for a variety of advanced features.\n\nImages are available for all Ubuntu releases and architectures as well\nas for a wide number of other Linux distributions. Existing\nintegrations with many deployment and operation tools, makes it work\njust like a public cloud, except everything is under your control.\n\nLXD containers are lightweight, secure by default and a great\nalternative to virtual machines when running Linux on Linux.\n\nLXD virtual machines are modern and secure, using UEFI and secure-boot\nby default and a great choice when a different kernel or operating\nsystem is needed.\n\nWith clustering, up to 50 LXD servers can be easily joined and managed\ntogether with the same tools and APIs and without needing any external\ndependencies.\n\n\nSupported configuration options for the snap (snap set lxd [<key>=<value>...]):\n\n  - ceph.builtin: Use snap-specific Ceph configuration [default=false]\n  - ceph.external: Use the system's ceph tools (ignores ceph.builtin) [default=false]\n  - criu.enable: Enable experimental live-migration support [default=false]\n  - daemon.debug: Increase logging to debug level [default=false]\n  - daemon.group: Set group of users that have full control over LXD [default=lxd]\n  - daemon.user.group: Set group of users that have restricted LXD access [default=lxd]\n  - daemon.preseed: Pass a YAML configuration to `lxd init` on initial start\n  - daemon.syslog: Send LXD log events to syslog [default=false]\n  - daemon.verbose: Increase logging to verbose level [default=false]\n  - lvm.external: Use the system's LVM tools [default=false]\n  - lxcfs.pidfd: Start per-container process tracking [default=false]\n  - lxcfs.loadavg: Start tracking per-container load average [default=false]\n  - lxcfs.cfs: Consider CPU shares for CPU usage [default=false]\n  - openvswitch.builtin: Run a snap-specific OVS daemon [default=false]\n  - openvswitch.external: Use the system's OVS tools (ignores openvswitch.builtin) [default=false]\n  - ovn.builtin: Use snap-specific OVN configuration [default=false]\n  - shiftfs.enable: Enable shiftfs support [default=auto]\n\nFor system-wide configuration of the CLI, place your configuration in\n/var/snap/lxd/common/global-conf/ (config.yml and servercerts)", 'download-size': 71106560, 'icon': 'https://dashboard.snapcraft.io/site_media/appmedia/2016/08/containers.png', 'name': 'lxd', 'publisher': {'id': 'canonical', 'username': 'canonical', 'display-name': 'Canonical', 'validation': 'verified'}, 'developer': 'canonical', 'status': 'available', 'type': 'app', 'base': 'core20', 'version': '4.0.9-8e2046b', 'channel': '4.0/stable', 'ignore-validation': False, 'revision': '22753', 'confinement': 'strict', 'private': False, 'devmode': False, 'jailmode': False, 'contact': 'https://github.com/lxc/lxd/issues', 'license': 'Apache-2.0', 'website': 'https://linuxcontainers.org/lxd', 'media': [{'type': 'icon', 'url': 'https://dashboard.snapcraft.io/site_media/appmedia/2016/08/containers.png', 'width': 256, 'height': 256}, {'type': 'screenshot', 'url': 'https://dashboard.snapcraft.io/site_media/appmedia/2018/10/Screenshot_from_2018-10-26_12-57-24.png', 'width': 977, 'height': 592}, {'type': 'screenshot', 'url': 'https://dashboard.snapcraft.io/site_media/appmedia/2018/10/Screenshot_from_2018-10-26_14-20-14.png', 'width': 1003, 'height': 592}, {'type': 'screenshot', 'url': 'https://dashboard.snapcraft.io/site_media/appmedia/2018/10/Screenshot_from_2018-10-26_14-21-43.png', 'width': 1003, 'height': 592}, {'type': 'video', 'url': 'https://asciinema.org/a/226224'}]}, {'id': 'PMrrV4ml8uWuEUDBT8dSGnKUYbevVhc4', 'title': 'snapd', 'summary': 'Daemon and tooling that enable snap packages', 'description': "Install, configure, refresh and remove snap packages. Snaps are\n'universal' packages that work across many different Linux systems,\nenabling secure distribution of the latest apps and utilities for\ncloud, servers, desktops and the internet of things.\n\nStart with 'snap list' to see installed snaps.\n", 'download-size': 49242112, 'icon': 'https://dashboard.snapcraft.io/site_media/appmedia/2019/09/snapd.png', 'name': 'snapd', 'publisher': {'id': 'canonical', 'username': 'canonical', 'display-name': 'Canonical', 'validation': 'verified'}, 'developer': 'canonical', 'status': 'available', 'type': 'snapd', 'version': '2.56.2', 'channel': 'latest/stable', 'ignore-validation': False, 'revision': '16292', 'confinement': 'strict', 'private': False, 'devmode': False, 'jailmode': False, 'contact': '', 'license': 'GPL-3.0+', 'website': 'https://snapcraft.io', 'media': [{'type': 'icon', 'url': 'https://dashboard.snapcraft.io/site_media/appmedia/2019/09/snapd.png', 'width': 460, 'height': 460}, {'type': 'screenshot', 'url': 'https://dashboard.snapcraft.io/site_media/appmedia/2019/09/Screenshot_20190924_115756_hLcyetO.png', 'width': 956, 'height': 648}, {'type': 'screenshot', 'url': 'https://dashboard.snapcraft.io/site_media/appmedia/2019/09/Screenshot_20190924_115824_2v3y6l8.png', 'width': 956, 'height': 648}, {'type': 'screenshot', 'url': 'https://dashboard.snapcraft.io/site_media/appmedia/2019/09/Screenshot_20190924_115055_Uuq7KIb.png', 'width': 1023, 'height': 834}, {'type': 'screenshot', 'url': 'https://dashboard.snapcraft.io/site_media/appmedia/2019/09/Screenshot_20190924_125944.png', 'width': 956, 'height': 648}]}, {'id': 'ba2aj8guta0zSRlT3QM5aJNAUXPlBtf9', 'title': 'subiquity', 'summary': 'Ubuntu installer', 'description': 'The Ubuntu server installer', 'download-size': 33067008, 'name': 'subiquity', 'publisher': {'id': 'canonical', 'username': 'canonical', 'display-name': 'Canonical', 'validation': 'verified'}, 'developer': 'canonical', 'status': 'available', 'type': 'app', 'base': 'core20', 'version': '22.07.2', 'channel': 'latest/stable', 'ignore-validation': False, 'revision': '3698', 'confinement': 'classic', 'private': False, 'devmode': False, 'jailmode': False, 'contact': 'https://bugs.launchpad.net/subiquity', 'license': 'AGPL-3.0'}]}
+2022-08-05 04:24:11,396 DEBUG root:39 finish: subiquity/Refresh/check_for_update: SUCCESS: new version of snap available: '22.07.2'
+2022-08-05 04:24:11,397 DEBUG root:39 start: subiquity/Refresh/apply_autoinstall_config/start_update: 
+2022-08-05 04:24:11,641 DEBUG urllib3.connectionpool:396 http://localhost:None "POST /v2/snaps/subiquity HTTP/1.1" 202 81
+2022-08-05 04:24:11,641 DEBUG root:39 finish: subiquity/Refresh/apply_autoinstall_config/start_update: SUCCESS: change id: 5
+2022-08-05 04:24:11,645 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:11,748 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:11,851 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:11,953 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,056 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,158 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,261 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,365 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,468 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,571 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,674 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,777 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,882 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:12,986 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:13,090 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:13,193 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:13,295 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:13,398 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:13,500 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:13,603 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:13,706 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:13,808 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:13,911 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:14,013 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:14,115 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:14,218 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:14,320 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:14,652 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:14,754 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:14,856 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:14,958 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:15,061 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:15,166 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:15,269 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:15,371 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:15,473 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:15,575 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:15,637 DEBUG subiquitycore.utils:48 run_command called: ['udevadm', 'settle', '-t', '0']
+2022-08-05 04:24:15,661 DEBUG subiquitycore.utils:61 run_command ['udevadm', 'settle', '-t', '0'] exited with code 0
+2022-08-05 04:24:15,662 DEBUG subiquity.server.controller.filesystem:393 _udev_event change Device('/sys/devices/virtual/block/loop7')
+2022-08-05 04:24:15,662 DEBUG root:39 start: subiquity/Filesystem/_probe: 
+2022-08-05 04:24:15,663 DEBUG root:39 start: subiquity/Filesystem/_probe/probe_once: restricted=False
+2022-08-05 04:24:15,814 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:15,920 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:16,025 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:16,128 DEBUG probert.dasd:131 Probing DASD devies
+2022-08-05 04:24:16,128 DEBUG probert.dasd:134 DASD devices only present on s390x, arch=x86_64
+2022-08-05 04:24:16,131 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:16,132 DEBUG curtin:1294 Extracting storage config from probe data
+2022-08-05 04:24:16,132 DEBUG curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:24:16,132 DEBUG curtin:86 /dev/sr0 is multipath device partition? False
+2022-08-05 04:24:16,132 DEBUG curtin:73 /dev/sr1 is multipath device member? False
+2022-08-05 04:24:16,132 DEBUG curtin:86 /dev/sr1 is multipath device partition? False
+2022-08-05 04:24:16,132 DEBUG curtin:73 /dev/vda is multipath device member? False
+2022-08-05 04:24:16,132 DEBUG curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:24:16,132 DEBUG curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:24:16,132 DEBUG curtin:86 /dev/vda is multipath device partition? False
+2022-08-05 04:24:16,132 DEBUG curtin:61 /dev/vda is multipath device? False
+2022-08-05 04:24:16,141 DEBUG curtin:73 /dev/fd0 is multipath device member? False
+2022-08-05 04:24:16,141 DEBUG curtin:86 /dev/fd0 is multipath device partition? False
+2022-08-05 04:24:16,141 DEBUG curtin:73 /dev/sr0 is multipath device member? False
+2022-08-05 04:24:16,141 DEBUG curtin:1301 Sorting extracted configurations
+2022-08-05 04:24:16,141 INFO curtin:1320 Validating extracted storage config components
+2022-08-05 04:24:16,149 DEBUG curtin:1339 Extracted (unmerged) storage config:
+storage:
+-   id: disk-vda
+    path: /dev/vda
+    type: disk
+
+2022-08-05 04:24:16,149 DEBUG curtin:1341 Generating storage config dependencies
+2022-08-05 04:24:16,149 DEBUG curtin:1347 Merging storage config dependencies
+2022-08-05 04:24:16,150 DEBUG curtin:1354 Merged storage config:
+storage:
+    config:
+    -   id: disk-vda
+        path: /dev/vda
+        type: disk
+    version: 1
+
+2022-08-05 04:24:16,150 DEBUG subiquity.models.filesystem:1121 exclusions set()
+2022-08-05 04:24:16,150 DEBUG root:39 finish: subiquity/Filesystem/_probe/probe_once: SUCCESS: restricted=False
+2022-08-05 04:24:16,151 DEBUG root:39 finish: subiquity/Filesystem/_probe: SUCCESS: 
+2022-08-05 04:24:16,253 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:16,355 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:16,457 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:16,559 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:16,662 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:16,764 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:16,866 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,044 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,146 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,249 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,351 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,457 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,559 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,662 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,764 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,867 DEBUG urllib3.connectionpool:396 http://localhost:None "GET /v2/changes/5 HTTP/1.1" 200 None
+2022-08-05 04:24:17,928 DEBUG subiquitycore.utils:48 run_command called: ['udevadm', 'settle', '-t', '0']
+2022-08-05 04:24:17,945 DEBUG subiquitycore.utils:61 run_command ['udevadm', 'settle', '-t', '0'] exited with code 1
+2022-08-05 04:24:17,946 DEBUG subiquity.server.controller.filesystem:381 waiting 0.1 to let udev event queue settle

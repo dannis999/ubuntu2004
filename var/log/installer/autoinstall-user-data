@@ -1,0 +1,83 @@
+#cloud-config
+autoinstall:
+  apt:
+    disable_components: []
+    geoip: true
+    preserve_sources_list: false
+    primary:
+    - arches:
+      - amd64
+      - i386
+      uri: http://us.archive.ubuntu.com/ubuntu
+    - arches:
+      - default
+      uri: http://ports.ubuntu.com/ubuntu-ports
+  drivers:
+    install: false
+  identity:
+    hostname: guest
+    password: $6$zHHfQ96pYGcB.XiU$a0f/N5MKTlv67MqfKDnmSvpVuSpiq.m6BJkLESqTeWcvlczkBL0FZ0Tt0loKhKCwc1pUIpIQTXdfqRTEGnwVo1
+    realname: guest
+    username: ubuntu
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: en
+    toggle: null
+    variant: us
+  locale: en_US
+  network:
+    ethernets:
+      ens3:
+        dhcp4: true
+    version: 2
+  packages:
+  - openssh-server
+  - curl
+  - wget
+  - parted
+  - mlocate
+  - libpam-cracklib
+  - cracklib-runtime
+  - ethtool
+  - zip
+  - unzip
+  - nano
+  - linux-headers-generic
+  ssh:
+    allow-pw: true
+    authorized-keys: []
+    install-server: true
+  storage:
+    config:
+    - ptable: msdos
+      path: /dev/vda
+      wipe: superblock-recursive
+      preserve: false
+      name: ''
+      grub_device: true
+      type: disk
+      id: disk-vda
+    - device: disk-vda
+      size: 8386510848
+      wipe: superblock
+      flag: boot
+      number: 1
+      preserve: false
+      grub_device: false
+      type: partition
+      id: partition-0
+    - fstype: ext4
+      volume: partition-0
+      preserve: false
+      type: format
+      id: format-0
+    - path: /
+      device: format-0
+      type: mount
+      id: mount-0
+  updates: security
+  user-data:
+    disable_root: false
+    ssh_pwauth: true
+  version: 1
